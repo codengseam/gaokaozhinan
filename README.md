@@ -28,7 +28,6 @@
 - **纯静态零依赖**：无 npm、无构建工具、无后端。HTML/CSS/原生 JS + ECharts/Mermaid 本地脚本，双击即跑，离线可用。
 - **5 大开源算法 skill**：位次归一化、梯度概率模型、平行志愿防退档、大小年波动识别、同层次院校套利，分别源自 5 个 GitHub 开源项目（累计 ⭐1.5k+），核心逻辑本地化复刻。
 - **真实重庆数据**：2025 物理类一分一段表真实锚点 + 48 条院校专业录实数据 + 预科/国家专项/地方专项/加分政策红利库，全部可溯源至重庆市教育考试院与阳光高考。
-- **专家团评审**：档案经心理专家 / 报考专家 / 就业指导专家三 Agent 评审整合，原档案 3 处重大错误（南农、东北林、川农预科未在渝招生）已更正。
 - **缺点先行原则**：每个专业先讲最不能接受的缺点，再讲核心优点；每个 skill 先暴露降级缺口，再讲能力边界。
 
 ---
@@ -337,7 +336,6 @@ GK.Utils.std([2,4,4,4,5,5,7,9], 1);    // → 2.138  样本标准差（n-1）
 - 安装 5 个 skill：[skill-1](skills/skill-1-rank-normalizer.js)、[skill-2](skills/skill-2-volunteer-optimizer.js)、[skill-3](skills/skill-3-admission-safety.js)、[skill-A](skills/skill-A-volatility-detector.js)、[skill-B](skills/skill-B-arbitrage.js) + 核心底座 [_core.js](skills/_core.js)
 - 安装 7 个数据文件：[candidate](data/candidate.js)、[score_rank_anchors](data/score_rank_anchors.js)、[schools](data/schools.js)、[policies](data/policies.js)、[risk_rules](data/risk_rules.js)、[tier_tags](data/tier_tags.js)、[meta](data/meta.js)
 - 新增工具页 [tools.html](tools.html)，提供 5 skill 交互入口与综合仪表盘
-- 更正原档案 3 处重大错误（南农/东北林/川农预科未在渝招生），计入 removed 清单
 
 ### 后续计划
 
