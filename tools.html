@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 志愿填报 · 智能工具箱</title>
+<style>
+@font-face{font-family:'Outfit';src:url('./_shared/fonts/Outfit-Regular.ttf') format('truetype');font-weight:400;}
+@font-face{font-family:'Outfit';src:url('./_shared/fonts/Outfit-Bold.ttf') format('truetype');font-weight:700;}
+:root{
+  --bg:#f5f6fa; --bg2:#ffffff; --bg3:#eef1f7;
+  --ink:#1a2238; --ink2:#2c3650; --muted:#6b7280; --muted2:#9aa3b2;
+  --rule:#e4e7ee; --rule2:#d3d8e3;
+  --accent:#b91c1c; --accent-soft:#fbeaea;
+  --accent2:#1e3a8a; --accent2-soft:#e8edf8;
+  --danger:#c0392b; --danger-soft:#fdecea;
+  --success:#0f766e; --success-soft:#e6f4f1;
+  --warning:#b45309; --warning-soft:#fdf3e7;
+  --gold:#a16207; --gold-soft:#fdf6e3;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","WenQuanYi Micro Hei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;}
+.num{font-family:'Outfit',sans-serif;font-feature-settings:"tnum";}
+a{color:inherit;text-decoration:none;}
+
+/* NAV（复用 .nav，t-nav 增强） */
+.nav,.t-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);}
+.t-nav-inner{max-width:1140px;margin:0 auto;padding:0.7rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.logo{font-weight:800;font-size:1.02rem;color:var(--ink);display:flex;align-items:center;gap:0.5rem;}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);}
+.t-nav-links{display:flex;gap:1rem;flex-wrap:wrap;}
+.t-nav-links a{font-size:0.8rem;color:var(--muted);font-weight:500;transition:color .2s;}
+.t-nav-links a:hover{color:var(--accent);}
+.t-nav-btns{display:flex;gap:0.5rem;}
+.btn-column{background:var(--ink);color:#fff;padding:0.42rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;transition:background .2s;}
+.btn-column:hover{background:var(--accent);}
+.btn-column.outline{background:transparent;color:var(--accent2);border:1px solid var(--rule2);}
+.btn-column.outline:hover{background:var(--accent2-soft);color:var(--accent2);}
+
+/* HERO */
+.t-hero{max-width:1140px;margin:1.3rem auto 0;padding:0 1.2rem;}
+.t-hero-card{background:linear-gradient(120deg,#1a2238 0%,#1e3a8a 100%);border-radius:20px;padding:1.7rem 2rem;color:#fff;box-shadow:0 12px 40px rgba(26,34,56,0.18);}
+.t-hero-card .kicker{font-size:0.74rem;letter-spacing:0.18em;text-transform:uppercase;color:#f0b429;font-weight:700;margin-bottom:0.5rem;}
+.t-hero-card h1{font-size:1.55rem;font-weight:800;margin-bottom:0.4rem;}
+.t-hero-card h1 em{font-style:normal;color:#f0b429;}
+.t-hero-card p{font-size:0.88rem;color:#c8d0e0;margin-bottom:1.2rem;max-width:680px;}
+
+/* container */
+.container{max-width:1140px;margin:0 auto;padding:1.5rem 1.2rem 4rem;}
+
+/* section header（复用） */
+.shead{display:flex;align-items:flex-end;justify-content:space-between;margin:2.2rem 0 1.1rem;gap:1rem;flex-wrap:wrap;}
+.shead .stitle{font-size:1.3rem;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:0.6rem;}
+.shead .stitle .bar{width:5px;height:1.2rem;background:var(--accent);border-radius:3px;}
+.shead .sdesc{font-size:0.82rem;color:var(--muted);}
+.shead .stag{font-size:0.72rem;font-weight:700;color:var(--accent2);background:var(--accent2-soft);padding:0.15rem 0.5rem;border-radius:5px;}
+
+/* profile strip（复用，改造为输入） */
+.profile-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.7rem;}
+.pcell{background:var(--bg2);border:1px solid var(--rule);border-radius:12px;padding:0.85rem 1rem;}
+.pcell .pl{font-size:0.72rem;color:var(--muted2);letter-spacing:0.04em;margin-bottom:0.35rem;}
+.pcell .pv{font-size:1rem;font-weight:700;color:var(--ink);}
+.t-input,.t-input-select{width:100%;font-family:inherit;font-size:0.92rem;font-weight:600;color:var(--ink);background:var(--bg3);border:1px solid var(--rule2);border-radius:8px;padding:0.38rem 0.55rem;outline:none;transition:border .2s;}
+.t-input:focus,.t-input-select:focus{border-color:var(--accent2);background:var(--bg2);}
+.t-check-row{display:flex;gap:0.7rem;flex-wrap:wrap;font-size:0.82rem;}
+.t-check-row label{display:inline-flex;align-items:center;gap:0.28rem;font-weight:600;color:var(--ink2);cursor:pointer;}
+.t-check-row input{cursor:pointer;accent-color:var(--accent2);}
+.t-hint{font-size:0.72rem;color:var(--muted);font-weight:500;margin-top:0.2rem;}
+
+/* tier grid（复用） */
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.tcard{border-radius:14px;padding:1.15rem 1.25rem;color:#fff;position:relative;overflow:hidden;}
+.tcard.rush{background:linear-gradient(135deg,#b91c1c,#7f1d1d);}
+.tcard.steady{background:linear-gradient(135deg,#1e3a8a,#1e40af);}
+.tcard.safe{background:linear-gradient(135deg,#0f766e,#115e59);}
+.tcard .tl{font-size:0.76rem;opacity:0.85;letter-spacing:0.06em;margin-bottom:0.3rem;}
+.tcard .tt{font-size:1.15rem;font-weight:800;margin-bottom:0.45rem;}
+.tcard .td{font-size:0.8rem;opacity:0.92;line-height:1.55;}
+.tcard .tcount{position:absolute;right:1rem;top:0.7rem;font-family:'Outfit';font-size:1.8rem;font-weight:700;opacity:0.25;}
+
+/* chart（复用） */
+.chart-card{background:var(--bg2);border:1px solid var(--rule);border-radius:14px;padding:1.15rem 1.25rem;margin-bottom:1rem;}
+.chart-card .ct{font-size:0.98rem;font-weight:700;color:var(--ink);margin-bottom:0.7rem;}
+.chart-box{width:100%;height:320px;}
+
+/* alert banner（复用） */
+.alert-banner{background:linear-gradient(105deg,#fffbeb,#fef3e7);border:1px solid #f3d99a;border-radius:12px;padding:0.9rem 1.2rem;display:flex;align-items:center;gap:0.7rem;margin:1rem 0;}
+.alert-banner.danger{background:linear-gradient(105deg,#fdecea,#fbeaea);border-color:#e6b3ad;}
+.alert-banner.success{background:linear-gradient(105deg,#e6f4f1,#eaf6f4);border-color:#a8d6cf;}
+.alert-banner .ai{font-size:1.35rem;}
+.alert-banner .at{font-size:0.88rem;color:var(--ink2);}
+.alert-banner .at b{color:var(--accent);}
+
+/* table（补全，沿用设计语言） */
+.table-wrap{background:var(--bg2);border:1px solid var(--rule);border-radius:14px;overflow:auto;margin-bottom:1rem;max-height:560px;}
+table{width:100%;border-collapse:collapse;font-size:0.84rem;}
+thead th{background:var(--bg3);color:var(--ink2);font-weight:700;text-align:left;padding:0.65rem 0.85rem;border-bottom:1px solid var(--rule2);position:sticky;top:0;white-space:nowrap;z-index:2;}
+tbody td{padding:0.55rem 0.85rem;border-bottom:1px solid var(--rule);color:var(--ink2);vertical-align:top;}
+tbody tr:hover{background:var(--bg3);}
+.td-school{font-weight:700;color:var(--ink);}
+.td-num{font-family:'Outfit';font-weight:700;}
+
+/* callout（补全） */
+.callout{border-radius:10px;padding:0.75rem 0.95rem;font-size:0.84rem;margin:0.55rem 0;line-height:1.6;}
+.callout.info{background:var(--accent2-soft);border-left:3px solid var(--accent2);color:var(--accent2);}
+.callout.warn{background:var(--warning-soft);border-left:3px solid var(--warning);color:var(--warning);}
+.callout.danger{background:var(--danger-soft);border-left:3px solid var(--danger);color:var(--danger);}
+.callout b{font-weight:700;}
+
+/* stat grid（补全） */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:0.7rem;margin:0.8rem 0;}
+.stat{background:var(--bg2);border:1px solid var(--rule);border-radius:12px;padding:0.85rem 0.95rem;text-align:center;}
+.stat .sl{font-size:0.72rem;color:var(--muted2);margin-bottom:0.25rem;}
+.stat .sv{font-family:'Outfit';font-size:1.35rem;font-weight:700;color:var(--accent);line-height:1.1;}
+.stat .sv.blue{color:var(--accent2);} .stat .sv.green{color:var(--success);} .stat .sv.warn{color:var(--warning);} .stat .sv.gold{color:var(--gold);}
+
+/* ===== t- 前缀新类 ===== */
+.t-pool{background:var(--bg2);border:1px solid var(--rule);border-radius:14px;padding:1.05rem 1.15rem;margin-bottom:1rem;}
+.t-pool-group{margin-bottom:0.75rem;}
+.t-pool-group:last-child{margin-bottom:0;}
+.t-pool-gtitle{font-size:0.84rem;font-weight:700;color:var(--ink);margin-bottom:0.45rem;display:flex;align-items:center;gap:0.5rem;}
+.t-pool-gtitle .t-pool-toggle{font-size:0.74rem;font-weight:600;color:var(--accent2);cursor:pointer;border:none;background:none;font-family:inherit;}
+.t-pool-gtitle .t-pool-toggle:hover{text-decoration:underline;}
+.t-pool-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:0.2rem 0.7rem;}
+.t-pool-item{display:flex;align-items:center;gap:0.35rem;font-size:0.8rem;color:var(--ink2);cursor:pointer;padding:0.18rem 0;}
+.t-pool-item input{cursor:pointer;accent-color:var(--accent2);}
+.t-pool-item .t-pool-rank{font-family:'Outfit';font-size:0.74rem;color:var(--muted);margin-left:auto;white-space:nowrap;}
+
+.t-slider-row{display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;margin-bottom:0.55rem;}
+.t-slider-row label{font-size:0.82rem;font-weight:700;color:var(--ink);min-width:72px;}
+.t-slider-row input[type=range]{flex:1;min-width:150px;accent-color:var(--accent);}
+.t-slider-row .t-slider-val{font-family:'Outfit';font-weight:700;color:var(--accent);min-width:34px;text-align:right;font-size:0.92rem;}
+
+.t-prog{width:100%;height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;min-width:70px;}
+.t-prog-bar{height:100%;border-radius:4px;}
+
+.t-risk-dot{display:inline-block;width:15px;height:15px;border-radius:50%;vertical-align:middle;}
+
+.t-arb-bar{width:100%;height:10px;background:var(--bg3);border-radius:5px;overflow:hidden;min-width:55px;}
+.t-arb-bar-fill{height:100%;border-radius:5px;}
+
+.t-tier-badge{display:inline-block;font-size:0.7rem;font-weight:700;padding:0.1rem 0.45rem;border-radius:5px;color:#fff;white-space:nowrap;}
+.t-tier-badge.surge{background:var(--accent);}
+.t-tier-badge.gap{background:var(--muted);}
+.t-tier-badge.stable{background:var(--accent2);}
+.t-tier-badge.safe{background:var(--success);}
+.t-tier-badge.hopeless{background:var(--rule2);color:var(--muted);}
+.t-tier-badge.overSafe{background:var(--gold);}
+
+.t-btn{display:inline-flex;align-items:center;gap:0.35rem;background:var(--bg3);border:1px solid var(--rule2);color:var(--ink);font-family:inherit;font-size:0.84rem;font-weight:600;padding:0.45rem 0.95rem;border-radius:9px;cursor:pointer;transition:all .2s;}
+.t-btn:hover{background:var(--bg2);border-color:var(--accent2);}
+.t-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+.t-btn.primary:hover{background:#991010;}
+.t-btn.blue{background:var(--accent2);color:#fff;border-color:var(--accent2);}
+.t-btn.blue:hover{background:#15296b;}
+
+.t-toolbar{display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;margin-bottom:0.9rem;}
+.t-toolbar select,.t-toolbar input[type=number]{font-family:inherit;font-size:0.82rem;padding:0.34rem 0.55rem;border:1px solid var(--rule2);border-radius:8px;background:var(--bg2);color:var(--ink);}
+.t-toolbar label{font-size:0.8rem;font-weight:600;color:var(--ink2);}
+.t-toolbar .t-check-inline{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.82rem;font-weight:600;color:var(--ink2);cursor:pointer;}
+
+.t-detail-toggle{font-size:0.76rem;color:var(--accent2);cursor:pointer;font-weight:600;border:none;background:none;font-family:inherit;padding:0;}
+.t-detail-toggle:hover{text-decoration:underline;}
+.t-detail{display:none;margin-top:0.4rem;}
+.t-detail.open{display:block;}
+
+.t-empty{padding:1.1rem;text-align:center;color:var(--muted);font-size:0.84rem;}
+
+/* footer（复用） */
+.foot{background:var(--ink);color:#aeb6c8;padding:2.1rem 1.2rem 2.5rem;margin-top:2rem;}
+.foot-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.foot a{color:#7fa0d8;}
+.foot a:hover{color:#a8c4ec;}
+.foot .fb{color:#fff;font-weight:700;}
+
+@media(max-width:768px){
+  .t-nav-links{display:none;}
+  .tier-grid{grid-template-columns:1fr;}
+  .chart-box{height:280px;}
+  .t-hero-card{padding:1.3rem 1.3rem;}
+  .t-hero-card h1{font-size:1.25rem;}
+  .t-pool-items{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== 1. NAV ========== -->
+<nav class="t-nav">
+  <div class="t-nav-inner">
+    <div class="logo"><span class="dot"></span>2026 志愿填报 · 智能工具箱</div>
+    <div class="t-nav-links">
+      <a href="#profile">档案</a>
+      <a href="#rank">位次</a>
+      <a href="#gradient">梯度</a>
+      <a href="#safety">校验</a>
+      <a href="#volatility">波动</a>
+      <a href="#arbitrage">套利</a>
+      <a href="#dashboard">仪表盘</a>
+    </div>
+    <div class="t-nav-btns">
+      <a href="index.html" class="btn-column outline">返回首页</a>
+      <a href="column.html" class="btn-column">进入专栏</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== 2. HERO + 考生档案输入 ========== -->
+<header class="t-hero" id="profile">
+  <div class="t-hero-card">
+    <span class="kicker">5 SKILLS · 数据可溯源 · 防退档优先</span>
+    <h1>智能工具箱：<em>位次 · 梯度 · 校验 · 波动 · 套利</em></h1>
+    <p>串联 Skill 1 位次归一化、Skill 2 冲稳保、Skill 3 防退档、Skill A 大小年、Skill B 同层次套利，一键生成综合志愿报告。修改下方档案即触发全表重算。</p>
+    <div class="profile-strip" id="profile-strip">
+      <div class="pcell"><div class="pl">高考分数</div><div class="pv"><input type="number" class="t-input" id="f-score" value="581"></div></div>
+      <div class="pcell"><div class="pl">全省位次</div><div class="pv"><input type="number" class="t-input" id="f-rank" value="20161"></div></div>
+      <div class="pcell"><div class="pl">选科（物化生）</div><div class="pv"><div class="t-check-row">
+        <label><input type="checkbox" id="f-sub-physics" checked>物</label>
+        <label><input type="checkbox" id="f-sub-chemistry" checked>化</label>
+        <label><input type="checkbox" id="f-sub-biology" checked>生</label>
+        <label><input type="checkbox" id="f-sub-politics">政</label>
+      </div></div></div>
+      <div class="pcell"><div class="pl">少数民族</div><div class="pv"><select class="t-input-select" id="f-ethnicity"><option value="yes" selected>是</option><option value="no">否</option></select></div></div>
+      <div class="pcell"><div class="pl">户籍（彭水）</div><div class="pv"><select class="t-input-select" id="f-hukou"><option value="unknown" selected>彭水·待确认</option><option value="rural">彭水·乡村</option><option value="urban">彭水·城镇</option></select><div class="t-hint">乡村可走地方专项</div></div></div>
+      <div class="pcell"><div class="pl">体检</div><div class="pv"><select class="t-input-select" id="f-physical"><option value="unknown" selected>待确认</option><option value="pass">正常</option><option value="fail">色盲色弱</option></select></div></div>
+      <div class="pcell"><div class="pl">经济受限</div><div class="pv"><select class="t-input-select" id="f-economic"><option value="no" selected>否</option><option value="yes">是（禁中外合作）</option></select></div></div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ========== 区1 · Skill 1 位次归一化 ========== -->
+  <div class="shead" id="rank">
+    <div class="stitle"><span class="bar"></span>区1 · 位次归一化 <span class="stag">Skill 1</span></div>
+    <div class="sdesc">同一位次在不同年份对应的等位分（双Y轴折线）</div>
+  </div>
+  <div class="t-toolbar">
+    <label>实考分</label><input type="number" id="r-score" value="581" style="width:80px;">
+    <label>位次（取自档案）</label><span class="num" id="r-rank-show" style="font-weight:700;color:var(--accent2);">20161</span>
+    <label>目标年份</label>
+    <div class="t-check-row">
+      <label><input type="checkbox" name="r-year" value="2025" checked>2025</label>
+      <label><input type="checkbox" name="r-year" value="2024" checked>2024</label>
+      <label><input type="checkbox" name="r-year" value="2023" checked>2023</label>
+    </div>
+  </div>
+  <div class="table-wrap" id="rank-table"></div>
+  <div class="chart-card">
+    <div class="ct">等位分 / 等位位次 跨年趋势</div>
+    <div class="chart-box" id="rank-chart"></div>
+  </div>
+
+  <!-- ========== 区2 · Skill 2 冲稳保梯度 ========== -->
+  <div class="shead" id="gradient">
+    <div class="stitle"><span class="bar"></span>区2 · 冲稳保梯度 <span class="stag">Skill 2</span></div>
+    <div class="sdesc">志愿池分桶（rush/stable/safe）+ 录取概率</div>
+  </div>
+  <div class="t-pool" id="grad-pool"></div>
+  <div class="t-pool" style="padding:0.9rem 1.15rem;">
+    <div class="t-slider-row"><label>冲 rush</label><input type="range" id="coef-rush" min="0.80" max="0.95" step="0.01" value="0.85"><span class="t-slider-val" id="coef-rush-v">0.85</span></div>
+    <div class="t-slider-row"><label>稳 steady</label><input type="range" id="coef-steady" min="1.00" max="1.00" step="0.01" value="1.00" disabled><span class="t-slider-val" id="coef-steady-v" style="color:var(--muted);">1.00</span></div>
+    <div class="t-slider-row"><label>保 safe</label><input type="range" id="coef-safe" min="1.10" max="1.30" step="0.01" value="1.15"><span class="t-slider-val" id="coef-safe-v">1.15</span></div>
+  </div>
+  <div class="tier-grid" id="grad-tiers" style="margin-bottom:1rem;"></div>
+  <div class="table-wrap" id="grad-table"></div>
+
+  <!-- ========== 区3 · Skill 3 防退档校验 ========== -->
+  <div class="shead" id="safety">
+    <div class="stitle"><span class="bar"></span>区3 · 防退档校验 <span class="stag">Skill 3</span></div>
+    <div class="sdesc">逐条志愿规则引擎（选科/体检/学费/校区/预科资格）</div>
+  </div>
+  <div class="t-toolbar">
+    <label class="t-check-inline"><input type="checkbox" id="safe-link" checked> 联动区2志愿池</label>
+    <label class="t-check-inline"><input type="checkbox" id="safe-removed" checked> 附加已剔除院校核验（南农/东林/川农/贵大/广大）</label>
+    <button class="t-btn blue" id="safe-rerun">重新校验</button>
+  </div>
+  <div id="safe-banner"></div>
+  <div class="table-wrap" id="safe-table"></div>
+
+  <!-- ========== 区4 · Skill A 大小年波动 ========== -->
+  <div class="shead" id="volatility">
+    <div class="stitle"><span class="bar"></span>区4 · 大小年波动 <span class="stag">Skill A</span></div>
+    <div class="sdesc">历年位次标准差 + CV + 振荡反转识别</div>
+  </div>
+  <div class="t-toolbar">
+    <label>选择院校专业</label>
+    <select class="t-input-select" id="vol-select" style="min-width:340px;"></select>
+  </div>
+  <div class="chart-card">
+    <div class="ct">历年录取位次变化（大小年不同色）</div>
+    <div class="chart-box" id="vol-chart"></div>
+  </div>
+  <div class="stat-grid" id="vol-stats"></div>
+  <div id="vol-conclusion"></div>
+
+  <!-- ========== 区5 · Skill B 同层次套利 ========== -->
+  <div class="shead" id="arbitrage">
+    <div class="stitle"><span class="bar"></span>区5 · 同层次套利 <span class="stag">Skill B</span></div>
+    <div class="sdesc">位次窗 + 同方向 + 跨省 + 一冲一保</div>
+  </div>
+  <div class="t-toolbar">
+    <label>目标院校</label>
+    <select class="t-input-select" id="arb-target" style="min-width:300px;"></select>
+    <label>层次</label>
+    <select class="t-input-select" id="arb-tier" style="min-width:96px;">
+      <option value="">全部</option><option value="211">211</option><option value="双一流">双一流</option><option value="公办">公办</option><option value="市属">市属</option><option value="省属">省属</option>
+    </select>
+    <label>区位</label>
+    <select class="t-input-select" id="arb-region" style="min-width:90px;">
+      <option value="">不限</option><option value="south">南方</option>
+    </select>
+    <button class="t-btn blue" id="arb-rerun">重新检测</button>
+  </div>
+  <div id="arb-pairs"></div>
+  <div class="table-wrap" id="arb-table"></div>
+
+  <!-- ========== 区6 · 综合仪表盘 ========== -->
+  <div class="shead" id="dashboard">
+    <div class="stitle"><span class="bar"></span>区6 · 综合仪表盘 <span class="stag">Skill 2→3→A→B</span></div>
+    <div class="sdesc">一键串联四技能，生成综合志愿报告</div>
+  </div>
+  <div class="t-toolbar">
+    <button class="t-btn primary" id="dash-gen">⚡ 生成综合报告</button>
+    <button class="t-btn" id="dash-export">导出 JSON</button>
+    <span class="t-hint">使用区2当前志愿池，串联 Skill 2 分档 → Skill 3 校验 → Skill A 波动 → Skill B 套利</span>
+  </div>
+  <div class="tier-grid" id="dash-overview" style="margin-bottom:1rem;"></div>
+  <div id="dash-callouts"></div>
+  <div class="table-wrap" id="dash-table"></div>
+
+</div>
+
+<!-- ========== 页脚 ========== -->
+<footer class="foot">
+  <div class="foot-inner">
+    <div><span class="fb">2026 高考志愿填报 · 智能工具箱</span> · 5 Skills 数据驱动版</div>
+    <div style="font-size:0.8rem;">数据来源：教育部阳光高考、重庆市教育考试院一分一段表、column.html 天团评审版核实 · <a href="README.md">README</a> · <a href="index.html">返回首页</a></div>
+    <div style="font-size:0.74rem;color:#8a93a6;">免责声明：所有数据为 2025 年实录，2026 年以考试院公布为准；工具结果仅供参考，不构成填报承诺。</div>
+  </div>
+</footer>
+
+<!-- ========== 加载顺序（严格） ========== -->
+<script src="./_shared/js/echarts.min.js"></script>
+<script src="./skills/_core.js"></script>
+<script src="./data/candidate.js"></script>
+<script src="./data/score_rank_anchors.js"></script>
+<script src="./data/schools.js"></script>
+<script src="./data/policies.js"></script>
+<script src="./data/risk_rules.js"></script>
+<script src="./data/tier_tags.js"></script>
+<script src="./data/meta.js"></script>
+<script src="./skills/skill-1-rank-normalizer.js"></script>
+<script src="./skills/skill-3-admission-safety.js"></script>
+<script src="./skills/skill-A-volatility-detector.js"></script>
+<script src="./skills/skill-2-volunteer-optimizer.js"></script>
+<script src="./skills/skill-B-arbitrage.js"></script>
+<script>
+/* ========== 内联脚本：渲染 + 事件（纯 ES5） ========== */
+(function () {
+  'use strict';
+
+  /* ---------- 读 CSS 变量（沿用 charts.js 范式） ---------- */
+  var style = getComputedStyle(document.documentElement);
+  var accent = style.getPropertyValue('--accent').trim();
+  var accent2 = style.getPropertyValue('--accent2').trim();
+  var ink = style.getPropertyValue('--ink').trim();
+  var muted = style.getPropertyValue('--muted').trim();
+  var muted2 = style.getPropertyValue('--muted2').trim();
+  var rule = style.getPropertyValue('--rule').trim();
+  var bg2 = style.getPropertyValue('--bg2').trim();
+  var success = style.getPropertyValue('--success').trim();
+  var warning = style.getPropertyValue('--warning').trim();
+  var danger = style.getPropertyValue('--danger').trim();
+  var gold = style.getPropertyValue('--gold').trim();
+
+  var D = GK.Data;
+  var CAND = D.Candidate;
+  var Schools = D.Schools;
+
+  /* ---------- 图表注册表 + resize ---------- */
+  var charts = {};
+  window.addEventListener('resize', function () {
+    for (var k in charts) { if (charts.hasOwnProperty(k) && charts[k]) { try { charts[k].resize(); } catch (e) {} } }
+  });
+  function disposeChart(key) { if (charts[key]) { try { charts[key].dispose(); } catch (e) {} charts[key] = null; } }
+  function newChart(key, box) { disposeChart(key); var c = echarts.init(box, null, { renderer: 'svg' }); charts[key] = c; return c; }
+
+  /* ---------- 考生状态（缓存 GK.candidate） ---------- */
+  var cand = {
+    score: CAND.score,
+    rank: CAND.rank,
+    year: CAND.year,
+    category: CAND.category,
+    subjects: CAND.subjects.slice(),
+    ethnicity: CAND.ethnicity,
+    hukou: { region: CAND.hukou.region, type: CAND.hukou.type },
+    physical: CAND.physical,
+    economicLimit: CAND.economicLimit
+  };
+  GK.candidate = cand;
+
+  /* ---------- 工具函数 ---------- */
+  function el(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function num(n, d) { if (n == null || isNaN(n)) return '—'; var f = Math.pow(10, d != null ? d : 2); return Math.round(n * f) / f; }
+  function tierLabel(t) { return { surge: '冲', gap: '缝隙', stable: '稳', safe: '保', hopeless: '渺茫', overSafe: '过保' }[t] || t; }
+  function tierBadge(t) { return '<span class="t-tier-badge ' + t + '">' + tierLabel(t) + '</span>'; }
+  function riskDot(r) { var col = r === 'low' ? success : (r === 'mid' ? warning : danger); return '<span class="t-risk-dot" style="background:' + col + ';" title="' + ({ low: '低风险', mid: '中风险', high: '高风险' }[r] || r) + '"></span>'; }
+  function probBar(p) { var pct = Math.round((p || 0) * 100); var col = pct >= 70 ? success : (pct >= 40 ? accent2 : warning); return '<div class="t-prog"><div class="t-prog-bar" style="width:' + pct + '%;background:' + col + ';"></div></div><span class="num" style="font-size:0.78rem;color:var(--muted);">' + pct + '%</span>'; }
+  function arbBar(score) { var pct = Math.min(100, Math.max(2, Math.round((score + 0.15) / 0.3 * 100))); var col = score >= 0 ? accent : accent2; return '<div class="t-arb-bar"><div class="t-arb-bar-fill" style="width:' + pct + '%;background:' + col + ';"></div></div>'; }
+  function volLevelBadge(lv) { var map = { low: ['低', success], mid: ['中', warning], high: ['高', danger], insufficient: ['不足', muted] }; var m = map[lv] || ['?', muted]; return '<span style="font-size:0.74rem;font-weight:700;color:#fff;background:' + m[1] + ';padding:0.1rem 0.4rem;border-radius:4px;">' + m[0] + '</span>'; }
+
+  var SOUTH_KW = ['成都', '四川', '重庆', '贵州', '贵阳', '广西', '南宁', '湖南', '长沙', '湖北', '武汉', '江西', '南昌', '福建', '福州', '厦门', '广东', '广州', '深圳', '云南', '昆明', '海南', '海口'];
+  function isSouth(name) { for (var i = 0; i < SOUTH_KW.length; i++) { if (name.indexOf(SOUTH_KW[i]) >= 0) return true; } return false; }
+  function regionLabel(name) { return isSouth(name) ? '南方' : '北方'; }
+
+  function historyToSeries(hr) {
+    var s = [];
+    if (!hr) return s;
+    for (var y in hr) { if (hr.hasOwnProperty(y) && hr[y] != null) s.push({ year: parseInt(y, 10), rank: hr[y] }); }
+    s.sort(function (a, b) { return a.year - b.year; });
+    return s;
+  }
+
+  /* ---------- 表单读写 ---------- */
+  function initForm() {
+    el('f-score').value = cand.score;
+    el('f-rank').value = cand.rank;
+    var sk = ['physics', 'chemistry', 'biology', 'politics'];
+    for (var i = 0; i < sk.length; i++) { var cb = el('f-sub-' + sk[i]); if (cb) cb.checked = cand.subjects.indexOf(sk[i]) >= 0; }
+    el('f-ethnicity').value = cand.ethnicity === 'minority' ? 'yes' : 'no';
+    el('f-hukou').value = cand.hukou.type === '乡村' ? 'rural' : (cand.hukou.type === '城镇' ? 'urban' : 'unknown');
+    el('f-physical').value = cand.physical === 'pass' ? 'pass' : (cand.physical === '色弱' || cand.physical === 'fail' ? 'fail' : 'unknown');
+    el('f-economic').value = cand.economicLimit ? 'yes' : 'no';
+  }
+
+  function readForm() {
+    cand.score = parseInt(el('f-score').value, 10) || 0;
+    cand.rank = parseInt(el('f-rank').value, 10) || 0;
+    var subs = [];
+    var sk = ['physics', 'chemistry', 'biology', 'politics'];
+    for (var i = 0; i < sk.length; i++) { var cb = el('f-sub-' + sk[i]); if (cb && cb.checked) subs.push(sk[i]); }
+    cand.subjects = subs;
+    cand.ethnicity = el('f-ethnicity').value === 'yes' ? 'minority' : 'han';
+    var ht = el('f-hukou').value;
+    cand.hukou = { region: 'pengshui', type: ht === 'rural' ? '乡村' : (ht === 'urban' ? '城镇' : 'unknown') };
+    var ph = el('f-physical').value;
+    cand.physical = ph === 'pass' ? 'pass' : (ph === 'fail' ? '色弱' : 'unknown');
+    cand.economicLimit = el('f-economic').value === 'yes';
+    GK.candidate = cand;
+    var rs = el('r-rank-show'); if (rs) rs.textContent = cand.rank;
+    var ri = el('r-score'); if (ri) ri.value = cand.score;
+  }
+
+  /* ============================================================
+     区1 · Skill 1 位次归一化
+     ============================================================ */
+  function renderRank() {
+    try {
+      var years = [];
+      var ycs = document.getElementsByName('r-year');
+      for (var i = 0; i < ycs.length; i++) { if (ycs[i].checked) years.push(parseInt(ycs[i].value, 10)); }
+      var rs = el('r-score'); if (rs) { var sv = parseInt(rs.value, 10); if (sv) cand.score = sv; GK.candidate = cand; }
+      if (!years.length) { el('rank-table').innerHTML = '<div class="t-empty">请至少选择一个目标年份</div>'; disposeChart('rank'); el('rank-chart').innerHTML = ''; return; }
+      var res = GK.Skills.RankNormalizer.normalize(cand.rank, { candidateYear: cand.year, targetYears: years, category: cand.category });
+      var rows = '', needSupp = false;
+      for (var j = 0; j < res.length; j++) {
+        var r = res[j];
+        if (r.equivalentScore == null) needSupp = true;
+        var delta = r.deltaVsCandidate;
+        rows += '<tr><td class="td-num">' + r.year + '</td>' +
+          '<td class="td-num">' + (r.equivalentScore == null ? '<span style="color:var(--muted2)">待补录</span>' : num(r.equivalentScore, 1)) + '</td>' +
+          '<td class="td-num">' + r.equivalentRank + '</td>' +
+          '<td class="td-num">' + (delta == null ? '<span style="color:var(--muted2)">—</span>' : (delta > 0 ? '+' : '') + num(delta, 1)) + '</td></tr>';
+      }
+      var html = '<table><thead><tr><th>年份</th><th>等位分</th><th>等位位次</th><th>Δ（等位分−实考分）</th></tr></thead><tbody>' + rows + '</tbody></table>';
+      if (needSupp) html += '<div class="callout warn">⚠️ 2024/2023 等年份一分一段表<b>待补录</b>，等位分暂不可用；Δ 列因 2026 基准表未发布暂为空。当前仅 2025 年有锚点数据。</div>';
+      el('rank-table').innerHTML = html;
+      renderRankChart(res);
+    } catch (e) {
+      el('rank-table').innerHTML = '<div class="callout danger">位次归一化计算出错：' + esc(e.message) + '</div>';
+      disposeChart('rank');
+    }
+  }
+
+  function renderRankChart(res) {
+    var box = el('rank-chart');
+    var xs = [], scores = [], ranks = [];
+    for (var i = 0; i < res.length; i++) { xs.push(String(res[i].year)); scores.push(res[i].equivalentScore == null ? null : Math.round(res[i].equivalentScore * 10) / 10); ranks.push(res[i].equivalentRank); }
+    var c = newChart('rank', box);
+    c.setOption({
+      animation: false,
+      tooltip: { trigger: 'axis', appendToBody: true },
+      legend: { data: ['等位分', '等位位次'], bottom: 0, textStyle: { color: muted, fontSize: 12 }, icon: 'roundRect' },
+      grid: { left: '4%', right: '7%', top: 30, bottom: 50, containLabel: true },
+      xAxis: { type: 'category', data: xs, axisLine: { lineStyle: { color: rule } }, axisTick: { show: false }, axisLabel: { color: muted, fontSize: 11 } },
+      yAxis: [
+        { type: 'value', name: '等位分', position: 'left', axisLine: { lineStyle: { color: accent } }, axisTick: { show: false }, axisLabel: { color: muted, fontSize: 11 }, splitLine: { lineStyle: { color: rule, type: 'dashed' } } },
+        { type: 'value', name: '位次', position: 'right', axisLine: { lineStyle: { color: accent2 } }, axisTick: { show: false }, axisLabel: { color: muted, fontSize: 11 }, splitLine: { show: false } }
+      ],
+      series: [
+        { name: '等位分', type: 'line', data: scores, smooth: true, symbol: 'circle', symbolSize: 9, itemStyle: { color: accent }, lineStyle: { width: 3 }, connectNulls: true,
+          markLine: { silent: true, symbol: 'none', data: [{ yAxis: cand.score, name: '实考分', lineStyle: { color: gold, type: 'dashed' }, label: { formatter: '实考 ' + cand.score, color: gold, fontSize: 10 } }] } },
+        { name: '等位位次', type: 'line', yAxisIndex: 1, data: ranks, symbol: 'diamond', symbolSize: 8, itemStyle: { color: accent2 }, lineStyle: { width: 2, type: 'dashed' } }
+      ]
+    });
+  }
+
+  /* ============================================================
+     志愿池渲染（区2/区3/区5/区6 共用）
+     ============================================================ */
+  var DIR_LABELS = { computer: '计算机', finance: '财会', electrical: '电气', preparatory: '预科', special: '专项' };
+
+  function buildPoolHTML(containerId) {
+    var groups = {};
+    var order = ['computer', 'finance', 'electrical', 'preparatory', 'special'];
+    for (var i = 0; i < Schools.length; i++) {
+      var s = Schools[i];
+      var d = s.direction || 'other';
+      if (!groups[d]) groups[d] = [];
+      groups[d].push(s);
+    }
+    var html = '';
+    for (var gi = 0; gi < order.length; gi++) {
+      var dir = order[gi];
+      var arr = groups[dir];
+      if (!arr || !arr.length) continue;
+      html += '<div class="t-pool-group"><div class="t-pool-gtitle">' + (DIR_LABELS[dir] || dir) + '（' + arr.length + '）';
+      html += '<button class="t-pool-toggle" data-pool="' + containerId + '" data-dir="' + dir + '">全选/反选</button></div><div class="t-pool-items">';
+      for (var j = 0; j < arr.length; j++) {
+        var v = arr[j];
+        var ck = (v.rank_2025 != null) ? 'checked' : '';
+        html += '<label class="t-pool-item"><input type="checkbox" name="' + containerId + '-item" value="' + v.id + '" ' + ck + '>' +
+          '<span>' + esc(v.school) + ' · ' + esc(v.major) + '</span>' +
+          '<span class="t-pool-rank">' + (v.rank_2025 != null ? '位次 ' + v.rank_2025 : '无位次') + '</span></label>';
+      }
+      html += '</div></div>';
+    }
+    el(containerId).innerHTML = html;
+  }
+
+  function readSelectedVolunteers(containerId) {
+    var ids = [];
+    var cbs = document.getElementsByName(containerId + '-item');
+    for (var i = 0; i < cbs.length; i++) { if (cbs[i].checked) ids.push(cbs[i].value); }
+    var out = [];
+    for (var j = 0; j < Schools.length; j++) { if (ids.indexOf(Schools[j].id) >= 0) out.push(Schools[j]); }
+    return out;
+  }
+
+  /* ============================================================
+     区2 · Skill 2 冲稳保梯度
+     ============================================================ */
+  function readCoef() {
+    return { rush: parseFloat(el('coef-rush').value), steady: 1.0, safe: parseFloat(el('coef-safe').value) };
+  }
+
+  function renderGradient() {
+    try {
+      var vols = readSelectedVolunteers('grad-pool');
+      var coef = readCoef();
+      el('coef-rush-v').textContent = coef.rush.toFixed(2);
+      el('coef-safe-v').textContent = coef.safe.toFixed(2);
+      if (!vols.length) {
+        el('grad-tiers').innerHTML = '<div class="t-empty" style="grid-column:1/-1;">请至少选择一个志愿</div>';
+        el('grad-table').innerHTML = '';
+        return;
+      }
+      var res = GK.Skills.VolunteerOptimizer.optimizeBucket(cand, vols, { coef: coef });
+      // 三档卡片
+      var rep = function (arr) { var names = []; for (var i = 0; i < Math.min(2, arr.length); i++) { names.push(arr[i].volunteer.school); } return names.join('、') || '—'; };
+      el('grad-tiers').innerHTML =
+        '<div class="tcard rush"><div class="tcount">' + res.rush.length + '</div><div class="tl">冲刺层 · rush</div><div class="tt">冲名校 / 冲 211</div><div class="td">代表：' + esc(rep(res.rush)) + '</div></div>' +
+        '<div class="tcard steady"><div class="tcount">' + res.stable.length + '</div><div class="tl">稳妥层 · stable</div><div class="tt">主力录取区</div><div class="td">代表：' + esc(rep(res.stable)) + '</div></div>' +
+        '<div class="tcard safe"><div class="tcount">' + res.safe.length + '</div><div class="tl">保底层 · safe</div><div class="tt">兜底防滑档</div><div class="td">代表：' + esc(rep(res.safe)) + '</div></div>';
+      // 明细表
+      var all = res.rush.concat(res.stable, res.safe);
+      var rows = '';
+      for (var i = 0; i < all.length; i++) {
+        var e = all[i];
+        var v = e.volunteer;
+        var mRank = e.marginRank == null ? '—' : (e.marginRank > 0 ? '+' : '') + e.marginRank;
+        rows += '<tr><td class="td-school">' + esc(v.school) + '</td><td>' + esc(v.major) + '</td>' +
+          '<td class="td-num">' + mRank + '</td><td>' + probBar(e.prob) + '</td><td>' + tierBadge(e.tier) + '</td></tr>';
+      }
+      var dropHtml = '';
+      if (res.dropped.length) {
+        var dn = [];
+        for (var k = 0; k < res.dropped.length; k++) { dn.push(esc(res.dropped[k].volunteer.school) + (res.dropped[k].tier ? '(' + tierLabel(res.dropped[k].tier) + ')' : '')); }
+        dropHtml = '<div class="callout warn">⚠️ 已剔除 <b>' + res.dropped.length + '</b> 条志愿（落入 hopeless/gap/overSafe 或缺数据）：' + dn.join('、') + '</div>';
+      }
+      el('grad-table').innerHTML = (rows ? '<table><thead><tr><th>院校</th><th>专业</th><th>位次差</th><th>录取概率</th><th>档位</th></tr></thead><tbody>' + rows + '</tbody></table>' : '<div class="t-empty">无可用分档结果</div>') + dropHtml;
+    } catch (e) {
+      el('grad-tiers').innerHTML = '';
+      el('grad-table').innerHTML = '<div class="callout danger">梯度分桶出错：' + esc(e.message) + '</div>';
+    }
+  }
+
+  /* ============================================================
+     区3 · Skill 3 防退档校验
+     ============================================================ */
+  function buildRemovedDemo() {
+    var removed = (D.Policies && D.Policies.removed) || [];
+    var out = [];
+    for (var i = 0; i < removed.length; i++) {
+      var it = removed[i];
+      var name = typeof it === 'string' ? it : it.school;
+      out.push({ id: 'RM-' + i, school: name, major: '少数民族预科班（误录核验）', direction: 'preparatory', policy_tag: '少数民族预科班', subjects_required: ['physics', 'chemistry'], tuition_note: null, campus: null });
+    }
+    return out;
+  }
+
+  function renderSafety() {
+    try {
+      var vols = [];
+      if (el('safe-link').checked) vols = readSelectedVolunteers('grad-pool');
+      if (el('safe-removed').checked) vols = vols.concat(buildRemovedDemo());
+      if (!vols.length) {
+        el('safe-banner').innerHTML = '';
+        el('safe-table').innerHTML = '<div class="t-empty">无志愿可校验（请勾选区2志愿池或附加已剔除院校）</div>';
+        return;
+      }
+      var results = GK.Skills.AdmissionSafety.checkBatch(vols, cand);
+      var errCnt = 0, warnCnt = 0, infoCnt = 0;
+      for (var i = 0; i < results.length; i++) {
+        var issues = results[i].result.issues;
+        for (var j = 0; j < issues.length; j++) {
+          if (issues[j].severity === 'error') errCnt++;
+          else if (issues[j].severity === 'warn') warnCnt++;
+          else infoCnt++;
+        }
+      }
+      var banClass = errCnt ? 'danger' : (warnCnt ? '' : 'success');
+      var banIcon = errCnt ? '⛔' : (warnCnt ? '⚠️' : '✅');
+      el('safe-banner').innerHTML = '<div class="alert-banner ' + banClass + '"><span class="ai">' + banIcon + '</span><span class="at">共校验 <b>' + results.length + '</b> 条志愿：' + (errCnt ? '<b style="color:var(--danger)">' + errCnt + ' 个 error</b>（必须处理）' : '0 个 error') + ' / ' + warnCnt + ' 个 warn / ' + infoCnt + ' 个 info</span></div>';
+      // 表格
+      var rows = '';
+      for (var k = 0; k < results.length; k++) {
+        var r = results[k];
+        var v = r.volunteer;
+        var res = r.result;
+        var dot = riskDot(res.risk);
+        var issueCnt = res.issues.length;
+        var detail = '';
+        for (var m = 0; m < res.issues.length; m++) {
+          var is = res.issues[m];
+          var cls = is.severity === 'error' ? 'danger' : (is.severity === 'warn' ? 'warn' : 'info');
+          detail += '<div class="callout ' + cls + '">[' + is.severity + '] ' + is.rule + '：' + esc(is.msg) + '</div>';
+        }
+        var detId = 'safe-det-' + k;
+        rows += '<tr><td class="td-school">' + esc(v.school) + '</td><td>' + esc(v.major) + '</td>' +
+          '<td style="text-align:center;">' + dot + '</td><td class="td-num">' + issueCnt + '</td>' +
+          '<td>' + (issueCnt ? '<button class="t-detail-toggle" data-det="' + detId + '">展开详情</button>' : '<span style="color:var(--success);font-weight:700;">✓ 无风险</span>') +
+          (issueCnt ? '<div class="t-detail" id="' + detId + '">' + detail + '</div>' : '') + '</td></tr>';
+      }
+      el('safe-table').innerHTML = '<table><thead><tr><th>院校</th><th>专业</th><th>风险灯</th><th>问题数</th><th>详情</th></tr></thead><tbody>' + rows + '</tbody></table>';
+      // 绑定折叠
+      var toggles = el('safe-table').getElementsByClassName('t-detail-toggle');
+      for (var t = 0; t < toggles.length; t++) {
+        toggles[t].onclick = function (ev) {
+          var d = el(this.getAttribute('data-det'));
+          if (d) { var op = d.className.indexOf('open') >= 0; d.className = op ? 't-detail' : 't-detail open'; this.textContent = op ? '展开详情' : '收起详情'; }
+        };
+      }
+    } catch (e) {
+      el('safe-banner').innerHTML = '<div class="alert-banner danger"><span class="ai">⛔</span><span class="at">校验出错：' + esc(e.message) + '</span></div>';
+      el('safe-table').innerHTML = '';
+    }
+  }
+
+  /* ============================================================
+     区4 · Skill A 大小年波动
+     ============================================================ */
+  function buildVolSelect() {
+    var opts = '';
+    for (var i = 0; i < Schools.length; i++) {
+      var s = Schools[i];
+      if (s.history_ranks && s.history_ranks[2025] != null) {
+        opts += '<option value="' + s.id + '">' + esc(s.school) + ' · ' + esc(s.major) + '（位次 ' + s.rank_2025 + '）</option>';
+      }
+    }
+    el('vol-select').innerHTML = opts;
+  }
+
+  function renderVolatility() {
+    try {
+      var sid = el('vol-select').value;
+      var v = null;
+      for (var i = 0; i < Schools.length; i++) { if (Schools[i].id === sid) { v = Schools[i]; break; } }
+      if (!v) { el('vol-chart').innerHTML = '<div class="t-empty">请选择院校</div>'; el('vol-stats').innerHTML = ''; el('vol-conclusion').innerHTML = ''; return; }
+      var series = historyToSeries(v.history_ranks);
+      var vol = GK.Skills.VolatilityDetector.volatility(series);
+      var bsy = GK.Skills.VolatilityDetector.detectBigSmallYear(series, cand.rank);
+      // 图表
+      var box = el('vol-chart');
+      var c = newChart('vol', box);
+      var xs = [], data = [], colors = [];
+      for (var j = 0; j < series.length; j++) {
+        xs.push(String(series[j].year));
+        var isBig = vol.mean != null && series[j].rank < vol.mean;
+        data.push({ value: series[j].rank, itemStyle: { color: isBig ? accent : accent2, borderRadius: [5, 5, 0, 0] } });
+        colors.push(isBig ? accent : accent2);
+      }
+      c.setOption({
+        animation: false,
+        tooltip: { trigger: 'axis', appendToBody: true, formatter: function (p) { return p[0].name + '年<br/>位次 <b>' + p[0].value + '</b>'; } },
+        grid: { left: '4%', right: '6%', top: 30, bottom: 30, containLabel: true },
+        xAxis: { type: 'category', data: xs, axisLine: { lineStyle: { color: rule } }, axisTick: { show: false }, axisLabel: { color: muted, fontSize: 11 } },
+        yAxis: { type: 'value', name: '位次', inverse: true, axisLine: { lineStyle: { color: accent } }, axisTick: { show: false }, axisLabel: { color: muted, fontSize: 11 }, splitLine: { lineStyle: { color: rule, type: 'dashed' } } },
+        series: [{
+          type: 'bar', data: data, barWidth: '46%',
+          markLine: { silent: true, symbol: 'none', data: [
+            vol.mean != null ? { yAxis: vol.mean, name: '均值', lineStyle: { color: gold, type: 'dashed' }, label: { formatter: '均值 ' + Math.round(vol.mean), color: gold, fontSize: 10 } } : {},
+            { yAxis: cand.rank, name: '考生位次', lineStyle: { color: success, type: 'dotted' }, label: { formatter: '考生 ' + cand.rank, color: success, fontSize: 10 } }
+          ] }
+        }]
+      });
+      // 统计
+      var lvColor = vol.level === 'low' ? 'green' : (vol.level === 'mid' ? 'warn' : (vol.level === 'high' ? '' : 'blue'));
+      el('vol-stats').innerHTML =
+        '<div class="stat"><div class="sl">样本年数</div><div class="sv blue">' + vol.years + '</div></div>' +
+        '<div class="stat"><div class="sl">均值位次</div><div class="sv">' + (vol.mean == null ? '—' : Math.round(vol.mean)) + '</div></div>' +
+        '<div class="stat"><div class="sl">标准差</div><div class="sv ' + lvColor + '">' + (vol.std == null ? '—' : num(vol.std, 0)) + '</div></div>' +
+        '<div class="stat"><div class="sl">CV（变异系数）</div><div class="sv ' + lvColor + '">' + (vol.cv == null ? '—' : num(vol.cv, 4)) + '</div></div>' +
+        '<div class="stat"><div class="sl">波动等级</div><div class="sv ' + lvColor + '">' + volLevelBadge(vol.level) + '</div></div>';
+      // 结论
+      var concl = '';
+      if (vol.level === 'insufficient' || vol.years < 3) {
+        concl = '<div class="callout warn">⚠️ ' + esc(v.school) + ' 历年数据仅 ' + vol.years + ' 年，<b>需补录历年数据</b>才能可靠识别大小年。当前仅 2025 年有实录位次。</div>';
+      } else {
+        concl = '<div class="callout info">📊 ' + esc(v.school) + ' · ' + esc(v.major) + '：' + esc(vol.note);
+        if (bsy.isBigSmallYear) concl += '<br><b>检测到大小年模式</b>：去年' + (bsy.lastYear === 'big' ? '大年' : '小年') + '，预计明年<b>' + (bsy.predictNext === 'big' ? '大年（分涨位次降）' : '小年（分降位次升）') + '</b>，置信度 ' + Math.round(bsy.confidence * 100) + '%。';
+        else concl += '<br>未达大小年判据。' + esc(bsy.note);
+        concl += '</div>';
+      }
+      el('vol-conclusion').innerHTML = concl;
+    } catch (e) {
+      el('vol-stats').innerHTML = '';
+      el('vol-conclusion').innerHTML = '<div class="callout danger">波动检测出错：' + esc(e.message) + '</div>';
+      disposeChart('vol');
+    }
+  }
+
+  /* ============================================================
+     区5 · Skill B 同层次套利
+     ============================================================ */
+  function buildArbTargetSelect() {
+    var opts = '';
+    for (var i = 0; i < Schools.length; i++) {
+      var s = Schools[i];
+      if (s.rank_2025 != null) opts += '<option value="' + s.id + '">' + esc(s.school) + ' · ' + esc(s.major) + '（位次 ' + s.rank_2025 + '）</option>';
+    }
+    el('arb-target').innerHTML = opts;
+  }
+
+  function filterPool() {
+    var tierF = el('arb-tier').value;
+    var regF = el('arb-region').value;
+    var out = [];
+    for (var i = 0; i < Schools.length; i++) {
+      var s = Schools[i];
+      if (s.rank_2025 == null) continue;
+      if (tierF && (!s.tier || s.tier.indexOf(tierF) < 0)) continue;
+      if (regF === 'south' && !isSouth(s.school)) continue;
+      out.push(s);
+    }
+    return out;
+  }
+
+  function renderArbitrage() {
+    try {
+      var pool = filterPool();
+      var target = null;
+      var tid = el('arb-target').value;
+      for (var i = 0; i < Schools.length; i++) { if (Schools[i].id === tid) { target = Schools[i]; break; } }
+      if (!pool.length) { el('arb-pairs').innerHTML = '<div class="callout warn">过滤后无可用院校池</div>'; el('arb-table').innerHTML = ''; return; }
+      // 套利对
+      var pairs = GK.Skills.ArbitrageDetector.findArbitragePairs(cand.rank, { province: D.Meta ? D.Meta.province : '重庆' }, pool, {});
+      var pairsHtml = '';
+      if (pairs.length) {
+        pairsHtml = '<div class="callout info">🔗 检测到 <b>' + pairs.length + '</b> 组同层次套利对（一冲一保·跨省·同方向）：';
+        for (var p = 0; p < Math.min(5, pairs.length); p++) {
+          var pr = pairs[p];
+          pairsHtml += '<br>· ' + esc(pr.note) + ' → 套利分 <b>+' + num(pr.score, 4) + '</b>';
+        }
+        pairsHtml += '</div>';
+      } else {
+        pairsHtml = '<div class="callout warn">未检测到满足五条件（同方向+跨省+一冲一保+位次窗+城市溢价）的套利对，下方为按套利分排序的院校清单。</div>';
+      }
+      el('arb-pairs').innerHTML = pairsHtml;
+      // 排序表（highlight）
+      var hi = GK.Skills.ArbitrageDetector.highlight(pool, cand.rank, pool.length);
+      var rows = '';
+      for (var k = 0; k < hi.length; k++) {
+        var h = hi[k];
+        var v = h.item;
+        var tierStr = (v.tier || []).join('/');
+        var delta = cand.rank - v.rank_2025;
+        var top3 = k < 3 ? '<span style="color:var(--accent);font-weight:700;">★Top' + (k + 1) + '</span> ' : '';
+        rows += '<tr><td class="td-school">' + top3 + esc(v.school) + '</td><td>' + esc(v.major) + '</td>' +
+          '<td>' + esc(tierStr) + '</td><td>' + regionLabel(v.school) + '</td>' +
+          '<td class="td-num">' + (delta > 0 ? '+' : '') + delta + '</td>' +
+          '<td>' + arbBar(h.score) + ' <span class="num" style="font-size:0.78rem;">' + num(h.score, 4) + '</span></td>' +
+          '<td style="font-size:0.8rem;">' + esc(h.reason) + '</td></tr>';
+      }
+      var top3Html = '';
+      for (var t = 0; t < Math.min(3, hi.length); t++) {
+        top3Html += '<div class="callout info">★ Top' + (t + 1) + ' · ' + esc(hi[t].item.school) + ' · ' + esc(hi[t].item.major) + '（套利分 ' + num(hi[t].score, 4) + '）：' + esc(hi[t].reason) + '</div>';
+      }
+      el('arb-table').innerHTML = (rows ? '<table><thead><tr><th>院校</th><th>专业</th><th>层次</th><th>区位</th><th>位次差</th><th>套利分</th><th>亮点理由</th></tr></thead><tbody>' + rows + '</tbody></table>' : '<div class="t-empty">无数据</div>') + top3Html;
+    } catch (e) {
+      el('arb-pairs').innerHTML = '<div class="callout danger">套利检测出错：' + esc(e.message) + '</div>';
+      el('arb-table').innerHTML = '';
+    }
+  }
+
+  /* ============================================================
+     区6 · 综合仪表盘
+     ============================================================ */
+  var lastReport = null;
+
+  function renderDashboard() {
+    try {
+      var vols = readSelectedVolunteers('grad-pool');
+      if (!vols.length) {
+        el('dash-overview').innerHTML = '<div class="t-empty" style="grid-column:1/-1;">请先在区2选择志愿池</div>';
+        el('dash-callouts').innerHTML = '';
+        el('dash-table').innerHTML = '';
+        lastReport = null;
+        return;
+      }
+      var coef = readCoef();
+      // Skill 2 分档
+      var bucket = GK.Skills.VolunteerOptimizer.optimizeBucket(cand, vols, { coef: coef });
+      var quota = GK.Skills.VolunteerOptimizer.suggestQuota(vols, { total: 96 });
+      // Skill 3 校验
+      var safety = GK.Skills.AdmissionSafety.checkBatch(vols, cand);
+      var safetyMap = {};
+      for (var si = 0; si < safety.length; si++) { safetyMap[safety[si].volunteer.id] = safety[si].result; }
+      // 概览卡片（呼应 index.html 冲15/稳55/保26）
+      el('dash-overview').innerHTML =
+        '<div class="tcard rush"><div class="tcount">' + quota.rush + '</div><div class="tl">建议冲 · 实际' + bucket.rush.length + '</div><div class="tt">冲 ' + quota.rush + '</div><div class="td">呼应 96 志愿分配 冲15/稳55/保26</div></div>' +
+        '<div class="tcard steady"><div class="tcount">' + quota.steady + '</div><div class="tl">建议稳 · 实际' + bucket.stable.length + '</div><div class="tt">稳 ' + quota.steady + '</div><div class="td">主力录取区，概率 70%-95%</div></div>' +
+        '<div class="tcard safe"><div class="tcount">' + quota.safe + '</div><div class="tl">建议保 · 实际' + bucket.safe.length + '</div><div class="tt">保 ' + quota.safe + '</div><div class="td">兜底防滑档，概率 ≥95%</div></div>';
+      // 主表：每个志愿一行
+      var all = bucket.rush.concat(bucket.stable, bucket.safe, bucket.dropped);
+      var rows = '', mustHandle = [], bsyTrap = [];
+      var reportRows = [];
+      for (var i = 0; i < all.length; i++) {
+        var e = all[i];
+        var v = e.volunteer;
+        // Skill A 波动
+        var series = historyToSeries(v.history_ranks);
+        var vol = GK.Skills.VolatilityDetector.volatility(series);
+        // Skill B 套利
+        var arb = v.rank_2025 != null ? GK.Skills.ArbitrageDetector.scoreArbitrage(v, cand.rank).score : 0;
+        // Skill 3 风险
+        var sres = safetyMap[v.id] || { risk: 'low', issues: [] };
+        var advice;
+        if (sres.risk === 'high') { advice = '⛔ 必须处理风险'; mustHandle.push(v.school + '·' + v.major); }
+        else if (vol.level === 'high') { advice = '⚠️ 注意大小年'; bsyTrap.push(v.school + '·' + v.major); }
+        else if (e.tier === 'surge') advice = '冲名校，做好退路';
+        else if (e.tier === 'safe' || e.tier === 'overSafe') advice = '保底稳妥';
+        else if (e.tier === 'stable') advice = '主力稳妥';
+        else if (e.tier === 'gap') advice = '缝隙区谨慎';
+        else advice = '参考';
+        rows += '<tr><td class="td-school">' + esc(v.school) + '</td><td>' + esc(v.major) + '</td>' +
+          '<td>' + tierBadge(e.tier) + '</td><td>' + probBar(e.prob) + '</td>' +
+          '<td style="text-align:center;">' + riskDot(sres.risk) + '</td>' +
+          '<td style="text-align:center;">' + volLevelBadge(vol.level) + '</td>' +
+          '<td>' + arbBar(arb) + ' <span class="num" style="font-size:0.76rem;">' + num(arb, 4) + '</span></td>' +
+          '<td style="font-size:0.8rem;font-weight:600;">' + advice + '</td></tr>';
+        reportRows.push({ school: v.school, major: v.major, tier: e.tier, prob: e.prob, risk: sres.risk, volLevel: vol.level, arbScore: arb, advice: advice, issues: sres.issues });
+      }
+      el('dash-table').innerHTML = rows ? '<table><thead><tr><th>院校</th><th>专业</th><th>档位</th><th>概率</th><th>风险</th><th>波动</th><th>套利分</th><th>综合建议</th></tr></thead><tbody>' + rows + '</tbody></table>' : '<div class="t-empty">无数据</div>';
+      // 底部 callouts
+      var ch = '';
+      if (mustHandle.length) ch += '<div class="callout danger">⛔ 必须处理 error（' + mustHandle.length + ' 条）：' + mustHandle.join('、') + '</div>';
+      if (bsyTrap.length) ch += '<div class="callout warn">⚠️ 大小年陷阱（' + bsyTrap.length + ' 条）：' + bsyTrap.join('、') + '</div>';
+      if (!mustHandle.length && !bsyTrap.length) ch += '<div class="callout info">✅ 当前志愿池无必须处理 error，无高波动大小年陷阱。</div>';
+      el('dash-callouts').innerHTML = ch;
+      lastReport = {
+        candidate: { score: cand.score, rank: cand.rank, year: cand.year },
+        quota: quota,
+        summary: { total: all.length, mustHandle: mustHandle, bsyTrap: bsyTrap },
+        rows: reportRows
+      };
+    } catch (e) {
+      el('dash-overview').innerHTML = '';
+      el('dash-callouts').innerHTML = '<div class="callout danger">综合报告生成出错：' + esc(e.message) + '</div>';
+      el('dash-table').innerHTML = '';
+      lastReport = null;
+    }
+  }
+
+  function exportJSON() {
+    try {
+      if (!lastReport) { alert('请先生成综合报告'); return; }
+      var blob = new Blob([JSON.stringify(lastReport, null, 2)], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'volunteer-report-' + Date.now() + '.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    } catch (e) { alert('导出失败：' + e.message); }
+  }
+
+  /* ============================================================
+     事件绑定
+     ============================================================ */
+  function bindEvents() {
+    // 档案表单 → 全量重算
+    var formIds = ['f-score', 'f-rank', 'f-sub-physics', 'f-sub-chemistry', 'f-sub-biology', 'f-sub-politics', 'f-ethnicity', 'f-hukou', 'f-physical', 'f-economic'];
+    for (var i = 0; i < formIds.length; i++) { var e = el(formIds[i]); if (e) e.addEventListener('change', function () { readForm(); renderAll(); }); }
+    // 区1
+    var rScore = el('r-score'); if (rScore) rScore.addEventListener('change', renderRank);
+    var rys = document.getElementsByName('r-year'); for (var j = 0; j < rys.length; j++) { rys[j].addEventListener('change', renderRank); }
+    // 区2
+    var cr = el('coef-rush'); if (cr) cr.addEventListener('input', renderGradient);
+    var cs = el('coef-safe'); if (cs) cs.addEventListener('input', renderGradient);
+    // 区3
+    var sl = el('safe-link'); if (sl) sl.addEventListener('change', renderSafety);
+    var srm = el('safe-removed'); if (srm) srm.addEventListener('change', renderSafety);
+    var srr = el('safe-rerun'); if (srr) srr.addEventListener('click', renderSafety);
+    // 区4
+    var vs = el('vol-select'); if (vs) vs.addEventListener('change', renderVolatility);
+    // 区5
+    var at = el('arb-target'); if (at) at.addEventListener('change', renderArbitrage);
+    var ati = el('arb-tier'); if (ati) ati.addEventListener('change', renderArbitrage);
+    var ar = el('arb-region'); if (ar) ar.addEventListener('change', renderArbitrage);
+    var arr = el('arb-rerun'); if (arr) arr.addEventListener('click', renderArbitrage);
+    // 区6
+    var dg = el('dash-gen'); if (dg) dg.addEventListener('click', renderDashboard);
+    var de = el('dash-export'); if (de) de.addEventListener('click', exportJSON);
+    // 志愿池全选/反选
+    document.body.addEventListener('click', function (ev) {
+      var t = ev.target;
+      if (t && t.className && t.className.indexOf('t-pool-toggle') >= 0) {
+        var poolId = t.getAttribute('data-pool');
+        var dir = t.getAttribute('data-dir');
+        var cbs = document.getElementsByName(poolId + '-item');
+        for (var i = 0; i < cbs.length; i++) {
+          var v = null;
+          for (var k = 0; k < Schools.length; k++) { if (Schools[k].id === cbs[i].value) { v = Schools[k]; break; } }
+          if (v && v.direction === dir) cbs[i].checked = !cbs[i].checked;
+        }
+        if (poolId === 'grad-pool') { renderGradient(); renderSafety(); renderDashboard(); }
+      }
+    });
+    // 志愿池勾选 → 重算
+    var poolContainer = el('grad-pool');
+    if (poolContainer) poolContainer.addEventListener('change', function (ev) {
+      if (ev.target && ev.target.type === 'checkbox') { renderGradient(); renderSafety(); renderDashboard(); }
+    });
+  }
+
+  function renderAll() {
+    renderRank();
+    renderGradient();
+    renderSafety();
+    renderVolatility();
+    renderArbitrage();
+    renderDashboard();
+  }
+
+  /* ============================================================
+     初始化 + 自动演示
+     ============================================================ */
+  function init() {
+    try {
+      initForm();
+      buildPoolHTML('grad-pool');
+      buildVolSelect();
+      buildArbTargetSelect();
+      bindEvents();
+      // 默认演示：581/20161 跑一遍全部 6 区
+      renderAll();
+    } catch (e) {
+      var msg = '初始化失败：' + esc(e.message);
+      var c = el('dash-callouts'); if (c) c.innerHTML = '<div class="callout danger">' + msg + '</div>';
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
