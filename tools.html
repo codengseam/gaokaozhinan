@@ -182,6 +182,51 @@ tbody tr:hover{background:var(--bg3);}
   .t-hero-card h1{font-size:1.25rem;}
   .t-pool-items{grid-template-columns:1fr;}
 }
+
+/* ===== 新手向导 t-wizard- ===== */
+.t-wizard{background:var(--bg2);border:1px solid var(--rule);border-radius:14px;padding:1.15rem 1.25rem;margin-bottom:1rem;}
+.t-wizard-progress{display:flex;align-items:center;gap:0.45rem;margin-bottom:1.1rem;flex-wrap:wrap;}
+.t-wizard-dot{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.76rem;font-weight:600;color:var(--muted2);white-space:nowrap;}
+.t-wizard-dot .t-wizard-num{width:22px;height:22px;border-radius:50%;background:var(--bg3);color:var(--muted);font-family:'Outfit';font-weight:700;display:inline-flex;align-items:center;justify-content:center;font-size:0.78rem;}
+.t-wizard-dot.active{color:var(--accent2);}
+.t-wizard-dot.active .t-wizard-num{background:var(--accent2);color:#fff;}
+.t-wizard-dot.done{color:var(--success);}
+.t-wizard-dot.done .t-wizard-num{background:var(--success);color:#fff;}
+.t-wizard-bar{flex:1;min-width:18px;height:2px;background:var(--rule);}
+.t-wizard-bar.done{background:var(--success);}
+.t-wizard-step{display:none;}
+.t-wizard-step.active{display:block;}
+.t-wizard-q{font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:0.85rem;display:flex;align-items:center;gap:0.45rem;}
+.t-wizard-q .t-wizard-qtag{font-size:0.7rem;font-weight:700;color:var(--accent2);background:var(--accent2-soft);padding:0.12rem 0.5rem;border-radius:5px;}
+.t-wizard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.7rem;}
+.t-wizard-grid .pcell{padding:0.7rem 0.9rem;}
+.t-wizard-actions{display:flex;justify-content:space-between;align-items:center;gap:0.6rem;margin-top:1.1rem;padding-top:0.9rem;border-top:1px dashed var(--rule);flex-wrap:wrap;}
+.t-wizard-actions .t-hint{font-weight:600;color:var(--muted);}
+.t-wizard-confirm{background:var(--bg3);border:1px solid var(--rule);border-radius:10px;padding:0.7rem 1rem;font-size:0.84rem;color:var(--ink2);line-height:1.85;}
+.t-wizard-confirm b{color:var(--ink);font-weight:700;}
+.t-wizard-confirm .t-wizard-row{display:flex;justify-content:space-between;gap:0.6rem;border-bottom:1px dashed var(--rule);padding:0.22rem 0;flex-wrap:wrap;}
+.t-wizard-confirm .t-wizard-row:last-child{border-bottom:none;}
+.t-wizard-confirm .t-wizard-row span{color:var(--muted);font-size:0.8rem;}
+.t-wizard-result{margin-top:1rem;}
+.t-wizard-block{background:var(--bg2);border:1px solid var(--rule);border-radius:12px;padding:0.95rem 1.05rem;margin-bottom:0.8rem;}
+.t-wizard-block .t-wizard-btitle{font-size:0.94rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:0.5rem;margin-bottom:0.55rem;flex-wrap:wrap;}
+.t-wizard-conf{display:inline-block;font-size:0.7rem;font-weight:700;padding:0.12rem 0.5rem;border-radius:5px;color:#fff;white-space:nowrap;line-height:1.5;}
+.t-wizard-conf.extreme{background:var(--success);}
+.t-wizard-conf.high{background:var(--accent2);}
+.t-wizard-conf.mid{background:var(--warning);}
+.t-wizard-conf.low{background:var(--muted2);}
+.t-wizard-conf::before{content:'置信度 ';}
+.t-wizard-concl{font-size:0.82rem;color:var(--ink2);margin-top:0.5rem;padding-top:0.5rem;border-top:1px dashed var(--rule);line-height:1.7;}
+.t-wizard-mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:0.5rem;margin:0.4rem 0;}
+.t-wizard-mini .stat{padding:0.6rem 0.7rem;}
+.t-wizard-mini .stat .sv{font-size:1.15rem;}
+.t-wizard-summary{margin-top:1rem;}
+.t-wizard-summary .callout{margin:0.5rem 0;}
+@media(max-width:768px){
+  .t-wizard-grid{grid-template-columns:1fr;}
+  .t-wizard-bar{display:none;}
+  .t-wizard-actions{justify-content:center;}
+}
 </style>
 </head>
 <body>
@@ -230,6 +275,90 @@ tbody tr:hover{background:var(--bg3);}
 </header>
 
 <div class="container">
+
+  <!-- ========== 新手向导 · Wizard ========== -->
+  <div class="shead" id="wizard">
+    <div class="stitle"><span class="bar"></span>新手向导 · 一步步生成你的志愿方案 <span class="stag">Wizard</span></div>
+    <div class="sdesc">5 步对话式收集信息 → 自动调用 5 个 Skill → 输出带置信度标注的结论</div>
+  </div>
+  <div class="t-wizard">
+    <!-- 进度指示 -->
+    <div class="t-wizard-progress" id="w-progress"></div>
+
+    <!-- 第1步 · 基本信息 -->
+    <div class="t-wizard-step active" id="w-step-1">
+      <div class="t-wizard-q"><span class="t-wizard-qtag">第1步</span>基本信息</div>
+      <div class="t-wizard-grid">
+        <div class="pcell"><div class="pl">高考分数</div><div class="pv"><input type="number" class="t-input" id="w-score" value="581"></div></div>
+        <div class="pcell"><div class="pl">全省位次</div><div class="pv"><input type="number" class="t-input" id="w-rank" value="20161"></div></div>
+        <div class="pcell"><div class="pl">科类</div><div class="pv"><select class="t-input-select" id="w-category"><option value="physics" selected>物理类</option><option value="history">历史类</option></select></div></div>
+        <div class="pcell"><div class="pl">特控线</div><div class="pv"><input type="number" class="t-input" id="w-scl" value="496"></div></div>
+      </div>
+    </div>
+
+    <!-- 第2步 · 选科与身份 -->
+    <div class="t-wizard-step" id="w-step-2">
+      <div class="t-wizard-q"><span class="t-wizard-qtag">第2步</span>选科与身份</div>
+      <div class="t-wizard-grid">
+        <div class="pcell"><div class="pl">选考科目（多选）</div><div class="pv"><div class="t-check-row">
+          <label><input type="checkbox" id="w-sub-physics" checked>物</label>
+          <label><input type="checkbox" id="w-sub-chemistry" checked>化</label>
+          <label><input type="checkbox" id="w-sub-biology" checked>生</label>
+          <label><input type="checkbox" id="w-sub-politics">政</label>
+          <label><input type="checkbox" id="w-sub-history">史</label>
+          <label><input type="checkbox" id="w-sub-geography">地</label>
+        </div></div></div>
+        <div class="pcell"><div class="pl">民族</div><div class="pv"><select class="t-input-select" id="w-ethnicity"><option value="han">汉族</option><option value="minority" selected>少数民族</option></select></div></div>
+        <div class="pcell"><div class="pl">户籍</div><div class="pv"><select class="t-input-select" id="w-hukou"><option value="pengshui" selected>彭水</option><option value="autonomous">其他民族自治</option><option value="urban">普通城镇</option><option value="rural">乡村</option></select></div></div>
+        <div class="pcell"><div class="pl">体检</div><div class="pv"><select class="t-input-select" id="w-physical"><option value="unknown" selected>待确认</option><option value="pass">正常</option><option value="fail">色盲色弱</option></select></div></div>
+      </div>
+    </div>
+
+    <!-- 第3步 · 经济与诉求 -->
+    <div class="t-wizard-step" id="w-step-3">
+      <div class="t-wizard-q"><span class="t-wizard-qtag">第3步</span>经济与诉求</div>
+      <div class="t-wizard-grid">
+        <div class="pcell"><div class="pl">经济是否受限</div><div class="pv"><select class="t-input-select" id="w-economic"><option value="no" selected>否</option><option value="yes">是（避开中外合作）</option></select></div></div>
+        <div class="pcell"><div class="pl">报考诉求（多选）</div><div class="pv"><div class="t-check-row">
+          <label><input type="checkbox" name="w-goal" value="不考研" checked>不考研</label>
+          <label><input type="checkbox" name="w-goal" value="体制内" checked>体制内</label>
+          <label><input type="checkbox" name="w-goal" value="国企央企" checked>国企央企</label>
+          <label><input type="checkbox" name="w-goal" value="南方优先" checked>南方优先</label>
+          <label><input type="checkbox" name="w-goal" value="尽量211" checked>尽量211</label>
+          <label><input type="checkbox" name="w-goal" value="考研深造">考研深造</label>
+        </div></div></div>
+        <div class="pcell"><div class="pl">意向方向（多选）</div><div class="pv"><div class="t-check-row">
+          <label><input type="checkbox" name="w-line" value="computer_network" checked>计算机</label>
+          <label><input type="checkbox" name="w-line" value="accounting" checked>财会</label>
+          <label><input type="checkbox" name="w-line" value="electrical" checked>电气</label>
+          <label><input type="checkbox" name="w-line" value="precollege" checked>预科</label>
+        </div></div></div>
+      </div>
+    </div>
+
+    <!-- 第4步 · 确认信息 -->
+    <div class="t-wizard-step" id="w-step-4">
+      <div class="t-wizard-q"><span class="t-wizard-qtag">第4步</span>确认信息</div>
+      <div class="t-wizard-confirm" id="w-confirm-summary"></div>
+      <div class="t-check-row" style="margin-top:0.85rem;">
+        <label><input type="checkbox" id="w-confirm"> 我已核对以上信息准确</label>
+      </div>
+    </div>
+
+    <!-- 第5步 · 生成方案 -->
+    <div class="t-wizard-step" id="w-step-5">
+      <div class="t-wizard-q"><span class="t-wizard-qtag">第5步</span>生成方案</div>
+      <div class="callout info">点下方「⚡ 生成志愿方案」按钮，将按 Skill 1 → Skill 2 → Skill 3 → Skill A → Skill B 顺序自动调用，输出带置信度标注的综合结论。</div>
+      <div class="t-wizard-result" id="w-result"></div>
+    </div>
+
+    <!-- 按钮区 -->
+    <div class="t-wizard-actions">
+      <button class="t-btn" id="w-prev">← 上一步</button>
+      <span class="t-hint" id="w-step-hint">第 1 / 5 步</span>
+      <button class="t-btn blue" id="w-next">下一步 →</button>
+    </div>
+  </div>
 
   <!-- ========== 区1 · Skill 1 位次归一化 ========== -->
   <div class="shead" id="rank">
@@ -911,6 +1040,287 @@ tbody tr:hover{background:var(--bg3);}
   }
 
   /* ============================================================
+     新手向导 · Wizard（5 步对话式收集信息 → 调用 5 个 Skill → 带置信度结论）
+     ============================================================ */
+  var wStep = 1;                  // 当前步骤（1..5）
+  var W_STEP_TOTAL = 5;
+  var W_STEP_LABELS = ['基本信息', '选科身份', '经济诉求', '确认', '生成方案'];
+
+  // 步骤切换：显示/隐藏对应 div，刷新进度指示与按钮文案
+  function renderWizard(n) {
+    wStep = n;
+    for (var i = 1; i <= W_STEP_TOTAL; i++) {
+      var s = el('w-step-' + i);
+      if (s) s.className = 't-wizard-step' + (i === n ? ' active' : '');
+    }
+    // 进度指示
+    var p = el('w-progress');
+    if (p) {
+      var html = '';
+      for (var j = 1; j <= W_STEP_TOTAL; j++) {
+        var cls = j === n ? 'active' : (j < n ? 'done' : '');
+        var num = j < n ? '✓' : j;
+        html += '<span class="t-wizard-dot ' + cls + '"><span class="t-wizard-num">' + num + '</span>' + W_STEP_LABELS[j - 1] + '</span>';
+        if (j < W_STEP_TOTAL) html += '<span class="t-wizard-bar ' + (j < n ? 'done' : '') + '"></span>';
+      }
+      p.innerHTML = html;
+    }
+    // 按钮状态/文案
+    var prev = el('w-prev');
+    if (prev) { prev.disabled = (n === 1); prev.style.opacity = (n === 1 ? 0.4 : 1); prev.style.cursor = (n === 1 ? 'not-allowed' : 'pointer'); }
+    var next = el('w-next');
+    if (next) {
+      if (n === W_STEP_TOTAL) { next.innerHTML = '⚡ 生成志愿方案'; next.className = 't-btn primary'; }
+      else { next.innerHTML = '下一步 →'; next.className = 't-btn blue'; }
+    }
+    var hint = el('w-step-hint');
+    if (hint) hint.textContent = '第 ' + n + ' / ' + W_STEP_TOTAL + ' 步';
+    // 第4步进入时渲染汇总
+    if (n === 4) renderWizardConfirm();
+  }
+
+  // 标签辅助
+  function wSubjectLabel(s) { return { physics: '物', chemistry: '化', biology: '生', politics: '政', history: '史', geography: '地' }[s] || s; }
+  function wEthnicityLabel(e) { return e === 'minority' ? '少数民族' : '汉族'; }
+  function wHukouLabel(h) {
+    if (h.region === 'pengshui') return '彭水·' + (h.type === 'rural' ? '乡村' : (h.type === 'urban' ? '城镇' : '待确认'));
+    if (h.region === 'autonomous') return '其他民族自治';
+    if (h.type === 'rural') return '乡村';
+    return '普通城镇';
+  }
+  function wPhysicalLabel(p) { return p === 'pass' ? '正常' : (p === 'fail' ? '色盲色弱' : '待确认'); }
+  function wLineLabel(l) { return { computer_network: '计算机', accounting: '财会', electrical: '电气', precollege: '预科' }[l] || l; }
+
+  // 收集向导表单数据
+  function collectWizard() {
+    var d = {};
+    d.score = parseInt(el('w-score').value, 10) || 0;
+    d.rank = parseInt(el('w-rank').value, 10) || 0;
+    d.category = el('w-category').value;
+    d.specialControlLine = parseInt(el('w-scl').value, 10) || 0;
+    var subs = [];
+    var sk = ['physics', 'chemistry', 'biology', 'politics', 'history', 'geography'];
+    for (var i = 0; i < sk.length; i++) { var cb = el('w-sub-' + sk[i]); if (cb && cb.checked) subs.push(sk[i]); }
+    d.subjects = subs;
+    d.ethnicity = el('w-ethnicity').value;
+    var hv = el('w-hukou').value;
+    if (hv === 'pengshui') d.hukou = { region: 'pengshui', type: 'unknown' };
+    else if (hv === 'autonomous') d.hukou = { region: 'autonomous', type: 'unknown' };
+    else if (hv === 'rural') d.hukou = { region: 'other', type: 'rural' };
+    else d.hukou = { region: 'other', type: 'urban' };
+    d.physical = el('w-physical').value;
+    d.economicLimit = el('w-economic').value === 'yes';
+    var goals = [];
+    var gcs = document.getElementsByName('w-goal');
+    for (var j = 0; j < gcs.length; j++) { if (gcs[j].checked) goals.push(gcs[j].value); }
+    d.goals = goals;
+    var lines = [];
+    var lcs = document.getElementsByName('w-line');
+    for (var k = 0; k < lcs.length; k++) { if (lcs[k].checked) lines.push(lcs[k].value); }
+    d.mainLines = lines;
+    return d;
+  }
+
+  // 第4步：渲染确认信息汇总
+  function renderWizardConfirm() {
+    var d = collectWizard();
+    var rows = '';
+    rows += '<div class="t-wizard-row"><span>分数 / 位次 / 科类 / 特控线</span><b>' + d.score + ' / ' + d.rank + ' / ' + (d.category === 'physics' ? '物理类' : '历史类') + ' / ' + d.specialControlLine + '</b></div>';
+    rows += '<div class="t-wizard-row"><span>选考科目</span><b>' + (d.subjects.length ? d.subjects.map(wSubjectLabel).join('、') : '未选') + '</b></div>';
+    rows += '<div class="t-wizard-row"><span>民族 / 户籍 / 体检</span><b>' + wEthnicityLabel(d.ethnicity) + ' / ' + wHukouLabel(d.hukou) + ' / ' + wPhysicalLabel(d.physical) + '</b></div>';
+    rows += '<div class="t-wizard-row"><span>经济受限</span><b>' + (d.economicLimit ? '是（避开中外合作）' : '否') + '</b></div>';
+    rows += '<div class="t-wizard-row"><span>报考诉求</span><b>' + (d.goals.length ? d.goals.join('、') : '未选') + '</b></div>';
+    rows += '<div class="t-wizard-row"><span>意向方向</span><b>' + (d.mainLines.length ? d.mainLines.map(wLineLabel).join('、') : '未选') + '</b></div>';
+    el('w-confirm-summary').innerHTML = rows;
+  }
+
+  // 构建覆盖主 cand 的 candidate 对象（供 skill 调用）
+  function buildWizardCandidate(d) {
+    var c = {};
+    c.name = CAND.name;
+    c.year = CAND.year;
+    c.category = d.category;
+    c.score = d.score;
+    c.rank = d.rank;
+    c.specialControlLine = d.specialControlLine;
+    c.subjects = d.subjects.slice();
+    c.noPolitics = d.subjects.indexOf('politics') < 0;
+    c.ethnicity = d.ethnicity;
+    c.minorityBonus = d.ethnicity === 'minority' ? 10 : 0;
+    c.hukou = { region: d.hukou.region, type: d.hukou.type };
+    c.physical = d.physical === 'fail' ? '色盲色弱' : d.physical;
+    c.economicLimit = d.economicLimit;
+    c.goals = d.goals.slice();
+    c.mainLines = d.mainLines.slice();
+    return c;
+  }
+
+  // 置信度徽章：extreme=极高(绿)/high=高(蓝)/mid=中(黄)/low=低(灰)
+  function confBadge(level) {
+    var map = { extreme: '极高', high: '高', mid: '中', low: '低' };
+    return '<span class="t-wizard-conf ' + level + '" title="置信度：' + (map[level] || '?') + '">' + (map[level] || '?') + '</span>';
+  }
+
+  // 下一步
+  function nextStep() {
+    if (wStep === W_STEP_TOTAL) { generatePlan(); return; }
+    // 第1步必填校验
+    if (wStep === 1) {
+      var sc = parseInt(el('w-score').value, 10);
+      var rk = parseInt(el('w-rank').value, 10);
+      if (!sc || !rk) { alert('请填写高考分数和全省位次'); return; }
+    }
+    // 第4步必须勾选确认
+    if (wStep === 4) {
+      var cb = el('w-confirm');
+      if (!cb || !cb.checked) { alert('请先勾选"我已核对以上信息准确"'); return; }
+    }
+    renderWizard(wStep + 1);
+  }
+
+  // 上一步
+  function prevStep() {
+    if (wStep > 1) renderWizard(wStep - 1);
+  }
+
+  // 生成方案：按 Skill 1 → 2 → 3 → A → B 顺序调用，输出带置信度的结论
+  function generatePlan() {
+    var box = el('w-result');
+    box.innerHTML = '<div class="callout info">⏳ 正在按顺序调用 5 个 Skill 生成方案...</div>';
+    try {
+      var d = collectWizard();
+      var wizCand = buildWizardCandidate(d);
+      // 同步覆盖主 cand（不触发 renderAll，避免影响其他分区当前演示态；用户切到其他分区仍可用新数据）
+      cand.score = wizCand.score;
+      cand.rank = wizCand.rank;
+      cand.category = wizCand.category;
+      cand.subjects = wizCand.subjects.slice();
+      cand.ethnicity = wizCand.ethnicity;
+      cand.hukou = { region: wizCand.hukou.region, type: wizCand.hukou.type };
+      cand.physical = wizCand.physical;
+      cand.economicLimit = wizCand.economicLimit;
+      GK.candidate = cand;
+
+      var html = '';
+
+      /* --- ① Skill 1：等位分（高·accent2，基于录实一分一段表+插值） --- */
+      var eqScore = GK.Skills.RankNormalizer.rankToScore(2025, d.category, d.rank);
+      var s1Delta = eqScore == null ? null : (num(eqScore, 1) - d.score);
+      var s1Concl = eqScore == null
+        ? '2025 年一分一段表数据缺失，等位分暂不可用。'
+        : '位次 ' + d.rank + ' 对应 2025 年等位分约 ' + num(eqScore, 1) + ' 分（实考 ' + d.score + '，差 ' + (s1Delta > 0 ? '+' : '') + num(s1Delta, 1) + '）。';
+      html += '<div class="t-wizard-block">' +
+        '<div class="t-wizard-btitle">① Skill 1 · 等位分换算 ' + confBadge('high') + '</div>' +
+        '<div class="t-wizard-mini">' +
+          '<div class="stat"><div class="sl">实考分</div><div class="sv">' + d.score + '</div></div>' +
+          '<div class="stat"><div class="sl">全省位次</div><div class="sv blue">' + d.rank + '</div></div>' +
+          '<div class="stat"><div class="sl">2025等位分</div><div class="sv blue">' + (eqScore == null ? '—' : num(eqScore, 1)) + '</div></div>' +
+        '</div>' +
+        '<div class="t-wizard-concl">📊 ' + esc(s1Concl) + '</div>' +
+        '</div>';
+
+      /* --- ② Skill 2：冲稳保分桶 + 配额（分桶=高，概率=中） --- */
+      var coef = { rush: 0.85, steady: 1.0, safe: 1.15 };
+      var bucket = GK.Skills.VolunteerOptimizer.optimizeBucket(wizCand, Schools, { coef: coef });
+      var quota = GK.Skills.VolunteerOptimizer.suggestQuota([], { total: 96 });
+      var s2Concl = '志愿池分桶：冲 ' + bucket.rush.length + ' / 稳 ' + bucket.stable.length + ' / 保 ' + bucket.safe.length + '，剔除 ' + bucket.dropped.length + ' 条；96 志愿建议配额 冲' + quota.rush + '/稳' + quota.steady + '/保' + quota.safe + '。';
+      html += '<div class="t-wizard-block">' +
+        '<div class="t-wizard-btitle">② Skill 2 · 冲稳保分桶 + 配额 ' + confBadge('high') + ' ' + confBadge('mid') + '</div>' +
+        '<div class="tier-grid" style="margin-bottom:0.6rem;">' +
+          '<div class="tcard rush"><div class="tcount">' + bucket.rush.length + '</div><div class="tl">冲刺层 · 建议' + quota.rush + '</div><div class="tt">冲</div></div>' +
+          '<div class="tcard steady"><div class="tcount">' + bucket.stable.length + '</div><div class="tl">稳妥层 · 建议' + quota.steady + '</div><div class="tt">稳</div></div>' +
+          '<div class="tcard safe"><div class="tcount">' + bucket.safe.length + '</div><div class="tl">保底层 · 建议' + quota.safe + '</div><div class="tt">保</div></div>' +
+        '</div>' +
+        '<div class="t-wizard-concl">📊 ' + esc(s2Concl) + (quota.warning ? '<br>⚠️ ' + esc(quota.warning) : '') + '</div>' +
+        '</div>';
+
+      /* --- ③ Skill 3：防退档校验 + 预科资格（极高·success，规则引擎确定结果） --- */
+      var safetyRes = GK.Skills.AdmissionSafety.checkBatch(Schools, wizCand);
+      var errCnt = 0, warnCnt = 0;
+      for (var i = 0; i < safetyRes.length; i++) {
+        var issues = safetyRes[i].result.issues;
+        for (var j = 0; j < issues.length; j++) {
+          if (issues[j].severity === 'error') errCnt++;
+          else if (issues[j].severity === 'warn') warnCnt++;
+        }
+      }
+      var elig = GK.Skills.AdmissionSafety.checkEligibility(wizCand, 'precollege');
+      var s3Concl = '校验 ' + safetyRes.length + ' 条志愿：' + errCnt + ' error / ' + warnCnt + ' warn；预科资格：' + (elig.eligible ? '符合' : '不符合') + '。';
+      html += '<div class="t-wizard-block">' +
+        '<div class="t-wizard-btitle">③ Skill 3 · 防退档校验 + 预科资格 ' + confBadge('extreme') + '</div>' +
+        '<div class="t-wizard-mini">' +
+          '<div class="stat"><div class="sl">校验志愿数</div><div class="sv blue">' + safetyRes.length + '</div></div>' +
+          '<div class="stat"><div class="sl">Error</div><div class="sv">' + errCnt + '</div></div>' +
+          '<div class="stat"><div class="sl">Warn</div><div class="sv warn">' + warnCnt + '</div></div>' +
+          '<div class="stat"><div class="sl">预科资格</div><div class="sv ' + (elig.eligible ? 'green' : '') + '">' + (elig.eligible ? '符合' : '不符') + '</div></div>' +
+        '</div>' +
+        '<div class="t-wizard-concl">✅ ' + esc(s3Concl) + ' ' + esc(elig.note) + '</div>' +
+        '</div>';
+
+      /* --- ④ Skill A：大小年波动标记（数据足=高，不足=低 muted） --- */
+      var volRes = GK.Skills.VolatilityDetector.filterByVolatility(Schools, { minYears: 3, maxCV: 0.08 });
+      var dropCnt = 0, insufCnt = 0;
+      for (var vi = 0; vi < volRes.length; vi++) {
+        if (!volRes[vi].keep) dropCnt++;
+        if (volRes[vi].volatility.years < 3) insufCnt++;
+      }
+      var sAConf = (!volRes.length || insufCnt > volRes.length / 2) ? 'low' : 'high';
+      var sAConcl = '波动过滤：' + volRes.length + ' 条志愿中，建议剔除 ' + dropCnt + ' 条（CV>0.08）；' + insufCnt + ' 条数据不足（<3 年）已降级保留。';
+      html += '<div class="t-wizard-block">' +
+        '<div class="t-wizard-btitle">④ Skill A · 大小年波动标记 ' + confBadge(sAConf) + '</div>' +
+        '<div class="t-wizard-mini">' +
+          '<div class="stat"><div class="sl">过滤样本</div><div class="sv blue">' + volRes.length + '</div></div>' +
+          '<div class="stat"><div class="sl">建议剔除</div><div class="sv">' + dropCnt + '</div></div>' +
+          '<div class="stat"><div class="sl">数据不足</div><div class="sv warn">' + insufCnt + '</div></div>' +
+        '</div>' +
+        '<div class="t-wizard-concl">📊 ' + esc(sAConcl) + '</div>' +
+        '</div>';
+
+      /* --- ⑤ Skill B：同层次套利亮点（中·warning，模型估算） --- */
+      var hi = GK.Skills.ArbitrageDetector.highlight(Schools, d.rank, 5);
+      var sBRows = '';
+      for (var h = 0; h < hi.length; h++) {
+        var it = hi[h];
+        sBRows += '<tr><td class="td-school">' + esc(it.item.school) + '</td><td>' + esc(it.item.major) + '</td>' +
+          '<td>' + arbBar(it.score) + ' <span class="num" style="font-size:0.76rem;">' + num(it.score, 4) + '</span></td>' +
+          '<td style="font-size:0.78rem;">' + esc(it.reason) + '</td></tr>';
+      }
+      var sBConcl = hi.length ? 'Top1 套利亮点：' + hi[0].item.school + ' · ' + hi[0].item.major + '（套利分 ' + num(hi[0].score, 4) + '）。' : '志愿池无足够套利数据。';
+      html += '<div class="t-wizard-block">' +
+        '<div class="t-wizard-btitle">⑤ Skill B · 同层次套利亮点 ' + confBadge('mid') + '</div>' +
+        (sBRows ? '<div class="table-wrap" style="max-height:240px;"><table><thead><tr><th>院校</th><th>专业</th><th>套利分</th><th>理由</th></tr></thead><tbody>' + sBRows + '</tbody></table></div>' : '<div class="t-empty">无数据</div>') +
+        '<div class="t-wizard-concl">🔗 ' + esc(sBConcl) + '</div>' +
+        '</div>';
+
+      /* --- 底部总结 callout：综合结论 + 3 条最重要建议 + 官方系统提醒 --- */
+      var tips = [];
+      if (errCnt > 0) tips.push('⛔ 处理 ' + errCnt + ' 条 error 风险（选科/体检/户籍不符），否则会被退档。');
+      if (elig.eligible) tips.push('✅ 你符合预科班资格，可作为保底路径之一。');
+      else tips.push('⚠️ 预科班资格不符：' + elig.note);
+      if (dropCnt > 0) tips.push('📉 剔除 ' + dropCnt + ' 条高波动院校（大小年风险）。');
+      if (quota.warning) tips.push('📌 ' + quota.warning);
+      if (!tips.length) tips.push('✅ 当前数据未发现硬性风险，按建议配额冲稳保分布填报。');
+      var top3 = tips.slice(0, 3);
+      var sumHtml = '<div class="t-wizard-summary">' +
+        '<div class="callout info">🎯 <b>综合结论</b>：等位分 ' + (eqScore == null ? '—' : num(eqScore, 1)) + '，志愿池 冲' + bucket.rush.length + '/稳' + bucket.stable.length + '/保' + bucket.safe.length + '，预科资格 ' + (elig.eligible ? '符合' : '不符') + '。</div>' +
+        '<div class="callout warn">📌 <b>三条最重要建议</b>（置信度高的优先）：<br>· ' + top3.join('<br>· ') + '</div>' +
+        '<div class="callout danger">⚠️ <b>最终须在省考试院官方系统提交</b>，本工具结果仅供参考，不构成填报承诺。</div>' +
+        '</div>';
+
+      box.innerHTML = html + sumHtml;
+    } catch (e) {
+      box.innerHTML = '<div class="callout danger">生成方案出错：' + esc(e.message) + '</div>';
+    }
+  }
+
+  // 初始化向导
+  function initWizard() {
+    renderWizard(1);
+    var next = el('w-next'); if (next) next.addEventListener('click', nextStep);
+    var prev = el('w-prev'); if (prev) prev.addEventListener('click', prevStep);
+  }
+
+  /* ============================================================
      事件绑定
      ============================================================ */
   function bindEvents() {
@@ -978,6 +1388,8 @@ tbody tr:hover{background:var(--bg3);}
       buildVolSelect();
       buildArbTargetSelect();
       bindEvents();
+      // 初始化新手向导
+      initWizard();
       // 默认演示：581/20161 跑一遍全部 6 区
       renderAll();
     } catch (e) {

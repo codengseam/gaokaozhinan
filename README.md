@@ -12,6 +12,7 @@
 - [Skills 算法清单](#skills-算法清单)
 - [数据集说明](#数据集说明)
 - [使用指南（tools.html 六大分区）](#使用指南toolshtml-六大分区)
+- [新手操作指南（GUIDE.md）](GUIDE.md)
 - [技术栈](#技术栈)
 - [常见问题（FAQ）](#常见问题faq)
 - [API 速查](#api-速查)
@@ -62,9 +63,10 @@ python3 -m http.server 8000
 /workspace
 ├── index.html                      # 门户首页（卡片网格，考生档案速览 + 四大主线 + 96 志愿）
 ├── column.html                     # 深度专栏（10 章长文 + 表格 + 优缺点块 + 40 条信息源）
-├── tools.html                      # 工具页（5 skill 交互入口，复用 index.html 设计语言）
+├── tools.html                      # 工具页（新手向导 + 5 skill 交互入口，复用 index.html 设计语言）
 ├── 高考志愿填报个人档案.md          # 核心数据源（v2.0 专家评审版，重庆物理类 581 分档案）
-├── README.md                       # 本文件
+├── README.md                       # 本文件（开发者文档）
+├── GUIDE.md                        # 新手操作指南（零基础照抄版）
 │
 ├── assets/
 │   ├── charts.js                   # ECharts 图表（国考招录 / ESTJ 匹配度 / 96 志愿分配）
@@ -130,7 +132,9 @@ python3 -m http.server 8000
 
 ## 使用指南（tools.html 六大分区）
 
-打开 [tools.html](tools.html)，按以下顺序使用。前 1 步为档案输入，后 6 步对应 5 个 skill + 综合仪表盘，结果可叠加。
+> **新手先看 [GUIDE.md](GUIDE.md)**：含 5 步对话式向导（[tools.html](tools.html) 顶部「新手向导」分区）的详细图解与逐区操作指南，零基础可照抄。本节为速查版。
+
+打开 [tools.html](tools.html)，按以下顺序使用。页面顶部新增「新手向导」分区（5 步问答 → 一键跑完 5 个 Skill → 输出带置信度标注的结论），新手推荐先用向导；下方 6 大分区为进阶手动操作，前 1 步为档案输入，后 6 步对应 5 个 skill + 综合仪表盘，结果可叠加。
 
 1. **考生档案输入**
    - 输入：分数 581 / 位次 20161 / 选科物化生 / ESTJ / 彭水少数民族
