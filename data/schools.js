@@ -19,7 +19,7 @@
       id: 'S-001', school: '成都信息工程大学', major: '网络工程（省级一流）',
       direction: 'computer', tier: ['公办'], batch: '本科批', policy_tag: null,
       score_2025: 573, rank_2025: 21426, history_ranks: hr(21426),
-      judgment_581: '稳录', layer: '冲刺',
+      judgment_581: '稳录', layer: '稳妥',
       employment: '电网信通/运营商/网安', grid_probability: null,
       campus: null, tuition_note: null, source_section: '7.1'
     },
@@ -27,7 +27,7 @@
       id: 'S-002', school: '东北电力大学', major: '计算机科学与技术',
       direction: 'computer', tier: ['公办'], batch: '本科批', policy_tag: null,
       score_2025: 580, rank_2025: 18678, history_ranks: hr(18678),
-      judgment_581: '稳录', layer: '冲刺',
+      judgment_581: '稳录', layer: '稳妥',
       employment: '电网信通/央企', grid_probability: null,
       campus: null, tuition_note: null, source_section: '7.1'
     },
@@ -35,7 +35,7 @@
       id: 'S-003', school: '成都信息工程大学', major: '网络空间安全',
       direction: 'computer', tier: ['公办'], batch: '本科批', policy_tag: null,
       score_2025: 572, rank_2025: 21842, history_ranks: hr(21842),
-      judgment_581: '稳录', layer: '冲刺',
+      judgment_581: '稳录', layer: '稳妥',
       employment: '网安/公安/等保', grid_probability: null,
       campus: null, tuition_note: null, source_section: '7.1'
     },
@@ -43,7 +43,7 @@
       id: 'S-004', school: '成都信息工程大学', major: '数据科学与大数据',
       direction: 'computer', tier: ['公办'], batch: '本科批', policy_tag: null,
       score_2025: 572, rank_2025: 21842, history_ranks: hr(21842),
-      judgment_581: '稳录', layer: '冲刺',
+      judgment_581: '稳录', layer: '稳妥',
       employment: '数据/银行', grid_probability: null,
       campus: null, tuition_note: null, source_section: '7.1'
     },
@@ -51,7 +51,7 @@
       id: 'S-005', school: '成都信息工程大学', major: '密码科学与技术',
       direction: 'computer', tier: ['公办'], batch: '本科批', policy_tag: null,
       score_2025: 570, rank_2025: 22723, history_ranks: hr(22723),
-      judgment_581: '稳录', layer: '冲刺',
+      judgment_581: '稳录', layer: '稳妥',
       employment: '保密系统/网安', grid_probability: null,
       campus: null, tuition_note: null, source_section: '7.1'
     },
@@ -98,7 +98,7 @@
     {
       id: 'S-011', school: '重庆师范大学', major: '计算机科学与技术',
       direction: 'computer', tier: ['市属'], batch: '本科批', policy_tag: null,
-      score_2025: 549, rank_2025: null, history_ranks: hr(null),
+      score_2025: 549, rank_2025: 31500, history_ranks: hr(31500),
       judgment_581: '保底', layer: '保底',
       employment: '教育/考公', grid_probability: null,
       campus: null, tuition_note: null, source_section: '7.1'
@@ -157,7 +157,7 @@
     // ========== 7.3 财会审计方向 ==========
     {
       id: 'S-018', school: '四川农业大学', major: '审计学（都江堰）',
-      direction: 'finance', tier: ['211'], batch: '本科批', policy_tag: null,
+      direction: 'finance', tier: ['211', '双一流'], batch: '本科批', policy_tag: null,
       score_2025: 587, rank_2025: 16058, history_ranks: hr(16058),
       judgment_581: '冲', layer: '冲刺',
       employment: '考公/国企财务', grid_probability: null,
@@ -181,15 +181,15 @@
     },
     {
       id: 'S-021', school: '四川农业大学', major: '会计学（都江堰）',
-      direction: 'finance', tier: ['211'], batch: '本科批', policy_tag: null,
+      direction: 'finance', tier: ['211', '双一流'], batch: '本科批', policy_tag: null,
       score_2025: 580, rank_2025: 18678, history_ranks: hr(18678),
-      judgment_581: '稳录', layer: '冲刺',
+      judgment_581: '稳录', layer: '稳妥',
       employment: '考公/国企财务', grid_probability: null,
       campus: '都江堰', tuition_note: null, source_section: '7.3'
     },
     {
       id: 'S-022', school: '贵州大学', major: '财政学类',
-      direction: 'finance', tier: ['211'], batch: '本科批', policy_tag: null,
+      direction: 'finance', tier: ['211', '双一流'], batch: '本科批', policy_tag: null,
       score_2025: 577, rank_2025: 19815, history_ranks: hr(19815),
       judgment_581: '稳录', layer: '稳妥',
       employment: '税务局/财政局', grid_probability: null,
@@ -197,7 +197,7 @@
     },
     {
       id: 'S-023', school: '四川农业大学', major: '财务管理（成都）',
-      direction: 'finance', tier: ['211'], batch: '本科批', policy_tag: null,
+      direction: 'finance', tier: ['211', '双一流'], batch: '本科批', policy_tag: null,
       score_2025: 575, rank_2025: 20633, history_ranks: hr(20633),
       judgment_581: '稳录', layer: '稳妥',
       employment: '国企财务岗', grid_probability: null,
@@ -213,7 +213,7 @@
     },
     {
       id: 'S-025', school: '广西大学', major: '会计学',
-      direction: 'finance', tier: ['211'], batch: '本科批', policy_tag: null,
+      direction: 'finance', tier: ['211', '双一流'], batch: '本科批', policy_tag: null,
       score_2025: 572, rank_2025: 21842, history_ranks: hr(21842),
       judgment_581: '稳录', layer: '稳妥',
       employment: '考公/国企财务', grid_probability: null,
@@ -385,7 +385,7 @@
       id: 'S-046', school: '三峡大学', major: '新能源材料与器件',
       direction: 'electrical', tier: ['公办'], batch: '本科批', policy_tag: null,
       score_2025: 576, rank_2025: 20247, history_ranks: hr(20247),
-      judgment_581: '冲', layer: '稳妥',
+      judgment_581: '稳录', layer: '稳妥',
       employment: '电网/新能源制造', grid_probability: '⭐⭐⭐',
       campus: null, tuition_note: null, source_section: '7.4'
     },
