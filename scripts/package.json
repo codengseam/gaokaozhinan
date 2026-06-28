@@ -1,0 +1,14 @@
+{
+  "name": "gaokao-data-crawler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "管理员一次性数据爬取脚本 - 从官网获取高考志愿数据，不对外暴露",
+  "scripts": {
+    "crawl:rank": "node crawl_rank_table.js",
+    "crawl:schools": "node crawl_schools.js",
+    "crawl:policies": "node crawl_policies.js",
+    "crawl:tags": "node crawl_tier_tags.js",
+    "crawl:all": "node run_all.js"
+  },
+  "engines": { "node": ">=14" }
+}

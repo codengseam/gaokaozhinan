@@ -1156,9 +1156,20 @@ tbody tr:hover{background:var(--bg3);}
   }
 
   // 置信度徽章：extreme=极高(绿)/high=高(蓝)/mid=中(黄)/low=低(灰)
+  // 置信度来源说明：
+  //   极高 = 规则引擎硬匹配（如已剔除院校拦截）或用户交互输入的档案信息
+  //   高   = 官网爬取的实际录取数据 + 数学插值/统计模型
+  //   中   = 概率模型估算（logistic 近似正态 CDF）
+  //   低   = 数据不足降级（如大小年不足 3 年历史数据）
   function confBadge(level) {
     var map = { extreme: '极高', high: '高', mid: '中', low: '低' };
-    return '<span class="t-wizard-conf ' + level + '" title="置信度：' + (map[level] || '?') + '">' + (map[level] || '?') + '</span>';
+    var src = {
+      extreme: '规则引擎硬匹配 / 用户交互输入',
+      high: '官网爬取实际录取数据 + 数学插值',
+      mid: '概率模型估算',
+      low: '数据不足降级'
+    };
+    return '<span class="t-wizard-conf ' + level + '" title="置信度：' + (map[level] || '?') + '（' + (src[level] || '') + '）">' + (map[level] || '?') + '</span>';
   }
 
   // 下一步
@@ -1203,7 +1214,7 @@ tbody tr:hover{background:var(--bg3);}
 
       var html = '';
 
-      /* --- ① Skill 1：等位分（高·accent2，基于录实一分一段表+插值） --- */
+      /* --- ① Skill 1：等位分（高·accent2，基于官网一分一段表+插值） --- */
       var eqScore = GK.Skills.RankNormalizer.rankToScore(2025, d.category, d.rank);
       var s1Delta = eqScore == null ? null : (num(eqScore, 1) - d.score);
       var s1Concl = eqScore == null
@@ -1304,7 +1315,7 @@ tbody tr:hover{background:var(--bg3);}
       var sumHtml = '<div class="t-wizard-summary">' +
         '<div class="callout info">🎯 <b>综合结论</b>：等位分 ' + (eqScore == null ? '—' : num(eqScore, 1)) + '，志愿池 冲' + bucket.rush.length + '/稳' + bucket.stable.length + '/保' + bucket.safe.length + '，预科资格 ' + (elig.eligible ? '符合' : '不符') + '。</div>' +
         '<div class="callout warn">📌 <b>三条最重要建议</b>（置信度高的优先）：<br>· ' + top3.join('<br>· ') + '</div>' +
-        '<div class="callout danger">⚠️ <b>最终须在省考试院官方系统提交</b>，本工具结果仅供参考，不构成填报承诺。</div>' +
+        '<div class="callout danger">⚠️ <b>最终须在省考试院官方系统提交</b>，本工具结果仅供参考，不构成填报承诺。数据来源于官网爬取脚本（非 AI 生成），置信度标注反映数据充分度。</div>' +
         '</div>';
 
       box.innerHTML = html + sumHtml;
