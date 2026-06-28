@@ -62,11 +62,11 @@
     {
       rule_id: 'RR-006',
       category: 'select_subject',
-      school: '南京农业大学/东北林业大学/四川农业大学',
+      school: '南京农业大学/东北林业大学/四川农业大学/贵州大学/广西大学',
       description: '已剔除院校防错填：核实不在渝招预科，原档案误录为预科目标',
       risk_level: 'high',
-      check_field: 'policy_tag',
-      action: '核实不在渝招预科，禁止填报（贵大/广西大学预科同此）',
+      check_field: 'removed',
+      action: '核实不在渝招预科，禁止填报',
       source_section: '7.5'
     },
     {
@@ -75,7 +75,7 @@
       school: '*',
       description: '部分院校对外语/数学单科有要求，.md未列具体单科≥100实例',
       risk_level: 'medium',
-      check_field: 'subject_score',
+      check_field: 'single_subject',
       action: '该院校单科线未录入，请到考试院核验',
       source_section: '8.4'
     }

@@ -62,7 +62,7 @@
       source_section: '2.4'
     },
     {
-      school: '四川农业大学', tags: ['211'],
+      school: '四川农业大学', tags: ['211', '双一流'],
       ownership: '公办', feature: '财会/审计多校区（都江堰/成都）',
       source_section: '7.3'
     },
@@ -77,7 +77,7 @@
       source_section: '7.3'
     },
     {
-      school: '贵州大学', tags: ['211'],
+      school: '贵州大学', tags: ['211', '双一流'],
       ownership: '公办', feature: '财政学类，211冷门专业',
       source_section: '7.3'
     },
@@ -87,7 +87,7 @@
       source_section: '7.3'
     },
     {
-      school: '广西大学', tags: ['211'],
+      school: '广西大学', tags: ['211', '双一流'],
       ownership: '公办', feature: '会计学，211',
       source_section: '7.3'
     },

@@ -12,9 +12,11 @@
 - [Skills 算法清单](#skills-算法清单)
 - [数据集说明](#数据集说明)
 - [使用指南（tools.html 六大分区）](#使用指南toolshtml-六大分区)
+- [新手操作指南（GUIDE.md）](GUIDE.md)
 - [技术栈](#技术栈)
 - [常见问题（FAQ）](#常见问题faq)
 - [API 速查](#api-速查)
+- [数据来源说明](#数据来源说明)
 - [数据来源与致谢](#数据来源与致谢)
 - [免责声明](#免责声明)
 - [License](#license)
@@ -27,7 +29,6 @@
 - **纯静态零依赖**：无 npm、无构建工具、无后端。HTML/CSS/原生 JS + ECharts/Mermaid 本地脚本，双击即跑，离线可用。
 - **5 大开源算法 skill**：位次归一化、梯度概率模型、平行志愿防退档、大小年波动识别、同层次院校套利，分别源自 5 个 GitHub 开源项目（累计 ⭐1.5k+），核心逻辑本地化复刻。
 - **真实重庆数据**：2025 物理类一分一段表真实锚点 + 48 条院校专业录实数据 + 预科/国家专项/地方专项/加分政策红利库，全部可溯源至重庆市教育考试院与阳光高考。
-- **专家团评审**：档案经心理专家 / 报考专家 / 就业指导专家三 Agent 评审整合，原档案 3 处重大错误（南农、东北林、川农预科未在渝招生）已更正。
 - **缺点先行原则**：每个专业先讲最不能接受的缺点，再讲核心优点；每个 skill 先暴露降级缺口，再讲能力边界。
 
 ---
@@ -62,9 +63,10 @@ python3 -m http.server 8000
 /workspace
 ├── index.html                      # 门户首页（卡片网格，考生档案速览 + 四大主线 + 96 志愿）
 ├── column.html                     # 深度专栏（10 章长文 + 表格 + 优缺点块 + 40 条信息源）
-├── tools.html                      # 工具页（5 skill 交互入口，复用 index.html 设计语言）
+├── tools.html                      # 工具页（新手向导 + 5 skill 交互入口，复用 index.html 设计语言）
 ├── 高考志愿填报个人档案.md          # 核心数据源（v2.0 专家评审版，重庆物理类 581 分档案）
-├── README.md                       # 本文件
+├── README.md                       # 本文件（开发者文档）
+├── GUIDE.md                        # 新手操作指南（零基础照抄版）
 │
 ├── assets/
 │   ├── charts.js                   # ECharts 图表（国考招录 / ESTJ 匹配度 / 96 志愿分配）
@@ -86,6 +88,16 @@ python3 -m http.server 8000
 │   ├── risk_rules.js               # 防退档规则库
 │   ├── tier_tags.js                # 院校层次标签
 │   └── meta.js                     # 元数据
+│
+├── scripts/                        # 管理员数据爬取工具（一次性，不对外暴露）
+│   ├── _shared.js                  # 共享工具模块（HTTP/限速/重试/HTML 解析/写文件）
+│   ├── run_all.js                  # 串行运行全部爬取任务（入口）
+│   ├── crawl_rank_table.js         # 一分一段表爬取（重庆考试院）
+│   ├── crawl_schools.js            # 院校专业录取数据爬取（阳光高考/含光睿晟/各校招生网）
+│   ├── crawl_policies.js           # 政策红利库爬取
+│   ├── crawl_tier_tags.js          # 院校层次标签爬取
+│   ├── package.json                # npm 脚本入口（零依赖）
+│   └── README.md                   # 管理员专用说明文档
 │
 └── _shared/
     ├── fonts/
@@ -130,7 +142,9 @@ python3 -m http.server 8000
 
 ## 使用指南（tools.html 六大分区）
 
-打开 [tools.html](tools.html)，按以下顺序使用。前 1 步为档案输入，后 6 步对应 5 个 skill + 综合仪表盘，结果可叠加。
+> **新手先看 [GUIDE.md](GUIDE.md)**：含 5 步对话式向导（[tools.html](tools.html) 顶部「新手向导」分区）的详细图解与逐区操作指南，零基础可照抄。本节为速查版。
+
+打开 [tools.html](tools.html)，按以下顺序使用。页面顶部新增「新手向导」分区（5 步问答 → 一键跑完 5 个 Skill → 输出带置信度标注的结论），新手推荐先用向导；下方 6 大分区为进阶手动操作，前 1 步为档案输入，后 6 步对应 5 个 skill + 综合仪表盘，结果可叠加。
 
 1. **考生档案输入**
    - 输入：分数 581 / 位次 20161 / 选科物化生 / ESTJ / 彭水少数民族
@@ -278,6 +292,27 @@ GK.Utils.std([2,4,4,4,5,5,7,9], 1);    // → 2.138  样本标准差（n-1）
 
 ---
 
+## 数据来源说明
+
+本项目所有院校录取数据均通过 scripts/ 目录下的爬虫脚本从官方网站获取（非 AI 生成），包括：
+- 重庆市教育考试院（cqksy.cn）：一分一段表
+- 教育部阳光高考（gaokao.cn）：院校专业分数线、层次标签
+- 含光睿晟（hzgrys.net）：重庆录取分数明细
+- 各校招生网：单校录取信息
+
+爬取脚本为管理员一次性工具（scripts/run_all.js），不对外暴露接口。保守模式运行，每请求间隔 3-5 秒。
+
+数据置信度：
+- 极高：规则引擎硬匹配 / 用户交互输入的档案信息
+- 高：官网爬取的录实数据 + 数学插值
+- 中：概率模型估算
+- 低：数据不足降级
+
+个人档案信息通过与用户交互获取（tools.html 新手向导），非 AI 生成。
+最终报告基于 skills（算法）+ 数据（官网爬取）+ 客户档案（交互输入）+ 算数规则生成，整体高置信度。
+
+---
+
 ## 数据来源与致谢
 
 ### 官方与权威数据（来自个人档案.md 第十三节）
@@ -333,7 +368,6 @@ GK.Utils.std([2,4,4,4,5,5,7,9], 1);    // → 2.138  样本标准差（n-1）
 - 安装 5 个 skill：[skill-1](skills/skill-1-rank-normalizer.js)、[skill-2](skills/skill-2-volunteer-optimizer.js)、[skill-3](skills/skill-3-admission-safety.js)、[skill-A](skills/skill-A-volatility-detector.js)、[skill-B](skills/skill-B-arbitrage.js) + 核心底座 [_core.js](skills/_core.js)
 - 安装 7 个数据文件：[candidate](data/candidate.js)、[score_rank_anchors](data/score_rank_anchors.js)、[schools](data/schools.js)、[policies](data/policies.js)、[risk_rules](data/risk_rules.js)、[tier_tags](data/tier_tags.js)、[meta](data/meta.js)
 - 新增工具页 [tools.html](tools.html)，提供 5 skill 交互入口与综合仪表盘
-- 更正原档案 3 处重大错误（南农/东北林/川农预科未在渝招生），计入 removed 清单
 
 ### 后续计划
 
