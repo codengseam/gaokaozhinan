@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>软考中项知识库 · 刷题实战</title>
+<style>
+/* ================= 基础 ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:#06080f;color:#e8ecf8;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  min-height:100vh;overflow-x:hidden;font-size:15px;line-height:1.65;
+}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:#0a0d18}
+::-webkit-scrollbar-thumb{background:#2a2f4a;border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:#3d4470}
+button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+
+/* ================= 背景特效 ================= */
+.bg-fx{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+  radial-gradient(ellipse 80% 50% at 50% -10%, rgba(109,90,224,.16), transparent 60%),
+  radial-gradient(ellipse 60% 50% at 100% 100%, rgba(34,211,238,.07), transparent 60%),#06080f}
+.bg-fx::before{content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(139,122,255,.045) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(139,122,255,.045) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 72%);
+  mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 72%)}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.22;animation:float 22s ease-in-out infinite}
+.orb.o1{width:520px;height:520px;background:#6d5ae0;top:-180px;left:-120px}
+.orb.o2{width:420px;height:420px;background:#22d3ee;bottom:-140px;right:-120px;animation-delay:-11s;opacity:.12}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.06)}}
+
+/* ================= 顶栏 ================= */
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;
+  padding:14px 26px;background:rgba(6,8,15,.82);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(139,122,255,.14)}
+.logo{display:flex;flex-direction:column;line-height:1.2;flex:none}
+.logo b{font-size:19px;background:linear-gradient(90deg,#a78bfa,#22d3ee,#a78bfa);background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:shine 5s linear infinite;letter-spacing:.5px}
+.logo span{font-size:11px;color:#7a82a3;letter-spacing:2px}
+@keyframes shine{to{background-position:200% center}}
+.nav{display:flex;gap:6px;flex:1;justify-content:center;flex-wrap:wrap}
+.nav button{position:relative;background:transparent;border:1px solid transparent;color:#98a0c0;
+  padding:8px 16px;border-radius:999px;font-size:14px;transition:.22s}
+.nav button:hover{color:#e8ecf8;background:rgba(139,122,255,.1)}
+.nav button.on{color:#fff;background:linear-gradient(135deg,rgba(139,92,246,.28),rgba(34,211,238,.16));
+  border-color:rgba(139,122,255,.5);box-shadow:0 0 18px rgba(139,92,246,.28)}
+.nav button .nbadge{position:absolute;top:-6px;right:-4px;min-width:17px;height:17px;padding:0 4px;
+  border-radius:9px;background:#f87171;color:#fff;font-size:11px;line-height:17px;font-weight:600}
+.top-progress{flex:none;text-align:right;font-size:12px;color:#8a92b0}
+.top-progress b{display:block;font-size:17px;color:#a78bfa}
+
+/* ================= 布局 ================= */
+main{max-width:1180px;margin:0 auto;padding:26px 22px 80px}
+.view{display:none;animation:vfade .35s ease}
+.view.on{display:block}
+@keyframes vfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* 通用卡片 */
+.panel{background:rgba(15,19,36,.72);backdrop-filter:blur(14px);border:1px solid rgba(139,122,255,.16);
+  border-radius:16px;padding:22px;transition:.25s}
+.panel:hover{border-color:rgba(139,122,255,.34)}
+.grad-text{background:linear-gradient(90deg,#a78bfa,#22d3ee);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:11px;
+  border:1px solid rgba(139,122,255,.4);background:rgba(139,92,246,.14);color:#cfc8ff;
+  font-size:14px;transition:.2s}
+.btn:hover{background:rgba(139,92,246,.3);box-shadow:0 0 16px rgba(139,92,246,.3);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,#6d5ae0,#7c6cf0);color:#fff;border-color:transparent;
+  box-shadow:0 4px 20px rgba(109,90,224,.4)}
+.btn.primary:hover{box-shadow:0 6px 26px rgba(109,90,224,.6)}
+.btn.ghost{background:transparent;border-color:rgba(140,150,200,.25);color:#98a0c0}
+.btn.danger{border-color:rgba(248,113,113,.4);background:rgba(248,113,113,.12);color:#fca5a5}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+/* ================= 仪表盘 ================= */
+.hero{display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.hero-info{flex:1;min-width:280px}
+.hero-info h1{font-size:26px;margin-bottom:8px;letter-spacing:.5px}
+.hero-info p{color:#8a92b0;font-size:14px;max-width:560px}
+.hero-exam{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.exam-pill{padding:6px 13px;border-radius:999px;font-size:12.5px;color:#a5b4fc;
+  border:1px solid rgba(139,122,255,.3);background:rgba(139,92,246,.09)}
+.ring{width:132px;height:132px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+.ring-in{width:104px;height:104px;border-radius:50%;background:#0b0e1c;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;box-shadow:inset 0 0 14px rgba(139,122,255,.18)}
+.ring-in b{font-size:24px;color:#fff;font-family:ui-monospace,Consolas,monospace}
+.ring-in span{font-size:11px;color:#8a92b0}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.stat{background:rgba(15,19,36,.72);border:1px solid rgba(139,122,255,.16);border-radius:14px;padding:16px 18px;
+  transition:.22s;position:relative;overflow:hidden}
+.stat:hover{border-color:rgba(139,122,255,.4);transform:translateY(-2px)}
+.stat::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#6d5ae0,#22d3ee)}
+.stat b{display:block;font-size:24px;font-family:ui-monospace,Consolas,monospace;color:#fff}
+.stat span{font-size:12.5px;color:#8a92b0}
+.dash-sec-title{font-size:17px;font-weight:600;margin:26px 0 14px;display:flex;align-items:center;gap:9px}
+.dash-sec-title::before{content:'';width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,#a78bfa,#22d3ee)}
+.sec-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+.sec-card{background:rgba(15,19,36,.72);border:1px solid rgba(139,122,255,.16);border-radius:16px;padding:18px}
+.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sec-head b{font-size:15.5px}
+.sec-head span{font-size:11.5px;color:#8a92b0}
+.sec-desc{font-size:12.5px;color:#7a82a3;margin-bottom:12px}
+.sec-bar{height:7px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden;margin-bottom:14px}
+.sec-bar i{display:block;height:100%;border-radius:99px;transition:width .6s ease}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{padding:5px 11px;border-radius:9px;font-size:12px;color:#98a0c0;border:1px solid rgba(140,150,200,.18);
+  cursor:pointer;transition:.18s;background:rgba(255,255,255,.02)}
+.chip:hover{color:#fff;border-color:rgba(139,122,255,.5)}
+.chip.locked{cursor:not-allowed;opacity:.45;border-style:dashed}
+.chip.done{color:#6ee7b7;border-color:rgba(52,211,153,.45);background:rgba(52,211,153,.07)}
+.route-card{margin-top:6px}
+.route-card ol{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.route-step{padding:13px 15px;border-radius:12px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(140,150,200,.14);font-size:13px;color:#a9b1cf}
+.route-step b{display:block;color:#e8ecf8;font-size:13.5px;margin-bottom:5px}
+.route-step i{font-style:normal;color:#7a82a3;font-size:12px;display:block;margin-top:4px}
+.cta-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* ================= 章节学习 ================= */
+.learn-wrap{display:grid;grid-template-columns:262px 1fr;gap:20px;align-items:start}
+.sidebar{position:sticky;top:76px;max-height:calc(100vh - 100px);overflow-y:auto;display:flex;flex-direction:column;gap:16px}
+.side-group{background:rgba(15,19,36,.72);border:1px solid rgba(139,122,255,.14);border-radius:14px;padding:14px}
+.side-group h4{font-size:12.5px;color:#8a92b0;margin-bottom:9px;display:flex;justify-content:space-between;letter-spacing:1px}
+.side-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:10px;font-size:13.5px;
+  color:#98a0c0;cursor:pointer;transition:.18s;border:1px solid transparent;margin-bottom:3px}
+.side-item:hover{background:rgba(139,92,246,.1);color:#e8ecf8}
+.side-item.on{background:linear-gradient(135deg,rgba(139,92,246,.24),rgba(34,211,238,.1));
+  color:#fff;border-color:rgba(139,122,255,.5)}
+.side-item .num{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:#7a82a3;flex:none;width:22px}
+.side-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.side-item .cnt{font-size:11px;color:#7a82a3;font-family:ui-monospace,Consolas,monospace}
+.side-item.locked{opacity:.42;cursor:not-allowed}
+.side-item.done .cnt{color:#6ee7b7}
+.ch-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.ch-head h2{font-size:21px;display:flex;align-items:center;gap:11px}
+.ch-head h2 .chno{font-size:12px;font-weight:600;color:#a5b4fc;padding:3px 9px;border-radius:7px;
+  border:1px solid rgba(139,122,255,.4);background:rgba(139,92,246,.12);font-family:ui-monospace,Consolas,monospace}
+.ch-meta{font-size:12.5px;color:#8a92b0;margin-top:6px;display:flex;gap:14px;flex-wrap:wrap}
+.ch-prog{display:flex;align-items:center;gap:10px;font-size:12.5px;color:#8a92b0}
+.ch-prog .sec-bar{width:130px;margin:0}
+.filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.fchip{padding:6px 14px;border-radius:999px;font-size:13px;color:#98a0c0;background:rgba(255,255,255,.03);
+  border:1px solid rgba(140,150,200,.2);transition:.18s}
+.fchip.on{color:#fff;background:rgba(139,92,246,.22);border-color:rgba(139,122,255,.55)}
+.kd-card{background:rgba(15,19,36,.72);backdrop-filter:blur(12px);border:1px solid rgba(139,122,255,.16);
+  border-radius:16px;padding:20px 22px;margin-bottom:14px;transition:.25s;position:relative}
+.kd-card:hover{border-color:rgba(139,122,255,.42);box-shadow:0 0 26px rgba(139,92,246,.12);transform:translateY(-2px)}
+.kd-card.mastered{border-color:rgba(52,211,153,.35)}
+.kd-card.mastered .kd-title{color:#8aa6b5}
+.kd-card.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,60%{box-shadow:0 0 0 2px rgba(167,139,250,.85),0 0 34px rgba(139,92,246,.5)}100%{box-shadow:none}}
+.kd-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.badge{font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;letter-spacing:1px;flex:none}
+.badge.high{color:#fda4af;background:rgba(248,113,113,.13);border:1px solid rgba(248,113,113,.45);text-shadow:none}
+.badge.mid{color:#67e8f9;background:rgba(34,211,238,.11);border:1px solid rgba(34,211,238,.4)}
+.badge.low{color:#a1a1b5;background:rgba(160,160,180,.09);border:1px solid rgba(160,160,180,.3)}
+.kd-title{font-size:16.5px;font-weight:600;flex:1;min-width:180px}
+.stars{color:#fbbf24;font-size:13px;letter-spacing:2px;flex:none}
+.kd-acts{display:flex;gap:7px;flex:none}
+.kd-acts button{font-size:12px;padding:4px 11px;border-radius:8px;transition:.18s;
+  background:transparent;border:1px solid rgba(140,150,200,.25);color:#8a92b0}
+.kd-acts button:hover{border-color:rgba(139,122,255,.55);color:#cfc8ff}
+.kd-acts button.m-on{border-color:rgba(52,211,153,.55);color:#6ee7b7;background:rgba(52,211,153,.09)}
+.kd-acts button.f-on{border-color:rgba(251,191,36,.55);color:#fcd34d;background:rgba(251,191,36,.09)}
+.kd-body{color:#c4cbe4;font-size:14.5px}
+.kd-body p{margin-bottom:10px}
+.kd-body ul,.kd-body ol{margin:8px 0 12px 20px}
+.kd-body li{margin-bottom:7px}
+.kd-body b{color:#e8ecf8}
+.kd-body .pit{border-left:3px solid #f87171;background:rgba(248,113,113,.06);border-radius:0 10px 10px 0;
+  padding:10px 14px;margin:12px 0;font-size:13.5px;color:#d6b4bc}
+.kd-body .tip{border-left:3px solid #22d3ee;background:rgba(34,211,238,.05);border-radius:0 10px 10px 0;
+  padding:10px 14px;margin:12px 0;font-size:13.5px;color:#a9c6d3}
+table.kt{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+table.kt th{background:rgba(139,92,246,.14);color:#cfc8ff;padding:8px 12px;text-align:left;
+  border:1px solid rgba(139,122,255,.2);font-weight:600}
+table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0da}
+.mnemo{margin-top:14px;padding:11px 15px;border-radius:11px;font-size:13.5px;
+  background:linear-gradient(135deg,rgba(139,92,246,.13),rgba(34,211,238,.07));
+  border:1px dashed rgba(139,122,255,.4);color:#c4b5fd}
+.mnemo::before{content:'助记';font-size:11px;font-weight:700;letter-spacing:2px;color:#a78bfa;
+  border:1px solid rgba(139,122,255,.5);border-radius:6px;padding:1px 7px;margin-right:10px;vertical-align:1px}
+.empty-ch{padding:60px 30px;text-align:center;color:#7a82a3}
+.empty-ch b{display:block;font-size:17px;color:#a5b4fc;margin-bottom:10px}
+.empty-ch .btn{margin-top:16px}
+
+/* ================= 刷题实战 ================= */
+.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.mode-card{background:rgba(15,19,36,.72);border:1px solid rgba(139,122,255,.18);border-radius:16px;
+  padding:24px;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.mode-card::after{content:'';position:absolute;top:0;left:-70%;width:50%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(167,139,250,.09),transparent);transition:.6s}
+.mode-card:hover{border-color:rgba(139,122,255,.5);transform:translateY(-3px);box-shadow:0 8px 30px rgba(109,90,224,.22)}
+.mode-card:hover::after{left:120%}
+.mode-card h3{font-size:17px;margin-bottom:8px;color:#e8ecf8}
+.mode-card p{font-size:13px;color:#8a92b0;margin-bottom:12px}
+.mode-card .go{font-size:13px;color:#a78bfa;font-weight:600}
+.mode-card.hot{border-color:rgba(34,211,238,.4);background:linear-gradient(160deg,rgba(15,19,36,.8),rgba(24,26,58,.7))}
+.quiz-pick h3{font-size:16px;margin-bottom:14px;color:#c4cbe4}
+.pick-list{display:flex;flex-direction:column;gap:9px}
+.pick-item{display:flex;align-items:center;gap:12px;padding:13px 17px;border-radius:12px;
+  background:rgba(255,255,255,.025);border:1px solid rgba(140,150,200,.16);cursor:pointer;transition:.2s}
+.pick-item:hover{border-color:rgba(139,122,255,.55);background:rgba(139,92,246,.08)}
+.pick-item .pno{font-family:ui-monospace,Consolas,monospace;color:#a78bfa;font-size:13px;flex:none;width:26px}
+.pick-item .pnm{flex:1;font-size:14.5px}
+.pick-item .pct{font-size:12px;color:#7a82a3;font-family:ui-monospace,Consolas,monospace}
+.pick-item.locked{opacity:.4;cursor:not-allowed}
+.pick-item.locked:hover{border-color:rgba(140,150,200,.16);background:rgba(255,255,255,.025)}
+.qbar{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.qbar .qm{font-size:13px;color:#a78bfa;font-weight:600}
+.qbar .qi{font-size:13px;color:#8a92b0;font-family:ui-monospace,Consolas,monospace}
+.qbar .qtimer{margin-left:auto;font-family:ui-monospace,Consolas,monospace;color:#67e8f9;font-size:13px;
+  padding:3px 11px;border-radius:8px;border:1px solid rgba(34,211,238,.35);background:rgba(34,211,238,.07)}
+.qbar .quit{font-size:12.5px;color:#98a0c0;background:none;border:1px solid rgba(248,113,113,.35);
+  border-radius:8px;padding:4px 12px;transition:.18s}
+.qbar .quit:hover{color:#fca5a5;background:rgba(248,113,113,.09)}
+.qprog{height:6px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden;margin-bottom:22px}
+.qprog i{display:block;height:100%;background:linear-gradient(90deg,#6d5ae0,#22d3ee);border-radius:99px;transition:width .4s}
+.qcard{background:rgba(15,19,36,.72);border:1px solid rgba(139,122,255,.2);border-radius:16px;padding:26px}
+.qtext{font-size:16.5px;line-height:1.75;margin-bottom:22px;color:#eef1fb}
+.opts{display:flex;flex-direction:column;gap:11px}
+.opt{display:flex;align-items:flex-start;gap:13px;padding:14px 16px;border-radius:12px;cursor:pointer;
+  border:1px solid rgba(140,150,200,.2);background:rgba(255,255,255,.025);transition:.2s;font-size:14.5px;color:#c4cbe4}
+.opt:hover{border-color:rgba(139,122,255,.6);background:rgba(139,92,246,.09)}
+.opt .ol{flex:none;width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;color:#98a0c0;border:1px solid rgba(140,150,200,.3);font-family:ui-monospace,Consolas,monospace}
+.opt.correct{border-color:rgba(52,211,153,.65);background:rgba(52,211,153,.1);animation:okp .4s ease}
+.opt.correct .ol{background:#34d399;color:#06281c;border-color:#34d399}
+.opt.wrong{border-color:rgba(248,113,113,.65);background:rgba(248,113,113,.1);animation:shake .35s ease}
+.opt.wrong .ol{background:#f87171;color:#3d0a0a;border-color:#f87171}
+.opt.dim{opacity:.5}
+@keyframes okp{0%{transform:scale(.98)}50%{transform:scale(1.01)}100%{transform:none}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.explain{margin-top:18px;padding:16px 19px;border-radius:13px;animation:vfade .3s ease;
+  background:rgba(255,255,255,.03);border:1px solid rgba(139,122,255,.25)}
+.explain .er{font-weight:700;margin-bottom:7px;font-size:14.5px}
+.explain .er.ok{color:#6ee7b7}
+.explain .er.no{color:#fda4af}
+.explain p{font-size:13.5px;color:#b8c0da;margin-bottom:6px}
+.explain .kpoint{display:inline-block;font-size:12px;color:#67e8f9;border:1px solid rgba(34,211,238,.4);
+  padding:2px 10px;border-radius:7px;margin-top:6px}
+.qnext{margin-top:18px;display:flex;justify-content:flex-end}
+.kb-hint{margin-top:14px;font-size:12px;color:#7a82a3;text-align:right}
+/* 成绩页 */
+.sum-wrap{display:flex;gap:30px;align-items:center;flex-wrap:wrap;margin-bottom:24px}
+.sum-info{flex:1;min-width:260px}
+.sum-info h2{font-size:22px;margin-bottom:14px}
+.sum-stats{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:12px}
+.sum-stats .stat b{font-size:20px}
+.review-item{padding:15px 18px;border-radius:12px;border:1px solid rgba(140,150,200,.16);
+  background:rgba(255,255,255,.02);margin-bottom:10px;font-size:13.5px}
+.review-item.ok{border-color:rgba(52,211,153,.3)}
+.review-item.no{border-color:rgba(248,113,113,.35)}
+.review-item .rq{color:#d4dbee;margin-bottom:6px}
+.review-item .ra{color:#8a92b0;font-size:12.5px}
+.review-item .ra b.good{color:#6ee7b7}
+.review-item .ra b.bad{color:#fda4af}
+
+/* ================= 错题本 ================= */
+.wrong-item{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:13px;
+  border:1px solid rgba(248,113,113,.22);background:rgba(248,113,113,.04);margin-bottom:11px;transition:.2s}
+.wrong-item:hover{border-color:rgba(248,113,113,.5)}
+.wrong-item .wq{flex:1;font-size:14px;color:#d4dbee}
+.wrong-item .wmeta{font-size:12px;color:#8a92b0;margin-top:6px}
+.wrong-item .del{flex:none;font-size:12px;color:#98a0c0;background:none;border:1px solid rgba(140,150,200,.25);
+  border-radius:8px;padding:4px 12px;transition:.18s}
+.wrong-item .del:hover{color:#fda5a5;border-color:rgba(248,113,113,.5)}
+
+/* ================= 搜索 ================= */
+.search-box{display:flex;gap:12px;margin-bottom:20px}
+.search-box input{flex:1;padding:13px 19px;border-radius:12px;font-size:15px;color:#e8ecf8;
+  background:rgba(15,19,36,.75);border:1px solid rgba(139,122,255,.25);outline:none;transition:.2s;font-family:inherit}
+.search-box input:focus{border-color:rgba(139,122,255,.6);box-shadow:0 0 20px rgba(139,92,246,.18)}
+.search-box input::placeholder{color:#5f6784}
+.result-item{padding:15px 18px;border-radius:13px;border:1px solid rgba(139,122,255,.16);
+  background:rgba(15,19,36,.7);margin-bottom:10px;cursor:pointer;transition:.2s}
+.result-item:hover{border-color:rgba(139,122,255,.5);transform:translateX(3px)}
+.result-item .rt{font-size:14.5px;color:#e8ecf8;margin-bottom:5px}
+.result-item .rt mark{background:rgba(251,191,36,.3);color:#fde68a;border-radius:3px;padding:0 2px}
+.result-item .rs{font-size:12.5px;color:#8a92b0;line-height:1.6;max-height:66px;overflow:hidden}
+.result-item .rs mark{background:rgba(251,191,36,.28);color:#fde68a;border-radius:3px;padding:0 2px}
+.result-item .rmeta{font-size:11.5px;color:#7a82a3;margin-top:6px}
+
+/* ================= 空状态 ================= */
+.blank{padding:70px 30px;text-align:center;color:#7a82a3}
+.blank b{display:block;font-size:18px;color:#a5b4fc;margin-bottom:8px}
+
+/* ================= 图解组件 ================= */
+.kd-fig{margin:14px 0;border:1px solid rgba(139,122,255,.22);border-radius:13px;padding:14px 14px 10px;background:rgba(9,12,24,.55)}
+.kd-fig svg{width:100%;height:auto;display:block}
+.kd-fig svg.tri{max-width:400px;margin:0 auto}
+.kd-fig figcaption{font-size:12px;color:#8a92b0;text-align:center;margin-top:9px}
+.kd-fig-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.kd-fig-scroll svg{min-width:500px}
+.dg{display:grid;gap:9px}
+.dg-row{display:flex;gap:9px;align-items:stretch;flex-wrap:wrap}
+.dg-box{border:1px solid rgba(139,122,255,.35);border-radius:11px;padding:11px 13px;text-align:center;background:rgba(139,92,246,.05)}
+.dg-box b{display:block;font-size:14px;margin-bottom:3px}
+.dg-box span{font-size:12px;color:#8a92b0;line-height:1.6}
+.dg-2{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.dg-3{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.dg-varrow{text-align:center;font-size:12px;color:#7a82a3}
+.dg-harrow{display:flex;align-items:center;color:#7a82a3;font-size:15px;flex:none}
+.dg-pill{padding:5px 12px;border-radius:99px;font-size:12px;color:#fde68a;border:1px dashed rgba(251,191,36,.5);background:rgba(251,191,36,.05)}
+.dg-note{text-align:center;font-size:11.5px;color:#7a82a3}
+.dg-lv{display:block;font-style:normal;font-size:11px;color:#7a82a3;margin-top:5px}
+.dg-bar{display:grid;grid-template-columns:74px 1fr 42px;gap:10px;align-items:center}
+.dg-blab{font-size:13px;color:#c4cbe4;text-align:right}
+.dg-btrack{height:13px;border-radius:99px;background:rgba(255,255,255,.05);overflow:hidden}
+.dg-btrack i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#6d5ae0,#a78bfa)}
+.dg-bval{font-size:12px;color:#8a92b0}
+
+/* ================= 手机章节选择器 / 章节导航 ================= */
+.ch-select{display:none;align-items:center;gap:10px;margin-bottom:14px}
+.ch-select label{font-size:13px;color:#8a92b0;flex:none}
+.ch-select select{flex:1;min-width:0;padding:11px 36px 11px 14px;border-radius:11px;font-size:14px;color:#e8ecf8;
+  background-color:#131730;border:1px solid rgba(139,122,255,.35);outline:none;font-family:inherit;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a78bfa' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center}
+.ch-select select:focus{border-color:rgba(139,122,255,.6)}
+.chnav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.chnav button{flex:1;min-width:0;padding:12px 10px;border-radius:12px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(140,150,200,.2);color:#c4cbe4;font-size:13.5px;transition:.2s;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chnav button:hover:not(:disabled){border-color:rgba(139,122,255,.5)}
+.chnav button:disabled{opacity:.35;cursor:not-allowed}
+
+/* ================= 响应式 ================= */
+@media(max-width:960px){
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .sec-cards{grid-template-columns:1fr}
+  .mode-grid{grid-template-columns:1fr}
+  .learn-wrap{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .ch-select{display:flex}
+  .route-card ol{grid-template-columns:1fr}
+  .topbar{padding:10px 14px;gap:8px;flex-wrap:wrap}
+  .logo b{font-size:16px}
+  .logo span{font-size:9.5px;letter-spacing:1.5px}
+  .nav{order:3;width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .nav::-webkit-scrollbar{display:none}
+  .nav button{padding:7px 13px;font-size:13px;white-space:nowrap;flex:none}
+  .top-progress{display:none}
+  main{padding:16px 12px 60px}
+  .sum-stats{grid-template-columns:repeat(2,1fr)}
+  .panel{padding:16px 14px;border-radius:14px}
+  .kd-card{padding:15px 14px;border-radius:14px}
+  .qcard{padding:18px 15px}
+  .qtext{font-size:15.5px}
+  .opt{padding:12px 13px}
+  .hero{gap:16px}
+  .ring{width:102px;height:102px}
+  .ring-in{width:80px;height:80px}
+  .ring-in b{font-size:18px}
+  .hero-info h1{font-size:20px}
+  .cta-row .btn{flex:1;justify-content:center}
+  .ch-head{flex-direction:column;gap:12px}
+  .ch-prog{width:100%}
+  .ch-prog .btn{flex:1;justify-content:center}
+  .kd-top{row-gap:8px}
+  .kd-title{min-width:150px;font-size:15px}
+  table.kt{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .mnemo{font-size:12.5px}
+  .explain{padding:13px 14px}
+  .sum-wrap{gap:16px}
+  .qbar{row-gap:8px}
+  .qnext .btn{width:100%;justify-content:center}
+  .kb-hint{display:none}
+  .kd-fig{padding:10px 10px 8px}
+}
+@media(max-width:520px){
+  .dg-pg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .dg-pg .dg-harrow{display:none}
+  .dg-spectrum .dg-varrow{order:3;width:100%}
+  .dg-bar{grid-template-columns:62px 1fr 38px;gap:7px}
+  .dg-blab{font-size:12px}
+  .opt .ol{width:24px;height:24px;font-size:12px}
+  .stats-row{gap:10px}
+  .stat{padding:12px 13px}
+  .stat b{font-size:19px}
+  .hero-exam .exam-pill{font-size:11px;padding:4px 9px}
+  .kd-acts button{padding:4px 9px;font-size:11.5px}
+  .kd-acts{width:100%;justify-content:flex-start}
+  .route-step{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+<div class="bg-fx"><div class="orb o1"></div><div class="orb o2"></div></div>
+
+<header class="topbar">
+  <div class="logo"><b>软考中项知识库</b><span>SYSTEM INTEGRATION · 2026</span></div>
+  <nav class="nav" id="nav">
+    <button data-v="dash" class="on">仪表盘</button>
+    <button data-v="learn">章节学习</button>
+    <button data-v="quiz">刷题实战</button>
+    <button data-v="wrong">错题本<span class="nbadge" id="wrongBadge" style="display:none">0</span></button>
+    <button data-v="search">搜索</button>
+  </nav>
+  <div class="top-progress" id="topProgress"><b>0%</b>总进度</div>
+</header>
+
+<main>
+  <section class="view on" id="v-dash"></section>
+  <section class="view" id="v-learn"></section>
+  <section class="view" id="v-quiz"></section>
+  <section class="view" id="v-wrong"></section>
+  <section class="view" id="v-search"></section>
+</main>
+
+<script>
+/* ======================================================
+   数据区 —— 后续章节按同样格式往 CHAPTERS 里追加即可
+   卡片: { t:标题, f:'high|mid|low', s:星级1-3, b:正文HTML, m:助记口诀 }
+   题目: { q:题干, o:[四个选项], a:正确答案下标, e:解析, k:考点 }
+====================================================== */
+const SECTIONS = [
+  {key:'pm',  name:'项目管理核心', range:'第9–14章', color:'#8b5cf6', desc:'案例主战场 · 两科通吃 · 最高优先级'},
+  {key:'it',  name:'IT技术基础',   range:'第1–8章',  color:'#22d3ee', desc:'基础知识科粮仓 · 选择题分值大户'},
+  {key:'aux', name:'辅助知识',     range:'第15–18章', color:'#fbbf24', desc:'考前突击 · 高性价比'},
+];
+
+const CHAPTERS = [
+  {id:1,  title:'信息化发展',         sec:'it',  page:1},
+  {id:2,  title:'信息技术发展',       sec:'it',  page:50},
+  {id:3,  title:'信息技术服务',       sec:'it',  page:95},
+  {id:4,  title:'信息系统架构',       sec:'it',  page:136},
+  {id:5,  title:'软件工程',           sec:'it',  page:202},
+  {id:6,  title:'数据工程',           sec:'it',  page:234},
+  {id:7,  title:'软硬件系统集成',     sec:'it',  page:259},
+  {id:8,  title:'信息安全工程',       sec:'it',  page:279},
+  {id:9,  title:'项目管理概论',       sec:'pm',  page:303, cards:[
+    {t:'项目是什么——一句话定义', f:'high', s:3, m:'临时 + 独特 = 项目；项目会散场，成果留得长。', b:`
+<p><b>官方定义：</b>项目是为创造<b>独特的产品、服务或成果</b>而进行的<b>临时性</b>工作。</p>
+<p>把定义拆成三个关键词来理解：</p>
+<ul>
+<li><b>独特</b>：做出来的东西是独一无二的。哪怕两个项目很相似，因为时间、地点、干系人不同，它们依然是两个不同的项目。</li>
+<li><b>临时</b>：有明确的起点和终点，干完就"散场"。注意：临时 ≠ 工期短，有的项目要干好几年，但它依然是临时性工作。</li>
+<li><b>成果</b>：可以是一件<b>产品</b>（一套信息系统）、一项<b>服务</b>（运维外包服务），也可以是一个<b>成果</b>（一份研究报告）。</li>
+</ul>
+<div class="pit"><b>新手坑：</b>"临时"说的是项目<b>工作</b>是临时的，不是成果临时的。"开发一套 OA 系统"是项目（临时），但系统建成后要长期运行使用（成果长久）。</div>
+<div class="tip"><b>秒判技巧：</b>判断"是不是项目"就看两点——<b>有明确的起止时间吗（临时）？做出来的东西独一无二吗（独特）？</b>两个都满足才是项目。</div>`},
+    {t:'项目的三大特性', f:'high', s:3, m:'一独渐：临时、独特、渐进明细。', b:`
+<ul>
+<li><b>临时性（一次性）</b>：有明确起点终点，团队随项目组建、随结束解散。</li>
+<li><b>独特性</b>：可交付成果独一无二，没有完全相同的两个项目。</li>
+<li><b>渐进明细</b>：随着信息逐渐增加，计划和文档<b>逐步细化</b>。项目早期"看不清"是正常现象，不是失职。</li>
+</ul>
+<table class="kt"><tr><th>特性</th><th>一句话理解</th><th>考试坑点</th></tr>
+<tr><td>临时性</td><td>有头有尾，干完散场</td><td>临时 ≠ 时间短；成果可以是长期的</td></tr>
+<tr><td>独特性</td><td>成果独一无二</td><td>常与"重复性运营"对比出题</td></tr>
+<tr><td>渐进明细</td><td>计划随进展逐步细化</td><td>≠ 范围蔓延（未经批准擅自加需求）</td></tr></table>`},
+    {t:'项目 vs 运营——一张表分清', f:'high', s:3, m:'项目干一次，运营天天见。', b:`
+<table class="kt"><tr><th>维度</th><th>项目</th><th>运营</th></tr>
+<tr><td>持续时间</td><td>临时性，有终点</td><td>持续进行，周而复始</td></tr>
+<tr><td>工作性质</td><td>独特、创新</td><td>重复、标准化</td></tr>
+<tr><td>目标</td><td>实现特定目标后结束</td><td>维持业务正常运转</td></tr>
+<tr><td>组织形式</td><td>临时组建的团队</td><td>固定的职能部门</td></tr>
+<tr><td>结果</td><td>渐进明细，逐步清晰</td><td>结果可预测、可复制</td></tr></table>
+<p>举例对照：</p>
+<ul>
+<li><b>是项目：</b>开发一套管理系统 / 一次系统大版本升级改造 / 承办一届运动会。</li>
+<li><b>是运营：</b>每天的日常运维巡检 / 流水线装配 / 每月例行财务报表。</li>
+</ul>
+<div class="pit"><b>易混点：</b>同样是"运维"，日常巡检处理是<b>运营</b>；"对系统进行一次升级改造工程"是<b>项目</b>。看它是"重复进行"还是"一次性完成"。</div>`},
+    {t:'什么是项目管理', f:'mid', s:2, m:'范围、进度、成本三支柱，质量压舱心不慌。', b:`
+<p><b>定义：</b>在项目活动中综合运用<b>知识、技能、工具与技术</b>，使项目在<b>有限资源</b>约束下实现甚至超过设定的需求和期望。</p>
+<p><b>核心矛盾：</b>资源有限（人、钱、时间），期望无限。项目管理本质上是一门<b>平衡的艺术</b>。</p>
+<p><b>三重约束（铁三角）：</b>范围（S）、时间（T）、成本（C）构成三角形的三条边，任何一边变化都会牵动其他两边，<b>质量</b>居于中心随权衡而波动。</p>
+<figure class="kd-fig">
+<svg class="tri" viewBox="0 0 400 264" role="img" aria-label="项目三重约束铁三角示意图">
+  <polygon points="200,34 74,212 326,212" fill="rgba(139,92,246,.08)" stroke="#8b5cf6" stroke-width="1.6" stroke-opacity=".65"/>
+  <circle cx="200" cy="34" r="5" fill="#a78bfa"/>
+  <circle cx="74" cy="212" r="5" fill="#67e8f9"/>
+  <circle cx="326" cy="212" r="5" fill="#fbbf24"/>
+  <text x="200" y="20" text-anchor="middle" fill="#cfc8ff" font-size="15" font-weight="600">时间 T</text>
+  <text x="62" y="238" text-anchor="end" fill="#a5e8f5" font-size="15" font-weight="600">成本 C</text>
+  <text x="338" y="238" text-anchor="start" fill="#fde68a" font-size="15" font-weight="600">范围 S</text>
+  <text x="200" y="140" text-anchor="middle" fill="#e8ecf8" font-size="17" font-weight="700">质 量</text>
+  <text x="200" y="162" text-anchor="middle" fill="#8a92b0" font-size="12">随三条边的权衡而波动</text>
+  <text x="200" y="256" text-anchor="middle" fill="#7a82a3" font-size="11.5">牵动任何一边，其余两边与质量都会受影响</text>
+</svg>
+<figcaption>三重约束"铁三角"——考试画图分析的常客</figcaption>
+</figure>
+<div class="tip">考试常见表述："项目经理的职责就是在范围、进度、成本之间进行权衡，同时保证质量"——理解这句话就能秒杀相关选择题。</div>`},
+    {t:'PMBOK 发展史：第6版 vs 第7版', f:'high', s:3, m:'6版"5+10+49"，7版"12原则+8绩效域"。', b:`
+<ul>
+<li>PMBOK 是美国项目管理协会（<b>PMI</b>）发布的《项目管理知识体系指南》，是全球项目管理的权威标准。</li>
+<li><b>第6版（2017）</b>：5 大过程组 + 10 大知识领域 + 49 个过程——典型的<b>过程导向</b>思维。</li>
+<li><b>第7版（2021）</b>：12 项项目管理原则 + 8 大绩效域——转向<b>原则导向 + 价值交付</b>。</li>
+</ul>
+<div class="tip">中项第3版教材按第7版理念编写：第10–14章按<b>五大过程组</b>展开，同时保留了第6版的经典过程知识。两套框架的数字都要记牢，选择题最爱考数字对应关系。</div>`},
+    {t:'项目成功的标准', f:'mid', s:2, m:'铁三角只是及格线，干系人点头才算赢。', b:`
+<p>新手最容易以为"按期、按预算、达范围、合质量 = 成功"，考试中这种说法<b>太绝对</b>。</p>
+<p>项目成功的标准是<b>多维的</b>，通常包括：</p>
+<ul>
+<li>达成商业目标和预期收益；</li>
+<li>干系人的认可与满意度；</li>
+<li>成果被实际使用并产生价值；</li>
+<li>团队成员的成长等。</li>
+</ul>
+<p>两个要点：① 成功标准<b>因项目而异</b>，没有统一模板；② 应<b>尽早与干系人达成共识</b>，并在项目过程中持续复审。</p>`},
+    {t:'项目 / 项目集 / 项目组合——三层结构', f:'high', s:3, m:'组合对战略，项目集求协同，项目干具体。', b:`
+<ul>
+<li><b>项目</b>：创造独特成果的一次性工作——战术执行层。</li>
+<li><b>项目集</b>：一组<b>相互关联</b>的项目（含子项目集和活动），通过<b>协调管理</b>获得单独管理时无法获得的效益，追求 <b>1+1&gt;2</b> 的协同效应。例：智慧城市项目集下的交通、政务、医疗等子项目。</li>
+<li><b>项目组合</b>：项目、项目集、子组合和<b>运营</b>工作的集合，为实现<b>战略目标</b>服务。组合内的项目之间<b>可以毫不相关</b>，组合层面对项目有取舍（做 / 不做 / 缓做）。</li>
+</ul>
+<figure class="kd-fig">
+<div class="dg">
+  <div class="dg-box" style="border-color:rgba(251,191,36,.5);background:rgba(251,191,36,.05)">
+    <b style="color:#fde68a">项目组合</b><span>对齐战略目标 · 内部项目可互不相关 · 有取舍（做 / 不做 / 缓做）</span>
+  </div>
+  <div class="dg-varrow">▼ 包含</div>
+  <div class="dg-box" style="border-color:rgba(139,92,246,.55);background:rgba(139,92,246,.07)">
+    <b style="color:#cfc8ff">项目集</b><span>相互关联的项目 · 协调管理 · 追求 1+1＞2 的协同效益</span>
+  </div>
+  <div class="dg-varrow">▼ 包含</div>
+  <div class="dg-box" style="border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.05)">
+    <b style="color:#a5e8f5">项目</b><span>临时性工作 · 创造独特成果</span>
+  </div>
+</div>
+<figcaption>自上而下：战略取舍 → 协同管理 → 一次性执行</figcaption>
+</figure>
+<div class="pit"><b>区分题眼：</b>看到"相互关联、协调管理、协同效益"→ 选<b>项目集</b>；看到"战略目标、战略价值"→ 选<b>项目组合</b>。</div>`},
+    {t:'事业环境因素（EEF）', f:'high', s:3, m:'控制不了的都是环境。', b:`
+<p><b>定义：</b>项目团队<b>通常无法控制</b>、但会影响项目各种效果的条件，存在于组织内部和外部。</p>
+<p><b>内部 EEF（常见）：</b></p>
+<ul>
+<li>组织文化、组织结构、治理框架；</li>
+<li>设施与物理资源、现有软硬件系统（如 ERP）；</li>
+<li>人事管理制度（如员工休假政策）。</li>
+</ul>
+<p><b>外部 EEF（常见）：</b></p>
+<ul>
+<li>法律法规、行业标准与监管；</li>
+<li>市场条件、经济环境；</li>
+<li>商业数据库、学术研究与技术趋势；物理环境（气候、地理）。</li>
+</ul>
+<div class="tip">EEF 不全是约束，也是可以利用的<b>输入</b>——比如商业数据库可以辅助估算，技术趋势可以指导方案选型。</div>`},
+    {t:'组织过程资产（OPA）', f:'high', s:3, m:'家底能用又能改，用完记得还回去。', b:`
+<p><b>定义：</b>执行组织使用的<b>政策、流程、模板、程序和知识库</b>，项目团队可以<b>主动使用、更新和贡献</b>。</p>
+<ul>
+<li><b>流程资产</b>：标准流程、政策、模板、指南、变更控制程序等。</li>
+<li><b>数据与知识资产</b>：历史项目档案、经验教训库、度量数据、估算数据库等。</li>
+</ul>
+<p>OPA 是组织多年积累的"家底"，越用越厚——项目结束后，经验教训要<b>归档回馈</b>给 OPA，供后来的项目复用。</p>`},
+    {t:'EEF vs OPA 一秒判别法', f:'high', s:3, m:'改不了的是环境，改得了的是家底。', b:`
+<p>拿到题目先问三个问题：</p>
+<ul>
+<li>团队<b>改得动</b>吗？改不动 → EEF；改得动 → OPA。</li>
+<li>来自<b>外部</b>（政府、市场、行业）？→ 基本都是 EEF。</li>
+<li>是<b>内部积累</b>的模板 / 流程 / 历史资料？→ OPA。</li>
+</ul>
+<figure class="kd-fig">
+<div class="dg dg-2">
+  <div class="dg-box" style="text-align:left;border-color:rgba(248,113,113,.45);background:rgba(248,113,113,.04)">
+    <b style="color:#fda4af">EEF · 事业环境因素</b>
+    <span style="display:block;margin:2px 0 8px">改不动 · 只能去适应和利用</span>
+    <span style="display:block;line-height:1.9">· 政府法规、行业标准<br>· 市场与经济环境<br>· 组织文化、结构、人事制度</span>
+  </div>
+  <div class="dg-box" style="text-align:left;border-color:rgba(52,211,153,.45);background:rgba(52,211,153,.04)">
+    <b style="color:#6ee7b7">OPA · 组织过程资产</b>
+    <span style="display:block;margin:2px 0 8px">用得了 · 还能更新和回馈</span>
+    <span style="display:block;line-height:1.9">· 模板、流程、变更控制程序<br>· 历史项目档案<br>· 经验教训库、估算数据</span>
+  </div>
+</div>
+<figcaption>一句口诀：改不了的是"环境"，改得了的是"家底"</figcaption>
+</figure>
+<table class="kt"><tr><th>条目</th><th>归属</th></tr>
+<tr><td>政府法规、行业标准、市场条件</td><td>EEF（外部）</td></tr>
+<tr><td>组织文化、组织结构、人事制度</td><td>EEF（内部）</td></tr>
+<tr><td>模板、流程、指南、变更控制程序</td><td>OPA</td></tr>
+<tr><td>历史项目档案、经验教训库</td><td>OPA</td></tr></table>`},
+    {t:'组织结构类型与项目经理权力', f:'high', s:3, m:'权力看"型"号：职能最小，项目最大；矩阵居中分弱平强。', b:`
+<table class="kt"><tr><th>组织类型</th><th>项目经理角色</th><th>PM 权力</th></tr>
+<tr><td>职能型</td><td>兼职协调员，几乎无权</td><td>极小</td></tr>
+<tr><td>弱矩阵</td><td>兼职联络员 / 协调员</td><td>小</td></tr>
+<tr><td>平衡矩阵</td><td>与职能经理权力相当</td><td>中</td></tr>
+<tr><td>强矩阵</td><td>全职项目经理</td><td>较大</td></tr>
+<tr><td>项目型</td><td>全职项目经理，直接掌控资源</td><td>最大</td></tr></table>
+<figure class="kd-fig">
+<div class="dg">
+  <div class="dg-bar"><span class="dg-blab">职能型</span><div class="dg-btrack"><i style="width:12%"></i></div><span class="dg-bval">极小</span></div>
+  <div class="dg-bar"><span class="dg-blab">弱矩阵</span><div class="dg-btrack"><i style="width:30%"></i></div><span class="dg-bval">小</span></div>
+  <div class="dg-bar"><span class="dg-blab">平衡矩阵</span><div class="dg-btrack"><i style="width:52%"></i></div><span class="dg-bval">中</span></div>
+  <div class="dg-bar"><span class="dg-blab">强矩阵</span><div class="dg-btrack"><i style="width:76%"></i></div><span class="dg-bval">较大</span></div>
+  <div class="dg-bar"><span class="dg-blab">项目型</span><div class="dg-btrack"><i style="width:100%"></i></div><span class="dg-bval">最大</span></div>
+</div>
+<figcaption>项目经理权力：职能型 → 项目型 一路走高</figcaption>
+</figure>
+<p>记忆主线：从职能型到项目型，<b>项目经理的权力一路变大</b>；矩阵型资源利用率高，但存在"双重汇报"的管理复杂性。另有复合型（多种结构混合）。</p>`},
+    {t:'PMO 的三种类型', f:'mid', s:2, m:'支持给服务，控制定规矩，指令直接管。', b:`
+<p>PMO（项目管理办公室）按<b>控制程度</b>从低到高分三类：</p>
+<ul>
+<li><b>支持型</b>：扮演顾问角色，提供模板、培训、经验教训，控制度<b>最低</b>。</li>
+<li><b>控制型</b>：定规矩——要求使用统一流程、模板、合规框架，控制度<b>中等</b>。</li>
+<li><b>指令型</b>：直接管理和指挥项目，控制度<b>最高</b>。</li>
+</ul>
+<figure class="kd-fig">
+<div class="dg dg-3">
+  <div class="dg-box" style="border-color:rgba(34,211,238,.45);background:rgba(34,211,238,.05)">
+    <b style="color:#a5e8f5">支持型</b><span>当顾问 · 给模板给培训</span><i class="dg-lv">控制度 ▂</i>
+  </div>
+  <div class="dg-box" style="border-color:rgba(139,92,246,.5);background:rgba(139,92,246,.08)">
+    <b style="color:#cfc8ff">控制型</b><span>定规矩 · 要求合规</span><i class="dg-lv">控制度 ▄</i>
+  </div>
+  <div class="dg-box" style="border-color:rgba(251,191,36,.5);background:rgba(251,191,36,.05)">
+    <b style="color:#fde68a">指令型</b><span>直接管理项目</span><i class="dg-lv">控制度 █</i>
+  </div>
+</div>
+<figcaption>PMO 控制程度：支持型 ＜ 控制型 ＜ 指令型</figcaption>
+</figure>`},
+    {t:'项目经理的角色与能力', f:'mid', s:2, m:'项目经理是"整合者"和"沟通者"，不是"超级员工"。', b:`
+<p>项目经理是项目成功的<b>第一责任人</b>：通过领导团队、沟通协调、整合资源，在约束条件下达成项目目标。</p>
+<ul>
+<li>对<b>上</b>：向发起人和管理层负责，管理期望、争取资源。</li>
+<li>对<b>内</b>：领导项目团队、营造协作环境，而不是事必躬亲。</li>
+<li>对<b>外</b>：与干系人持续沟通，维护关系。</li>
+</ul>
+<p><b>PMI 人才三角：</b>技术项目管理能力、领导力、战略与商业管理能力——三者兼备才是新时代的项目经理。</p>`},
+    {t:'项目生命周期与阶段关口', f:'high', s:3, m:'投入像山峰，风险先高后低，变更代价先低后高。', b:`
+<ul>
+<li><b>生命周期</b>：项目从启动到结束所经历的一系列阶段。</li>
+<li><b>阶段</b>：一组逻辑相关的项目活动，以一个或多个可交付成果的完成为标志。</li>
+<li><b>阶段关口</b>：阶段结束时的<b>正式审查决策点</b>——决定项目继续、调整还是提前终止。</li>
+</ul>
+<div class="pit"><b>阶段关口 ≠ 里程碑：</b>里程碑只是时间轴上的<b>事件标记</b>；关口是正式的<b>决策审查</b>，可能决定项目生死。</div>
+<p><b>三条经典曲线（高频考点）：</b></p>
+<ul>
+<li>成本与人力投入：开始低 → 执行期达到峰值 → 收尾降低，呈"山峰"形。</li>
+<li>风险与不确定性：开始<b>最高</b>，随进展逐渐降低。</li>
+<li>变更的代价：开始<b>最低</b>，随进展逐渐升高（后期改动代价巨大）。</li>
+</ul>
+<figure class="kd-fig kd-fig-scroll">
+<svg viewBox="0 0 560 300" role="img" aria-label="项目生命周期成本风险变更曲线图">
+  <line x1="92" y1="26" x2="120" y2="26" stroke="#a78bfa" stroke-width="3"/><text x="126" y="30" fill="#c4cbe4" font-size="12.5">成本与人力</text>
+  <line x1="236" y1="26" x2="264" y2="26" stroke="#22d3ee" stroke-width="3"/><text x="270" y="30" fill="#c4cbe4" font-size="12.5">变更的代价</text>
+  <line x1="384" y1="26" x2="412" y2="26" stroke="#f87171" stroke-width="3" stroke-dasharray="6 4"/><text x="418" y="30" fill="#c4cbe4" font-size="12.5">风险与不确定性</text>
+  <line x1="60" y1="252" x2="545" y2="252" stroke="#5f6784" stroke-width="1.5"/>
+  <path d="M545 252 l-9 -4 v8 z" fill="#5f6784"/>
+  <line x1="60" y1="252" x2="60" y2="48" stroke="#5f6784" stroke-width="1.5"/>
+  <path d="M60 48 l-4 9 h8 z" fill="#5f6784"/>
+  <text x="120" y="274" text-anchor="middle" fill="#8a92b0" font-size="12.5">启动</text>
+  <text x="235" y="274" text-anchor="middle" fill="#8a92b0" font-size="12.5">规划</text>
+  <text x="385" y="274" text-anchor="middle" fill="#8a92b0" font-size="12.5">执行</text>
+  <text x="515" y="274" text-anchor="middle" fill="#8a92b0" font-size="12.5">收尾</text>
+  <path d="M90 234 C 200 220, 290 98, 385 98 C 465 98, 505 218, 532 230" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round"/>
+  <path d="M90 76 C 220 86, 380 162, 530 214" fill="none" stroke="#f87171" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round"/>
+  <path d="M90 232 C 240 226, 400 122, 530 82" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round"/>
+  <text x="385" y="84" text-anchor="middle" fill="#a78bfa" font-size="12">峰值</text>
+</svg>
+<figcaption>生命周期三规律：投入像山峰 · 风险往下走 · 变更代价往上走</figcaption>
+</figure>`},
+    {t:'生命周期五种类型', f:'high', s:3, m:'明确用预测，多变用敏捷，部分明确用混合；迭代管打磨，增量管交付。', b:`
+<table class="kt"><tr><th>类型</th><th>适用场景</th><th>关键词</th></tr>
+<tr><td>预测型（瀑布）</td><td>需求明确、技术成熟、范围稳定</td><td>前期计划做足、一次交付</td></tr>
+<tr><td>迭代型</td><td>需求不确定，需反复细化</td><td>多轮循环、先粗后精</td></tr>
+<tr><td>增量型</td><td>可分批交付价值</td><td>小步快跑、逐批增加功能</td></tr>
+<tr><td>适应型（敏捷）</td><td>需求多变、环境不确定</td><td>短迭代、快速反馈、拥抱变化</td></tr>
+<tr><td>混合型</td><td>部分明确、部分多变</td><td>预测 + 敏捷组合</td></tr></table>
+<figure class="kd-fig">
+<div class="dg">
+  <div class="dg-row dg-spectrum">
+    <div class="dg-box" style="flex:1;border-color:rgba(139,92,246,.55);background:rgba(139,92,246,.08)">
+      <b style="color:#cfc8ff">预测型（瀑布）</b><span>需求明确 · 计划做足 · 一次交付</span>
+    </div>
+    <div class="dg-varrow" style="display:flex;align-items:center;padding:0 4px">需求不确定性递增 ⟶</div>
+    <div class="dg-box" style="flex:1;border-color:rgba(34,211,238,.55);background:rgba(34,211,238,.06)">
+      <b style="color:#a5e8f5">适应型（敏捷）</b><span>需求多变 · 短迭代 · 拥抱变化</span>
+    </div>
+  </div>
+  <div class="dg-row" style="justify-content:center">
+    <span class="dg-pill">迭代型 · 反复打磨</span>
+    <span class="dg-pill">增量型 · 分批交付</span>
+    <span class="dg-pill">混合型 · 两者组合</span>
+  </div>
+</div>
+<figcaption>越往右，需求越不确定、迭代周期越短</figcaption>
+</figure>
+<div class="tip"><b>迭代 vs 增量：</b>迭代是"同一个东西反复打磨得越来越好"；增量是"每批多交付一块可用的功能"。敏捷 = 迭代 + 增量。</div>`},
+    {t:'项目立项管理三部曲', f:'high', s:3, m:'先建议、再可研、后评估决策。', b:`
+<ol>
+<li><b>项目建议与立项申请</b>：论证项目的<b>必要性</b>，形成项目建议书，向上级 / 投资方提出立项申请。</li>
+<li><b>项目可行性研究</b>：从技术、经济、社会效益、运行环境等维度论证"值不值得做、能不能做成"，输出可行性研究报告。</li>
+<li><b>项目评估与决策</b>：一般由<b>第三方</b>对可研报告进行评估，输出评估报告，供决策者最终决定是否立项。</li>
+</ol>
+<div class="pit"><b>顺序不能乱：</b>先建议（为什么做）→ 再可研（能不能做）→ 后评估决策（决定做不做）。立项通过后，项目才进入正式启动阶段（制定项目章程）。</div>`},
+    {t:'可行性研究的三个层次', f:'mid', s:2, m:'由粗到细：机会 → 初步 → 详细。', b:`
+<ul>
+<li><b>机会研究</b>：鉴别投资方向，寻找投资可能性（最粗略）。</li>
+<li><b>初步可行性研究</b>：初步判断项目是否值得进入详细研究，识别重大风险。</li>
+<li><b>详细可行性研究</b>：深入、系统的技术经济论证，是最终决策的<b>主要依据</b>（最细致）。</li>
+</ul>
+<p><b>可研核心内容：</b>技术可行性、经济可行性、社会效益可行性、运行环境可行性（此外还有法律、安全等维度）。</p>`},
+    {t:'五大过程组', f:'high', s:3, m:'启规执监收；规划最大、监控贯穿。', b:`
+<ol>
+<li><b>启动</b>：制定项目章程、识别干系人——"授权干活"。</li>
+<li><b>规划</b>：编制各分项计划并整合为项目管理计划——包含的过程<b>数量最多</b>。</li>
+<li><b>执行</b>：按计划开展工作、交付成果，消耗资源最多。</li>
+<li><b>监控</b>：测量绩效、纠偏、控制变更——<b>贯穿项目始终</b>，不是执行完才监控。</li>
+<li><b>收尾</b>：验收、移交、总结、归档、释放资源。</li>
+</ol>
+<figure class="kd-fig">
+<div class="dg">
+  <div class="dg-row dg-pg">
+    <div class="dg-box"><b style="color:#cfc8ff">启动</b><span>章程 · 干系人</span></div>
+    <div class="dg-harrow">→</div>
+    <div class="dg-box" style="border-color:rgba(139,92,246,.8);background:rgba(139,92,246,.13)"><b style="color:#e0d9ff">规划</b><span>过程数量最多</span></div>
+    <div class="dg-harrow">→</div>
+    <div class="dg-box"><b style="color:#a5e8f5">执行</b><span>交付 · 耗资源最多</span></div>
+    <div class="dg-harrow">→</div>
+    <div class="dg-box"><b style="color:#fde68a">收尾</b><span>验收 · 移交 · 总结</span></div>
+  </div>
+  <div class="dg-box" style="border-style:dashed;border-color:rgba(248,113,113,.5);background:rgba(248,113,113,.04)">
+    <b style="color:#fda4af">监控过程组 · 贯穿项目始终</b><span>测量绩效 · 纠偏 · 控制变更，与其余四个过程组并行</span>
+  </div>
+  <div class="dg-note">过程组之间存在交叠，并非严格串行</div>
+</div>
+<figcaption>五大过程组："四步走 + 一条贯穿线"</figcaption>
+</figure>
+<div class="pit"><b>两大坑：</b>① 过程组之间<b>有交叠</b>，并非严格串行；② 过程组 ≠ 项目阶段——一个项目阶段内部可能经历启动、规划、执行、监控等多个过程组。</div>`},
+    {t:'12 项项目管理原则', f:'high', s:3, m:'4人 4法 4环境，管家打头阵。', b:`
+<p>第7版的 12 项原则按 4+4+4 分组记忆：</p>
+<ul>
+<li><b>人与协作（4）</b>：成为勤勉、尊重和关心他人的管家 / 营造协作的团队环境 / 有效地与干系人参与 / 展现领导力行为。</li>
+<li><b>价值与方法（4）</b>：聚焦价值 / 识别并响应系统交互 / 根据环境进行裁剪 / 将质量融入过程和可交付物。</li>
+<li><b>环境与变革（4）</b>：驾驭复杂性 / 优化风险应对 / 拥抱适应性和韧性 / 为实现预期的未来状态而推动变革。</li>
+</ul>
+<div class="tip">选择题常用错误表述当干扰项，如"拒绝一切变更""严格按计划绝不调整"——与原则精神（适应、拥抱变化、聚焦价值）相悖的都是错的。</div>`},
+    {t:'8 大绩效域', f:'high', s:3, m:'干团方法规划，工作交付测量不确定。', b:`
+<p>第7版的 8 个绩效域：</p>
+<p><b>干系人 / 团队 / 开发方法和生命周期 / 规划 / 项目工作 / 交付 / 测量 / 不确定性</b></p>
+<div class="pit"><b>易混点：</b>没有"风险绩效域"——叫<b>不确定性</b>绩效域，涵盖风险、模糊性、复杂性等更广范围；也没有单独的"采购""沟通"绩效域（相关内容并入项目工作、交付等绩效域）。这是数字型考点的经典陷阱。</div>`},
+    {t:'十大知识领域', f:'high', s:3, m:'整范进成质，资沟风采干。', b:`
+<p>口诀逐字展开（第6版框架，过程组考题仍高频使用）：</p>
+<ul>
+<li><b>整</b>合管理：把所有要素拧成一股绳（总协调）。</li>
+<li><b>范</b>围管理：做什么、不做什么。</li>
+<li><b>进</b>度管理：什么时候做完。</li>
+<li><b>成</b>本管理：花多少钱。</li>
+<li><b>质</b>量管理：做到什么标准。</li>
+<li><b>资</b>源管理：人和物从哪来、怎么管。</li>
+<li><b>沟</b>通管理：信息怎么传、传给谁。</li>
+<li><b>风</b>险管理：不确定性怎么应对。</li>
+<li><b>采</b>购管理：外包和合同怎么管。</li>
+<li><b>干</b>系人管理：让相关方满意并参与。</li>
+</ul>`},
+    {t:'价值交付系统', f:'mid', s:2, m:'项目是价值的搬运工，系统保证价值不断流。', b:`
+<p><b>定义：</b>为业务和干系人<b>创造价值</b>的一系列工作组件（项目、项目集、运营等）及其治理与交互机制构成的系统。</p>
+<ul>
+<li>项目不再只是"交付产品"，而是<b>价值流动</b>中的一环。</li>
+<li>价值是多维的：财务回报、社会效益、干系人收益等。</li>
+<li>系统通过治理机制和工作组件间的流程协同，保证价值持续流动。</li>
+</ul>`}
+  ], quiz:[
+    {q:'下列关于项目特性的说法，不正确的是（ ）', o:['项目工作具有明确的起点和终点，这是项目的临时性','项目交付的成果通常也是临时性的，项目结束后成果随之消失','项目的可交付成果具有独特性','项目具有渐进明细的特性，即随着信息增加而逐步细化'], a:1, k:'项目的定义与特性', e:'临时性指的是"项目工作"是临时的，但项目成果（如信息系统）往往是长期存在、持续使用的。"项目临时、成果长久"是本考点最经典的坑。'},
+    {q:'下列工作中，属于"项目"的是（ ）', o:['流水线上日常的产品装配','银行柜台每天的存取款业务','开发一套图书馆管理信息系统','公司每月例行的财务报表编制'], a:2, k:'项目与运营的区别', e:'项目的判断标准是"临时性 + 独特性"。A、B、D 都是持续性、重复性的日常运营工作；只有 C 有明确的起止时间且成果独特。'},
+    {q:'《项目管理知识体系指南》（PMBOK）第7版的核心框架是（ ）', o:['5大过程组、10大知识领域','12项项目管理原则、8个项目绩效域','6大过程组、13个知识领域','10项原则、5个绩效域'], a:1, k:'PMBOK的发展', e:'第6版是"5大过程组 + 10大知识领域（49个过程）"；第7版转向"原则 + 绩效域"框架，共12项原则、8个绩效域。注意数字对应不要记混。'},
+    {q:'一组相互关联且被协调管理的项目、子项目集和运营活动，通过协调管理获得单独管理时无法获得的效益，称为（ ）', o:['项目组合','项目集','大项目','项目群计划'], a:1, k:'项目、项目集与项目组合', e:'抓住关键词"相互关联 + 协调管理 + 1+1>2 的协同效益"——这是项目集。项目组合内的项目之间可以毫不相关，只为战略目标服务。'},
+    {q:'项目组合管理的核心目标是（ ）', o:['使每个项目的收益都最大化','实现组织的战略目标','协调项目之间的资源共享','降低单个项目的风险'], a:1, k:'项目、项目集与项目组合', e:'项目组合站在战略层面，关心"做哪些项目才能实现战略目标"，而不是替单个项目操心收益、资源或风险。'},
+    {q:'下列各项中，属于事业环境因素（EEF）的是（ ）', o:['组织的变更管理流程','以往项目的经验教训文档','政府颁布的行业法律法规','组织内部的历史项目模板'], a:2, k:'EEF与OPA', e:'EEF 是团队"控制不了"的因素，政府法规是典型的外部 EEF。A、B、D 都来自组织内部积累、团队可以主动使用和更新，属于 OPA。'},
+    {q:'下列各项中，属于组织过程资产（OPA）的是（ ）', o:['组织文化与组织结构','员工的休假政策','历史项目的进度计划模板','市场环境与竞争状况'], a:2, k:'EEF与OPA', e:'OPA 是组织内部积累的"家底"：模板、流程、历史信息、经验教训库。组织文化、休假政策虽来自内部，但属于团队无法更改的客观条件，划入 EEF；市场状况是外部 EEF。'},
+    {q:'关于事业环境因素（EEF）和组织过程资产（OPA），下列说法不正确的是（ ）', o:['EEF 是项目团队通常无法直接控制的因素','OPA 可由项目团队在项目过程中使用并更新','政府法规和市场条件属于 OPA','历史信息和经验教训库属于 OPA'], a:2, k:'EEF与OPA', e:'政府法规、市场条件是外部 EEF。判断口诀：改不了的是"环境"（EEF），能用能改的是"家底"（OPA）。'},
+    {q:'在下列组织结构中，项目经理权力最大的是（ ）', o:['职能型','弱矩阵型','强矩阵型','项目型'], a:3, k:'组织结构类型', e:'PM 权力排序：项目型 > 强矩阵 > 平衡矩阵 > 弱矩阵 > 职能型。项目型组织中全职项目经理对人和资源有近乎完全的控制权。'},
+    {q:'关于矩阵型组织结构，下列说法正确的是（ ）', o:['弱矩阵中项目经理的权力大于职能经理','平衡矩阵中项目经理与职能经理权力大体相当','强矩阵中职能经理拥有最高权力','矩阵型组织中不存在职能经理'], a:1, k:'组织结构类型', e:'矩阵型的权力天平：弱矩阵偏职能经理，平衡矩阵两者相当，强矩阵偏项目经理。"弱—平衡—强"描述的是项目经理权力由小到大。'},
+    {q:'当项目需求明确、技术方案成熟、范围相对稳定时，最适合采用的生命周期类型是（ ）', o:['预测型（瀑布型）','适应型（敏捷）','迭代型','混合型'], a:0, k:'生命周期类型', e:'需求明确、变更少 → 预测型：前期做足计划，按部就班执行，适合建筑、传统 IT 集成类项目。需求多变才考虑敏捷。'},
+    {q:'需求高度不确定、环境变化快、需要快速响应客户反馈的项目，宜采用（ ）', o:['预测型','适应型','增量型','职能型'], a:1, k:'生命周期类型', e:'适应型（敏捷 / 变更驱动）通过短迭代快速交付、持续收集反馈、拥抱变化，专门对付"需求不确定"。职能型是组织结构，不是生命周期，注意别被干扰项带偏。'},
+    {q:'项目先交付一批核心功能，随后每隔一段时间增加一批新功能，逐渐做全，这种生命周期属于（ ）', o:['预测型','增量型','迭代型','混合型'], a:1, k:'生命周期类型', e:'增量型的关键词是"分批交付可用成果"：每一批都是可用的，逐步加功能。迭代型的关键词是"反复打磨同一批成果"，先粗后细，注意区分。'},
+    {q:'项目立项管理的正确工作顺序是（ ）', o:['可行性研究 → 项目建议书 → 项目评估','项目建议与立项申请 → 可行性研究 → 项目评估与决策','项目评估 → 项目建议书 → 可行性研究','项目建议书 → 项目评估 → 可行性研究'], a:1, k:'项目立项管理', e:'记住主线："先建议（说明有必要做）、再可研（论证能不能做）、后评估决策（决定做不做）"。'},
+    {q:'项目可行性研究由浅入深的正确顺序是（ ）', o:['详细可行性研究 → 初步可行性研究 → 机会研究','机会研究 → 初步可行性研究 → 详细可行性研究','初步可行性研究 → 机会研究 → 详细可行性研究','机会研究 → 详细可行性研究 → 初步可行性研究'], a:1, k:'可行性研究', e:'由粗到细三步走：机会研究（找方向）→ 初步可研（值不值得深入）→ 详细可研（最终立项的主要依据）。'},
+    {q:'项目管理五大过程组的正确顺序是（ ）', o:['启动 → 规划 → 执行 → 监控 → 收尾','规划 → 启动 → 执行 → 监控 → 收尾','启动 → 规划 → 监控 → 执行 → 收尾','启动 → 执行 → 规划 → 监控 → 收尾'], a:0, k:'五大过程组', e:'口诀"启规执监收"。注意监控过程组贯穿项目始终，不是排在执行之后才开始的。'},
+    {q:'下列关于项目管理过程组的说法，不正确的是（ ）', o:['五大过程组之间存在交叠，并非严格串行','监控过程组贯穿项目始终','规划过程组包含的过程数量最多','各过程组与项目阶段一一对应，每个阶段只经历一个过程组'], a:3, k:'五大过程组', e:'过程组 ≠ 项目阶段。一个项目阶段内部可能会经历启动、规划、执行、监控等多个过程组；过程组是"做事的逻辑分组"，阶段是"时间上的分段"。'},
+    {q:'下列不属于 PMBOK 第7版 12 项项目管理原则的是（ ）', o:['营造协作的团队环境','聚焦价值','严格按照计划执行，拒绝一切变更','驾驭复杂性'], a:2, k:'12项项目管理原则', e:'第7版强调适应性和拥抱变化（"拥抱适应性和韧性""优化风险应对"），"拒绝一切变更"与原则精神完全相悖。'},
+    {q:'下列不属于 PMBOK 第7版 8 大绩效域的是（ ）', o:['干系人绩效域','交付绩效域','风险绩效域','测量绩效域'], a:2, k:'8大绩效域', e:'第7版没有"风险绩效域"，取而代之的是"不确定性绩效域"，涵盖风险、模糊性、复杂性等更广的范围。这是数字型考点的经典陷阱。'},
+    {q:'下列不属于十大知识领域的是（ ）', o:['整合管理','范围管理','需求管理','采购管理'], a:2, k:'十大知识领域', e:'十大知识领域口诀"整范进成质，资沟风采干"：整合、范围、进度、成本、质量、资源、沟通、风险、采购、干系人。没有独立的"需求管理"，需求属于范围管理的一部分。'},
+    {q:'关于项目成功的标准，下列说法正确的是（ ）', o:['只要按期、按预算完成，项目就算成功','成功标准由项目经理单方面确定','成功标准是多维的，应尽早与干系人达成共识','成功标准一经确定就不能改变'], a:2, k:'项目成功的标准', e:'按期按预算但没人用、干系人不买账的项目照样算失败。成功标准是多维的，需尽早明确共识并随项目演进而复审。选项过于绝对的表述一般是错的。'},
+    {q:'项目阶段结束时，对项目进行审查并决策"继续、调整或提前终止"的时间点，称为（ ）', o:['里程碑','阶段关口','关键路径节点','可交付物评审会'], a:1, k:'项目生命周期', e:'阶段关口（里程碑决策点）是阶段末的正式审查决策机制。里程碑只是时间轴上的事件标记，本身不做"继续 / 终止"这类决策。'},
+    {q:'关于项目生命周期中成本与人力投入的变化规律，正确的是（ ）', o:['开始时最高，之后逐渐下降','全程保持不变','开始和结束时较低，中间执行阶段最高','结束时最高'], a:2, k:'项目生命周期', e:'典型的"山峰曲线"：启动低 → 执行期达到峰值 → 收尾回落。同时记住另外两条曲线：风险与不确定性开始最高、逐渐降低；变更的代价开始最低、逐渐升高。'},
+    {q:'价值交付系统的核心目标是（ ）', o:['交付符合规格的产品','为组织和干系人创造价值','控制项目成本','缩短项目工期'], a:1, k:'价值交付系统', e:'价值交付系统把项目、项目集、运营等工作视为一体，强调它们共同为组织创造价值（包括财务回报和社会效益），而不是孤立地交付产品。'},
+    {q:'控制程度最低、主要扮演顾问和服务角色的 PMO 类型是（ ）', o:['支持型','控制型','指令型','战略型'], a:0, k:'PMO的类型', e:'PMO 三种类型控制度递增：支持型（给模板、培训、当顾问）→ 控制型（定规矩、要求合规）→ 指令型（直接接管管理项目）。'},
+    {q:'随着项目进展和信息不断增加，项目计划和文件逐步细化和完善的特性，称为（ ）', o:['范围蔓延','渐进明细','滚动式规划','敏捷开发'], a:1, k:'项目的特性', e:'渐进明细是项目的基本特性：早期信息少、计划粗，随进展逐步细化。注意与"范围蔓延"（未经批准擅自扩大范围，是坏事）区分，与"滚动式规划"（近期细、远期粗的规划方法）区分。'}
+  ]},
+  {id:10, title:'启动过程组',         sec:'pm',  page:354},
+  {id:11, title:'规划过程组',         sec:'pm',  page:365},
+  {id:12, title:'执行过程组',         sec:'pm',  page:465},
+  {id:13, title:'监控过程组',         sec:'pm',  page:497},
+  {id:14, title:'收尾过程组',         sec:'pm',  page:537},
+  {id:15, title:'组织保障',           sec:'aux', page:546},
+  {id:16, title:'监理基础知识',       sec:'aux', page:569},
+  {id:17, title:'法律法规和标准规范', sec:'aux', page:580},
+  {id:18, title:'职业道德规范',       sec:'aux', page:595},
+];
+
+/* ================= 本地存储 ================= */
+const SKEY='zx_v1';
+let S;
+try{ S=JSON.parse(localStorage.getItem(SKEY))||null }catch(e){ S=null }
+if(!S) S={mastered:{},fav:{},wrong:{},qstats:{att:0,right:0},streak:{days:0,last:''},today:{d:'',n:0},lastCh:9};
+function save(){ localStorage.setItem(SKEY,JSON.stringify(S)) }
+function today(){ return new Date().toISOString().slice(0,10) }
+function initDaily(){
+  const t=today();
+  if(S.today.d!==t){ S.today={d:t,n:0} }
+  if(S.streak.last!==t){
+    const y=new Date(Date.now()-86400000).toISOString().slice(0,10);
+    S.streak.days = (S.streak.last===y)? S.streak.days+1 : 1;
+    S.streak.last=t;
+  }
+  save();
+}
+
+/* ================= 工具 ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/</g,'&lt;');
+function shuffle(a){ const r=a.slice(); for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]]} return r }
+function chById(id){ return CHAPTERS.find(c=>c.id===id) }
+function produced(){ return CHAPTERS.filter(c=>c.cards&&c.cards.length) }
+function totalCards(){ return produced().reduce((n,c)=>n+c.cards.length,0) }
+function chMastered(ch){ return ch.cards.filter((_,i)=>S.mastered[ch.id+'_'+i]).length }
+function totalMastered(){ return produced().reduce((n,c)=>n+chMastered(c),0) }
+function allQuestions(){ const r=[]; produced().forEach(c=>(c.quiz||[]).forEach((q,i)=>r.push({ch:c.id,qi:i,q}))); return r }
+function fmtSec(ms){ const s=Math.floor(ms/1000); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0') }
+const LETTERS=['A','B','C','D'];
+
+/* ================= 导航 ================= */
+function nav(v){
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+  document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
+  if(v==='dash')renderDash();
+  if(v==='learn')renderLearn();
+  if(v==='quiz')renderQuiz();
+  if(v==='wrong')renderWrong();
+  if(v==='search')renderSearch();
+  window.scrollTo({top:0});
+}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.v)));
+function updateBadge(){
+  const n=Object.keys(S.wrong).length;
+  const el=$('#wrongBadge');
+  el.style.display=n?'inline-block':'none';
+  el.textContent=n;
+}
+
+/* ================= 仪表盘 ================= */
+function ring(pct,color){
+  return `<div class="ring" style="background:conic-gradient(${color} ${pct*3.6}deg,rgba(255,255,255,.07) 0deg)">
+    <div class="ring-in"><b>${Math.round(pct*100)}%</b><span>总进度</span></div></div>`;
+}
+function renderDash(){
+  const tc=totalCards(), tm=totalMastered();
+  const pct=tc?tm/tc:0;
+  const acc=S.qstats.att?Math.round(S.qstats.right/S.qstats.att*100):0;
+  let secs='';
+  SECTIONS.forEach(sec=>{
+    const chs=CHAPTERS.filter(c=>c.sec===sec.key);
+    const m=chs.reduce((n,c)=>n+(c.cards?chMastered(c):0),0);
+    const t=chs.reduce((n,c)=>n+(c.cards?c.cards.length:0),0);
+    const p=t?m/t:0;
+    secs+=`<div class="sec-card">
+      <div class="sec-head"><b style="color:${sec.color}">${sec.name}</b><span>${sec.range}</span></div>
+      <div class="sec-desc">${sec.desc} · ${t?m+'/'+t+' 知识点':'待产出'}</div>
+      <div class="sec-bar"><i style="width:${p*100}%;background:linear-gradient(90deg,${sec.color},#22d3ee)"></i></div>
+      <div class="chips">${chs.map(c=>{
+        if(!c.cards) return `<span class="chip locked">${c.id} ${c.title} · 待产出</span>`;
+        const cm=chMastered(c), full=cm===c.cards.length;
+        return `<span class="chip ${full?'done':''}" onclick="goChapter(${c.id})">${c.id} ${c.title}${full?' ✓':' '+cm+'/'+c.cards.length}</span>`;
+      }).join('')}</div></div>`;
+  });
+  const last=chById(S.lastCh)||chById(9);
+  $('#v-dash').innerHTML=`
+  <div class="hero panel">
+    <div class="hero-info">
+      <h1>系统集成项目管理工程师 <span class="grad-text">备考作战图</span></h1>
+      <p>第3版教材 · 18 章 · 三大板块。以第9–14章项目管理核心为主战场，前8章IT技术保选择题，辅助章节考前突击。</p>
+      <div class="hero-exam">
+        <span class="exam-pill">基础知识 · 75 选择题</span>
+        <span class="exam-pill">应用技术 · 案例大题</span>
+        <span class="exam-pill">两科各 45 分及格</span>
+        <span class="exam-pill">已产出 ${produced().length}/18 章</span>
+      </div>
+      <div class="cta-row">
+        <button class="btn primary" onclick="goChapter(${last.id})">▸ 继续学习 · 第${last.id}章 ${last.title}</button>
+        <button class="btn" onclick="nav('quiz')">⚔ 进入刷题实战</button>
+      </div>
+    </div>
+    ${ring(pct,'#8b5cf6')}
+  </div>
+  <div class="stats-row">
+    <div class="stat"><b>${tm}<span style="font-size:13px;color:#7a82a3"> / ${tc}</span></b><span>已掌握知识点</span></div>
+    <div class="stat"><b>${S.qstats.att}</b><span>累计刷题数</span></div>
+    <div class="stat"><b>${acc}%</b><span>总正确率</span></div>
+    <div class="stat"><b>${S.streak.days} 天</b><span>连续打卡</span></div>
+  </div>
+  <div class="dash-sec-title">三大板块进度</div>
+  <div class="sec-cards">${secs}</div>
+  <div class="panel route-card">
+    <div class="dash-sec-title" style="margin:0">三轮学习路线</div>
+    <ol>
+      <div class="route-step"><b>第一轮 · 项目管理主线</b>第9→14章精读 + 刷题，先立起项目管理的骨架，案例科目根据地。<i>进行中</i></div>
+      <div class="route-step"><b>第二轮 · 选择题粮仓</b>第2、5、8章精读，第1、4、6章通读，第3、7章了解，主攻基础知识科。</div>
+      <div class="route-step"><b>第三轮 · 冲刺收官</b>第15–18章突击 + 高频考点速览 + 错题清零 + 模拟卷。</div>
+    </ol>
+  </div>`;
+  $('#topProgress').innerHTML=`<b>${Math.round(pct*100)}%</b>总进度`;
+}
+
+/* ================= 章节学习 ================= */
+let L={filter:'all'};
+function goChapter(id){ S.lastCh=id; save(); nav('learn') }
+function goChapterCard(id,idx){
+  S.lastCh=id; save(); nav('learn');
+  setTimeout(()=>{ const el=document.getElementById('kd_'+id+'_'+idx);
+    if(el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.add('flash');
+      setTimeout(()=>el.classList.remove('flash'),1700) } },60);
+}
+function toggleMaster(ch,i){
+  const k=ch+'_'+i;
+  if(S.mastered[k]) delete S.mastered[k]; else S.mastered[k]=true;
+  save(); renderLearn();
+}
+function toggleFav(ch,i){
+  const k=ch+'_'+i;
+  if(S.fav[k]) delete S.fav[k]; else S.fav[k]=true;
+  save(); renderLearn();
+}
+function setFilter(f){ L.filter=f; renderLearn() }
+function cardHtml(ch,c,i){
+  const key=ch+'_'+i;
+  const mastered=!!S.mastered[key], fav=!!S.fav[key];
+  const stars='★'.repeat(c.s)+'☆'.repeat(3-c.s);
+  const fname={high:'高频',mid:'中频',low:'低频'}[c.f];
+  return `<div class="kd-card ${mastered?'mastered':''}" id="kd_${key}">
+    <div class="kd-top">
+      <span class="badge ${c.f}">${fname}</span>
+      <span class="kd-title">${c.t}</span>
+      <span class="stars">${stars}</span>
+      <span class="kd-acts">
+        <button class="${mastered?'m-on':''}" onclick="toggleMaster(${ch},${i})">${mastered?'✓ 已掌握':'掌握'}</button>
+        <button class="${fav?'f-on':''}" onclick="toggleFav(${ch},${i})">${fav?'★ 已收藏':'☆ 收藏'}</button>
+      </span>
+    </div>
+    <div class="kd-body">${c.b}</div>
+    <div class="mnemo">${c.m}</div>
+  </div>`;
+}
+function renderLearn(){
+  const cur=chById(S.lastCh)||chById(9);
+  /* 手机端章节选择器 */
+  let opts='';
+  SECTIONS.forEach(sec=>{
+    opts+=`<optgroup label="${sec.name}（${sec.range}）">`;
+    CHAPTERS.filter(c=>c.sec===sec.key).forEach(c=>{
+      const st=(c.cards&&c.cards.length)?'':'（待产出）';
+      opts+=`<option value="${c.id}" ${c.id===cur.id?'selected':''}>第${c.id}章 ${c.title}${st}</option>`;
+    });
+    opts+='</optgroup>';
+  });
+  const sel=`<div class="ch-select"><label>章节</label><select onchange="goChapter(+this.value)">${opts}</select></div>`;
+  /* 上一章 / 下一章导航 */
+  const ids=CHAPTERS.map(c=>c.id);
+  const pi=ids.indexOf(cur.id);
+  let prevBtn='<button disabled>已是第一章</button>';
+  if(pi>0){ const p=chById(ids[pi-1]); prevBtn=`<button onclick="goChapter(${p.id})">◂ 第${p.id}章 ${p.title}</button>` }
+  let nextBtn='<button disabled>已是最后一章</button>';
+  if(pi<ids.length-1){ const n=chById(ids[pi+1]); nextBtn=`<button onclick="goChapter(${n.id})">第${n.id}章 ${n.title} ▸</button>` }
+  const chnav=`<div class="chnav">${prevBtn}${nextBtn}</div>`;
+  /* 侧栏 */
+  let side='';
+  SECTIONS.forEach(sec=>{
+    side+=`<div class="side-group"><h4><span>${sec.name}</span><span>${sec.range}</span></h4>`;
+    CHAPTERS.filter(c=>c.sec===sec.key).forEach(c=>{
+      if(!c.cards){ side+=`<div class="side-item locked"><span class="num">${c.id}</span><span class="nm">${c.title}</span><span class="cnt">待产出</span></div>`; return }
+      const m=chMastered(c), full=m===c.cards.length;
+      side+=`<div class="side-item ${c.id===cur.id?'on':''} ${full?'done':''}" onclick="goChapter(${c.id})">
+        <span class="num">${c.id}</span><span class="nm">${c.title}</span><span class="cnt">${full?'✓':m+'/'+c.cards.length}</span></div>`;
+    });
+    side+='</div>';
+  });
+  /* 内容 */
+  let content;
+  if(!cur.cards){
+    content=`<div class="panel empty-ch">
+      <b>第${cur.id}章 ${cur.title} · 内容待产出</b>
+      本知识库按"项目管理优先"路线逐章充实中。<br>回到 AI 对话发送「继续第${cur.id}章」，即可解锁本章知识点与实战题库。
+      <div><button class="btn primary" onclick="goChapter(9)">先去第9章看看效果</button></div>
+    </div>`;
+  }else{
+    let cards=cur.cards.map((c,i)=>({c,i}));
+    if(L.filter==='high') cards=cards.filter(x=>x.c.f==='high');
+    if(L.filter==='mid') cards=cards.filter(x=>x.c.f==='mid');
+    if(L.filter==='fav') cards=cards.filter(x=>S.fav[cur.id+'_'+x.i]);
+    const m=chMastered(cur);
+    content=`<div class="ch-head">
+      <div>
+        <h2><span class="chno">第 ${cur.id} 章</span>${cur.title}</h2>
+        <div class="ch-meta">
+          <span>教材页码 P${cur.page}</span><span>知识点 ${cur.cards.length} 个</span>
+          <span>实战题库 ${cur.quiz.length} 道</span><span>已掌握 ${m}/${cur.cards.length}</span>
+        </div>
+      </div>
+      <div class="ch-prog">
+        <div class="sec-bar"><i style="width:${m/cur.cards.length*100}%;background:linear-gradient(90deg,#6d5ae0,#22d3ee)"></i></div>
+        <button class="btn primary" onclick="startQuiz('ch',${cur.id})">刷本章 ${cur.quiz.length} 题</button>
+      </div>
+    </div>
+    <div class="filters">
+      <button class="fchip ${L.filter==='all'?'on':''}" onclick="setFilter('all')">全部 ${cur.cards.length}</button>
+      <button class="fchip ${L.filter==='high'?'on':''}" onclick="setFilter('high')">高频 ${cur.cards.filter(c=>c.f==='high').length}</button>
+      <button class="fchip ${L.filter==='mid'?'on':''}" onclick="setFilter('mid')">中频 ${cur.cards.filter(c=>c.f==='mid').length}</button>
+      <button class="fchip ${L.filter==='fav'?'on':''}" onclick="setFilter('fav')">收藏 ${Object.keys(S.fav).filter(k=>k.startsWith(cur.id+'_')).length}</button>
+    </div>
+    ${cards.length?cards.map(x=>cardHtml(cur.id,x.c,x.i)).join(''):'<div class="panel blank"><b>该筛选下暂无卡片</b></div>'}`;
+  }
+  $('#v-learn').innerHTML=`<div class="learn-wrap"><div class="sidebar">${side}</div><div>${sel}${content}${chnav}</div></div>`;
+}
+
+/* ================= 刷题实战 ================= */
+let Q=null, timerInt=null;
+function stopTimer(){ if(timerInt){clearInterval(timerInt);timerInt=null} }
+function startQuiz(mode,ch){
+  let pool=[], label='';
+  if(mode==='ch'){ const c=chById(ch); pool=(c.quiz||[]).map((_,i)=>({ch:c.id,qi:i})); label='第'+c.id+'章 '+c.title; }
+  if(mode==='mix'){ pool=shuffle(allQuestions()).slice(0,20).map(x=>({ch:x.ch,qi:x.qi})); label='随机混合 · 模拟实战'; }
+  if(mode==='wrong'){ pool=Object.keys(S.wrong).map(k=>{const [c,i]=k.split('_');return {ch:+c,qi:+i}}); label='错题重刷 · 直到清零'; }
+  if(!pool.length){ Q=null; renderQuiz(); return }
+  Q={mode,label,pool,idx:0,sel:null,results:Array(pool.length).fill(null),t0:Date.now(),phase:'run'};
+  nav('quiz');
+}
+function quizEntry(){
+  const wrongN=Object.keys(S.wrong).length;
+  const picks=produced().map(c=>`
+    <div class="pick-item" onclick="startQuiz('ch',${c.id})">
+      <span class="pno">${c.id}</span><span class="pnm">${c.title}</span><span class="pct">${c.quiz.length} 题</span>
+    </div>`).join('');
+  const locked=CHAPTERS.filter(c=>!c.cards).map(c=>`
+    <div class="pick-item locked"><span class="pno">${c.id}</span><span class="pnm">${c.title}</span><span class="pct">待产出</span></div>`).join('');
+  $('#v-quiz').innerHTML=`
+  <div class="mode-grid">
+    <div class="mode-card hot" onclick="renderQuizPick()">
+      <h3>▍章节刷题</h3><p>选定章节逐题攻克，学完一章刷一章，稳扎稳打。</p><span class="go">选择章节 ▸</span>
+    </div>
+    <div class="mode-card" onclick="startQuiz('mix')">
+      <h3>▍随机混合</h3><p>从已产出的所有章节随机抽取 20 题，模拟考场实战。</p><span class="go">立即开刷 ▸</span>
+    </div>
+    <div class="mode-card" onclick="startQuiz('wrong')">
+      <h3>▍错题重刷</h3><p>针对错题本反复轰炸，答对自动移出，直到清零。当前错题 ${wrongN} 道。</p>
+      <span class="go">${wrongN?'开始清错 ▸':'暂无错题 · 先去刷题 ▸'}</span>
+    </div>
+  </div>
+  <div class="panel quiz-pick" id="quizPick" style="display:none">
+    <h3>选择要刷的章节（已产出 ${produced().length} 章）</h3>
+    <div class="pick-list">${picks}${locked}</div>
+  </div>
+  <div class="panel" style="margin-top:20px;font-size:13.5px;color:#8a92b0">
+    <b style="color:#c4cbe4">刷题小贴士：</b>每道题作答后立即显示答案与新手向解析，并标注对应考点；答错的题自动进入错题本。
+    支持键盘操作：<b style="color:#a78bfa">1–4 / A–D</b> 选答案，<b style="color:#a78bfa">回车</b> 进入下一题。
+  </div>`;
+}
+function renderQuizPick(){ $('#quizPick').style.display='block'; $('#quizPick').scrollIntoView({behavior:'smooth'}) }
+function quizRunner(){
+  const entry=Q.pool[Q.idx];
+  const c=chById(entry.ch), q=c.quiz[entry.qi];
+  const answered=Q.sel!==null;
+  let opts='';
+  q.o.forEach((o,i)=>{
+    let cls='';
+    if(answered){
+      if(i===q.a) cls='correct';
+      else if(i===Q.sel) cls='wrong';
+      else cls='dim';
+    }
+    opts+=`<div class="opt ${cls}" onclick="answerQ(${i})">
+      <span class="ol">${LETTERS[i]}</span><span>${o}</span></div>`;
+  });
+  let explain='';
+  if(answered){
+    const ok=Q.sel===q.a;
+    explain=`<div class="explain">
+      <div class="er ${ok?'ok':'no'}">${ok?'✓ 回答正确':'✕ 回答错误 · 正确答案 '+LETTERS[q.a]}</div>
+      <p>${q.e}</p>
+      <span class="kpoint">考点 · ${q.k}</span>
+      <span class="kpoint" style="margin-left:6px">第${c.id}章 ${c.title}</span>
+    </div>`;
+  }
+  $('#v-quiz').innerHTML=`
+  <div class="qbar">
+    <span class="qm">${Q.label}</span>
+    <span class="qi">第 ${Q.idx+1} / ${Q.pool.length} 题</span>
+    <span class="qtimer" id="qtimer">${fmtSec(Date.now()-Q.t0)}</span>
+    <button class="quit" onclick="quitQuiz()">放弃本次</button>
+  </div>
+  <div class="qprog"><i style="width:${Q.idx/Q.pool.length*100}%"></i></div>
+  <div class="qcard">
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${opts}</div>
+    ${explain}
+    ${answered?`<div class="qnext"><button class="btn primary" onclick="nextQ()">${Q.idx===Q.pool.length-1?'查看成绩 ▸':'下一题 ▸'}</button></div>
+    <div class="kb-hint">回车键继续</div>`:''}
+  </div>`;
+  if(!timerInt) timerInt=setInterval(()=>{ const t=$('#qtimer'); if(t)t.textContent=fmtSec(Date.now()-Q.t0) },1000);
+}
+function quizSummary(){
+  stopTimer();
+  const total=Q.pool.length;
+  const right=Q.results.filter(r=>r===true).length;
+  const pct=Math.round(right/total*100);
+  const used=fmtSec(Date.now()-Q.t0);
+  const color=pct>=80?'#34d399':pct>=60?'#fbbf24':'#f87171';
+  const comment=pct>=90?'漂亮！继续保持这个手感':pct>=70?'不错，把错题弄懂就稳了':pct>=50?'及格线附近，重点照顾错题':'别灰心，先回知识点卡片补一补再来';
+  let review='';
+  Q.pool.forEach((e,i)=>{
+    const c=chById(e.ch), q=c.quiz[e.qi], r=Q.results[i];
+    if(r===null) return;
+    review+=`<div class="review-item ${r?'ok':'no'}">
+      <div class="rq">${i+1}. ${q.q}</div>
+      <div class="ra">${r?'<b class="good">✓ 正确</b>':'<b class="bad">✕ 错误</b>'} · 正确答案 ${LETTERS[q.a]} · 考点：${q.k} · 第${c.id}章</div>
+    </div>`;
+  });
+  $('#v-quiz').innerHTML=`
+  <div class="panel">
+    <div class="sum-wrap">
+      ${ring(pct/100,color)}
+      <div class="sum-info">
+        <h2>${pct>=60?'<span class="grad-text">本组战绩</span>':'<span style="color:#fda4af">本组战绩</span>'} · ${Q.label}</h2>
+        <p style="color:#8a92b0;font-size:13.5px;margin-bottom:14px">${comment}</p>
+        <div class="sum-stats">
+          <div class="stat"><b>${right}</b><span>答对</span></div>
+          <div class="stat"><b>${total-right}</b><span>答错</span></div>
+          <div class="stat"><b>${pct}%</b><span>正确率</span></div>
+          <div class="stat"><b>${used}</b><span>用时</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+      <button class="btn primary" onclick="startQuiz('${Q.mode}',${Q.pool[0].ch})">再刷一轮</button>
+      ${total-right?`<button class="btn" onclick="startQuiz('wrong')">只刷错题（${total-right} 道）</button>`:''}
+      <button class="btn ghost" onclick="quitQuiz()">返回刷题首页</button>
+    </div>
+    ${Q.mode==='ch'?`<div style="font-size:14.5px;color:#c4cbe4;margin-bottom:10px">逐题回顾</div>`:''}
+    ${review}
+  </div>`;
+}
+function renderQuiz(){ stopTimer(); if(!Q){ quizEntry(); return } if(Q.phase==='run'){ quizRunner() } else { quizSummary() } }
+function answerQ(i){
+  if(!Q||Q.sel!==null) return;
+  Q.sel=i;
+  const entry=Q.pool[Q.idx];
+  const c=chById(entry.ch), q=c.quiz[entry.qi];
+  const ok=i===q.a;
+  Q.results[Q.idx]=ok;
+  S.qstats.att++; if(ok) S.qstats.right++;
+  S.today.n++;
+  const key=entry.ch+'_'+entry.qi;
+  if(ok){ delete S.wrong[key] }
+  else{ const w=S.wrong[key]||{ch:entry.ch,qi:entry.qi,times:0,ts:Date.now()}; w.times++; w.ts=Date.now(); S.wrong[key]=w }
+  save(); updateBadge();
+  quizRunner();
+  setTimeout(()=>{ const ex=document.querySelector('.explain'); if(ex) ex.scrollIntoView({behavior:'smooth',block:'nearest'}) },80);
+}
+function nextQ(){
+  if(!Q||Q.sel===null) return;
+  Q.idx++; Q.sel=null;
+  if(Q.idx>=Q.pool.length){ Q.phase='done'; }
+  renderQuiz();
+}
+function quitQuiz(){ Q=null; stopTimer(); nav('quiz') }
+
+/* ================= 错题本 ================= */
+function removeWrong(k){ delete S.wrong[k]; save(); updateBadge(); renderWrong() }
+function renderWrong(){
+  const keys=Object.keys(S.wrong);
+  if(!keys.length){
+    $('#v-wrong').innerHTML=`<div class="panel blank"><b>错题本空空如也</b>
+      刷题中答错的题目会自动收录到这里。<br>清零错题本 = 考场安全感拉满。
+      <div><button class="btn primary" onclick="nav('quiz')">去刷题</button></div></div>`;
+    return;
+  }
+  const items=keys.map(k=>{
+    const w=S.wrong[k], c=chById(w.ch), q=c.quiz[w.qi];
+    const d=new Date(w.ts); const ds=`${d.getMonth()+1}/${d.getDate()}`;
+    return `<div class="wrong-item">
+      <div class="wq">${q.q}
+        <div class="wmeta">第${c.id}章 ${c.title} · 错 ${w.times} 次 · 最近 ${ds} · 正确答案 ${LETTERS[q.a]}</div>
+      </div>
+      <button class="del" onclick="removeWrong('${k}')">移除</button>
+    </div>`;
+  }).join('');
+  $('#v-wrong').innerHTML=`
+  <div class="ch-head">
+    <div><h2>错题本 · ${keys.length} 道</h2>
+    <div class="ch-meta"><span>答对后自动移出</span></div></div>
+    <div class="ch-prog">
+      <button class="btn primary" onclick="startQuiz('wrong')">一键重刷全部错题</button>
+    </div>
+  </div>${items}`;
+}
+
+/* ================= 搜索 ================= */
+let SQ='';
+function doSearch(v){ SQ=v; renderSearch() }
+function hi(text,q){
+  if(!q) return text;
+  const idx=text.toLowerCase().indexOf(q.toLowerCase());
+  if(idx<0) return esc(text.slice(0,80))+(text.length>80?'…':'');
+  const s=Math.max(0,idx-30);
+  const pre=text.slice(s,idx), match=text.slice(idx,idx+q.length), post=text.slice(idx+q.length,idx+q.length+70);
+  return (s>0?'…':'')+esc(pre)+'<mark>'+esc(match)+'</mark>'+esc(post)+(idx+q.length+70<text.length?'…':'');
+}
+function plain(html){ return html.replace(/<[^>]+>/g,' ') }
+function renderSearch(){
+  $('#v-search').innerHTML=`
+  <div class="search-box">
+    <input id="searchInput" placeholder="搜索知识点，如：挣值 / 阶段关口 / EEF / 敏捷 …" value="${SQ.replace(/"/g,'&quot;')}"
+      oninput="doSearch(this.value)">
+  </div><div id="searchResults"></div>`;
+  const inp=$('#searchInput');
+  if(SQ) inp.setSelectionRange(SQ.length,SQ.length);
+  if(!SQ){ $('#searchResults').innerHTML=`<div class="panel blank"><b>输入关键词，全库秒搜</b>支持标题和正文模糊搜索，点击结果直达知识点卡片。</div>`; return }
+  const results=[];
+  produced().forEach(c=>c.cards.forEach((cd,i)=>{
+    const hay=(cd.t+plain(cd.b)+cd.m).toLowerCase();
+    if(hay.includes(SQ.toLowerCase())) results.push({c,cd,i});
+  }));
+  if(!results.length){ $('#searchResults').innerHTML=`<div class="panel blank"><b>没有找到「${esc(SQ)}」</b>换个关键词试试，或去刷两道题冷静一下。</div>`; return }
+  $('#searchResults').innerHTML=results.slice(0,30).map(r=>`
+    <div class="result-item" onclick="goChapterCard(${r.c.id},${r.i})">
+      <div class="rt">${hi(r.cd.t,SQ)}</div>
+      <div class="rs">${hi(plain(r.cd.b),SQ)}</div>
+      <div class="rmeta">第${r.c.id}章 ${r.c.title} · ${{high:'高频',mid:'中频',low:'低频'}[r.cd.f]}</div>
+    </div>`).join('')+(results.length>30?`<div class="panel blank">共 ${results.length} 条结果，仅显示前 30 条，请用更精确的关键词</div>`:'');
+}
+
+/* ================= 键盘快捷键 ================= */
+document.addEventListener('keydown',e=>{
+  if(!Q||Q.phase!=='run') return;
+  const inInput=/INPUT|TEXTAREA/.test(document.activeElement.tagName);
+  if(inInput) return;
+  if(Q.sel===null){
+    const map={'1':0,'2':1,'3':2,'4':3,'a':0,'b':1,'c':2,'d':3};
+    const k=e.key.toLowerCase();
+    if(k in map){ e.preventDefault(); answerQ(map[k]) }
+  }else{
+    if(e.key==='Enter'||e.key==='ArrowRight'){ e.preventDefault(); nextQ() }
+  }
+});
+
+/* ================= 启动 ================= */
+initDaily();
+updateBadge();
+renderDash();
+</script>
+</body>
+</html>
