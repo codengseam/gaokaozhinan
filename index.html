@@ -333,23 +333,43 @@ table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0d
 .chnav button:hover:not(:disabled){border-color:rgba(139,122,255,.5)}
 .chnav button:disabled{opacity:.35;cursor:not-allowed}
 
+/* ================= 手机端汉堡抽屉导航 ================= */
+.menu-btn{display:none;flex:none;width:42px;height:42px;border-radius:11px;align-items:center;justify-content:center;
+  background:rgba(139,92,246,.12);border:1px solid rgba(139,122,255,.3);color:#cfc8ff;transition:.2s}
+.menu-btn:active{background:rgba(139,92,246,.28)}
+.menu-btn svg{width:21px;height:21px}
+.drawer-mask{position:fixed;inset:0;z-index:120;background:rgba(3,5,12,.62);backdrop-filter:blur(2px);
+  opacity:0;pointer-events:none;transition:opacity .25s ease}
+.drawer-mask.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:130;width:min(80vw,320px);display:flex;flex-direction:column;
+  padding:16px 14px calc(16px + env(safe-area-inset-bottom,0px));background:#0c0f1e;
+  border-right:1px solid rgba(139,122,255,.22);box-shadow:20px 0 60px rgba(0,0,0,.5);
+  transform:translateX(-105%);visibility:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  transition:transform .28s cubic-bezier(.2,.75,.3,1),visibility 0s .28s}
+.drawer.open{transform:none;visibility:visible;transition:transform .28s cubic-bezier(.2,.75,.3,1)}
+.drawer-head{padding:8px 8px 16px;border-bottom:1px solid rgba(139,122,255,.14);margin-bottom:12px}
+.drawer-head b{display:block;font-size:17px;background:linear-gradient(90deg,#a78bfa,#22d3ee);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.drawer-head span{font-size:10px;color:#7a82a3;letter-spacing:1.8px}
+.drawer .nav{display:flex;flex-direction:column;gap:6px;flex:none;width:auto;justify-content:flex-start;flex-wrap:nowrap}
+.drawer .nav button{display:flex;align-items:center;gap:11px;width:100%;min-height:52px;padding:12px 16px;
+  border-radius:13px;font-size:15px;justify-content:flex-start;text-align:left;white-space:nowrap}
+.drawer .nav button svg{width:20px;height:20px;flex:none;opacity:.9}
+.drawer .nav .nbadge{position:static;margin-left:auto;top:auto;right:auto;min-width:20px;height:20px;line-height:20px}
+
 /* ================= 响应式 ================= */
 @media(max-width:960px){
-  .stats-row{grid-template-columns:repeat(2,1fr)}
   .sec-cards{grid-template-columns:1fr}
-  .mode-grid{grid-template-columns:1fr}
+  .mode-grid{grid-template-columns:repeat(2,1fr)}
   .learn-wrap{grid-template-columns:minmax(0,1fr)}
   .sidebar{display:none}
   .ch-select{display:flex}
   .route-card ol{grid-template-columns:1fr}
-  .topbar{padding:10px 14px;gap:8px;flex-wrap:wrap}
-  .logo b{font-size:16px}
-  .logo span{font-size:10.5px;letter-spacing:1.5px}
-  .nav{order:3;flex:none;width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .nav::-webkit-scrollbar{display:none}
-  .nav button{padding:9px 14px;font-size:13px;white-space:nowrap;flex:none}
+  .topbar{padding:10px 16px;gap:8px;flex-wrap:wrap}
+  .nav{order:3;flex:none;width:100%;justify-content:center;flex-wrap:wrap}
+  .nav button{padding:9px 15px;font-size:13.5px}
   .top-progress{display:none}
-  main{padding:16px 12px 60px}
+  main{padding:18px 16px 70px}
   .sum-stats{grid-template-columns:repeat(2,1fr)}
   .panel{padding:16px 14px;border-radius:14px}
   .kd-card{padding:15px 14px;border-radius:14px}
@@ -398,22 +418,55 @@ table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0d
   .kd-acts{width:100%;justify-content:flex-start}
   .route-step{font-size:12.5px}
 }
+@media(max-width:767.98px){
+  /* 手机端：顶栏导航收进抽屉，汉堡按钮可见 */
+  .topbar .nav{display:none}
+  .menu-btn{display:inline-flex}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .mode-grid{grid-template-columns:1fr}
+  main{padding:16px 12px 60px}
+  .logo b{font-size:16px}
+  .logo span{font-size:10.5px;letter-spacing:1.5px}
+  /* 内容级横向滚动根治：横向流程图改纵向堆叠（箭头转竖向）、SVG 随宽度缩放、表格紧凑 */
+  .kd-fig-scroll .dg-row{flex-direction:column;min-width:0!important}
+  .kd-fig-scroll .dg-row>.dg-box{flex:none!important}
+  .kd-fig-scroll .dg-row>.dg-harrow{transform:rotate(90deg);align-self:center}
+  .kd-fig-scroll svg{min-width:0}
+  table.kt{font-size:12.5px}
+  table.kt th,table.kt td{padding:7px 9px}
+  .kd-body,.qtext,.explain,.mnemo{overflow-wrap:break-word}
+}
 </style>
 </head>
 <body>
 <div class="bg-fx"><div class="orb o1"></div><div class="orb o2"></div></div>
 
 <header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="打开导航菜单" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
   <div class="logo"><b>软考中项知识库</b><span>SYSTEM INTEGRATION · 2026</span></div>
   <nav class="nav" id="nav">
     <button data-v="dash" class="on">仪表盘</button>
     <button data-v="learn">章节学习</button>
     <button data-v="quiz">刷题实战</button>
-    <button data-v="wrong">错题本<span class="nbadge" id="wrongBadge" style="display:none">0</span></button>
+    <button data-v="wrong">错题本<span class="nbadge" id="wrongBadge" data-wrong style="display:none">0</span></button>
     <button data-v="search">搜索</button>
   </nav>
   <div class="top-progress" id="topProgress"><b>0%</b>总进度</div>
 </header>
+
+<div class="drawer-mask" id="drawerMask"></div>
+<aside class="drawer" id="drawer" aria-label="导航菜单">
+  <div class="drawer-head"><b>软考中项知识库</b><span>SYSTEM INTEGRATION · 2026</span></div>
+  <nav class="nav drawer-nav">
+    <button data-v="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>仪表盘</button>
+    <button data-v="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>章节学习</button>
+    <button data-v="quiz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg>刷题实战</button>
+    <button data-v="wrong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>错题本<span class="nbadge" data-wrong style="display:none">0</span></button>
+    <button data-v="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>搜索</button>
+  </nav>
+</aside>
 
 <main>
   <section class="view on" id="v-dash"></section>
@@ -3646,10 +3699,29 @@ function nav(v){
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.v)));
 function updateBadge(){
   const n=Object.keys(S.wrong).length;
-  const el=$('#wrongBadge');
-  el.style.display=n?'inline-block':'none';
-  el.textContent=n;
+  document.querySelectorAll('[data-wrong]').forEach(el=>{
+    el.style.display=n?'inline-block':'none';
+    el.textContent=n;
+  });
 }
+
+/* ================= 手机端抽屉导航 ================= */
+const drawerEl=$('#drawer'), drawerMask=$('#drawerMask'), menuBtn=$('#menuBtn');
+function openDrawer(){
+  drawerEl.classList.add('open'); drawerMask.classList.add('open');
+  menuBtn.setAttribute('aria-expanded','true');
+  document.body.style.overflow='hidden';
+}
+function closeDrawer(){
+  drawerEl.classList.remove('open'); drawerMask.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+menuBtn.addEventListener('click',()=>drawerEl.classList.contains('open')?closeDrawer():openDrawer());
+drawerMask.addEventListener('click',closeDrawer);
+document.querySelectorAll('.drawer-nav button').forEach(b=>b.addEventListener('click',closeDrawer));
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeDrawer() });
+window.addEventListener('resize',()=>{ if(window.innerWidth>767.98) closeDrawer() });
 
 /* ================= 仪表盘 ================= */
 function ring(pct,color){
