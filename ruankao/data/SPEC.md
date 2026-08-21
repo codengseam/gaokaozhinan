@@ -5,10 +5,12 @@
 
 ## 一、总体架构
 
-- 工作文件：`/workspace/ruankao/index.html`（写作 Agent **禁止直接修改**，只写自己的数据文件）
-- 每个 Agent 产出独立章节文件：`/workspace/ruankao/data/chNN.js`（NN=两位章号，如 ch02.js、ch13.js）
-- 真题分析产出：`/workspace/ruankao/data/exam-analysis.md`
-- 最终由总控用 merge 脚本合入 index.html
+> 项目总体规范（架构、命令、禁令）见上层 `../AGENTS.md` 与 `../README.md`；本文件只管"怎么写好一章"。
+
+- 数据源（唯一可编辑处）：`/workspace/ruankao/data/chNN.js`（NN=两位章号，01–18 共 18 个文件，全部章节均已源码化）
+- 写作 Agent **禁止直接修改** index.html 及其他章节文件，只写自己的 chNN.js
+- 真题考频依据：`/workspace/ruankao/data/exam-analysis.md`
+- 修改完成后由总控执行 `node scripts/merge.js`（幂等重建 index.html 数据区 + 全量校验 + 同步站点根副本）
 
 ## 二、chNN.js 文件格式契约（严格遵守）
 
