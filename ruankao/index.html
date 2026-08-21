@@ -125,7 +125,7 @@ main{max-width:1180px;margin:0 auto;padding:26px 22px 80px}
 .cta-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
 
 /* ================= 章节学习 ================= */
-.learn-wrap{display:grid;grid-template-columns:262px 1fr;gap:20px;align-items:start}
+.learn-wrap{display:grid;grid-template-columns:262px minmax(0,1fr);gap:20px;align-items:start}
 .sidebar{position:sticky;top:76px;max-height:calc(100vh - 100px);overflow-y:auto;display:flex;flex-direction:column;gap:16px}
 .side-group{background:rgba(15,19,36,.72);border:1px solid rgba(139,122,255,.14);border-radius:14px;padding:14px}
 .side-group h4{font-size:12.5px;color:#8a92b0;margin-bottom:9px;display:flex;justify-content:space-between;letter-spacing:1px}
@@ -338,16 +338,16 @@ table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0d
   .stats-row{grid-template-columns:repeat(2,1fr)}
   .sec-cards{grid-template-columns:1fr}
   .mode-grid{grid-template-columns:1fr}
-  .learn-wrap{grid-template-columns:1fr}
+  .learn-wrap{grid-template-columns:minmax(0,1fr)}
   .sidebar{display:none}
   .ch-select{display:flex}
   .route-card ol{grid-template-columns:1fr}
   .topbar{padding:10px 14px;gap:8px;flex-wrap:wrap}
   .logo b{font-size:16px}
-  .logo span{font-size:9.5px;letter-spacing:1.5px}
-  .nav{order:3;width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .logo span{font-size:10.5px;letter-spacing:1.5px}
+  .nav{order:3;flex:none;width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .nav::-webkit-scrollbar{display:none}
-  .nav button{padding:7px 13px;font-size:13px;white-space:nowrap;flex:none}
+  .nav button{padding:9px 14px;font-size:13px;white-space:nowrap;flex:none}
   .top-progress{display:none}
   main{padding:16px 12px 60px}
   .sum-stats{grid-template-columns:repeat(2,1fr)}
@@ -375,6 +375,13 @@ table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0d
   .qnext .btn{width:100%;justify-content:center}
   .kb-hint{display:none}
   .kd-fig{padding:10px 10px 8px}
+  /* 触控目标加大：移动端可点击元素高度不低于约40px */
+  .kd-acts button{min-height:40px;padding:8px 14px;font-size:12.5px}
+  .fchip{min-height:40px;padding:9px 15px}
+  .chip{min-height:40px;padding:8px 13px}
+  .badge{font-size:12px}
+  .qbar .quit{min-height:40px;padding:8px 14px}
+  .wrong-item .del{min-height:40px;padding:8px 14px}
 }
 @media(max-width:520px){
   .dg-pg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -386,8 +393,8 @@ table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0d
   .stats-row{gap:10px}
   .stat{padding:12px 13px}
   .stat b{font-size:19px}
-  .hero-exam .exam-pill{font-size:11px;padding:4px 9px}
-  .kd-acts button{padding:4px 9px;font-size:11.5px}
+  .hero-exam .exam-pill{font-size:12px;padding:5px 10px}
+  .kd-acts button{font-size:12px}
   .kd-acts{width:100%;justify-content:flex-start}
   .route-step{font-size:12.5px}
 }
