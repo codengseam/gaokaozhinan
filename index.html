@@ -56,6 +56,10 @@ a{color:inherit;text-decoration:none}
 .top-progress{flex:none;text-align:right;font-size:12px;color:#8a92b0}
 .top-progress b{display:block;font-size:17px;color:#a78bfa}
 
+/* ================= 全屏学习模式 ================= */
+body.fs-mode .topbar{display:none}
+body.fs-mode .sidebar{top:14px;max-height:calc(100vh - 28px)}
+
 /* ================= 布局 ================= */
 main{max-width:1180px;margin:0 auto;padding:26px 22px 80px}
 .view{display:none;animation:vfade .35s ease}
@@ -3687,6 +3691,7 @@ const LETTERS=['A','B','C','D'];
 
 /* ================= 导航 ================= */
 function nav(v){
+  if(v!=='learn'&&isFs()) exitFs(); // 离开章节学习页自动退出全屏
   document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
   if(v==='dash')renderDash();
@@ -3697,6 +3702,47 @@ function nav(v){
   window.scrollTo({top:0});
 }
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.v)));
+
+/* ================= 全屏学习模式（章节学习页） ================= */
+const FS_ICON_IN='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>';
+const FS_ICON_OUT='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>';
+function isFs(){ return document.body.classList.contains('fs-mode') }
+function fsBtnHtml(){
+  const on=isFs();
+  return `<button class="btn ghost fs-btn" onclick="toggleFs()" title="${on?'退出全屏学习模式':'全屏学习模式：隐藏浏览器与页面顶栏，专注学习'}">${on?FS_ICON_OUT:FS_ICON_IN}${on?'退出全屏':'全屏'}</button>`;
+}
+function setFsBtn(){
+  const on=isFs();
+  document.querySelectorAll('.fs-btn').forEach(b=>{
+    b.innerHTML=(on?FS_ICON_OUT:FS_ICON_IN)+(on?'退出全屏':'全屏');
+    b.title=on?'退出全屏学习模式':'全屏学习模式：隐藏浏览器与页面顶栏，专注学习';
+  });
+}
+function enterFs(){
+  document.body.classList.add('fs-mode'); // 隐藏页面顶栏（含移动端伪全屏兜底）
+  try{
+    const el=document.documentElement; // 整页进入浏览器全屏，隐藏地址栏/状态栏
+    const req=el.requestFullscreen||el.webkitRequestFullscreen;
+    if(req){ const p=req.call(el); if(p&&p.catch) p.catch(()=>{}) }
+  }catch(e){}
+  setFsBtn();
+}
+function exitFs(){
+  document.body.classList.remove('fs-mode');
+  try{
+    if(document.fullscreenElement||document.webkitFullscreenElement){
+      const ex=document.exitFullscreen||document.webkitExitFullscreen;
+      if(ex) ex.call(document);
+    }
+  }catch(e){}
+  setFsBtn();
+}
+function toggleFs(){ isFs()?exitFs():enterFs() }
+['fullscreenchange','webkitfullscreenchange'].forEach(ev=>document.addEventListener(ev,()=>{
+  if(!(document.fullscreenElement||document.webkitFullscreenElement)&&isFs()){
+    document.body.classList.remove('fs-mode'); setFsBtn(); // 浏览器退出全屏（如按 Esc）时同步恢复顶栏
+  }
+}));
 function updateBadge(){
   const n=Object.keys(S.wrong).length;
   document.querySelectorAll('[data-wrong]').forEach(el=>{
@@ -3720,7 +3766,7 @@ function closeDrawer(){
 menuBtn.addEventListener('click',()=>drawerEl.classList.contains('open')?closeDrawer():openDrawer());
 drawerMask.addEventListener('click',closeDrawer);
 document.querySelectorAll('.drawer-nav button').forEach(b=>b.addEventListener('click',closeDrawer));
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeDrawer() });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeDrawer(); if(isFs()) exitFs() } });
 window.addEventListener('resize',()=>{ if(window.innerWidth>767.98) closeDrawer() });
 
 /* ================= 仪表盘 ================= */
@@ -3883,6 +3929,7 @@ function renderLearn(){
       <div class="ch-prog">
         <div class="sec-bar"><i style="width:${m/cur.cards.length*100}%;background:linear-gradient(90deg,#6d5ae0,#22d3ee)"></i></div>
         <button class="btn primary" onclick="startQuiz('ch',${cur.id})">刷本章 ${cur.quiz.length} 题</button>
+        ${fsBtnHtml()}
       </div>
     </div>
     <div class="filters">
