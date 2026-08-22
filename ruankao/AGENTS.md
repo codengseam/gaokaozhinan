@@ -15,12 +15,15 @@
 ```
 ruankao/
 ├── index.html        ← 构建产物（唯一发布物，CSS+JS+全部数据内联）。禁止手改其数据区
+├── graph.html        ← 知识图谱独立页面（力导向图，样式与主站一致，导航互跳）
 ├── data/
 │   ├── ch01~ch18.js  ← 唯一数据源：每章一个文件（格式契约见 data/SPEC.md）
+│   ├── graph-data.json / graph-data.js ← 知识图谱数据（build-graph.js 生成，勿手改）
 │   ├── SPEC.md       ← 写作格式契约 + 交付 checklist（改内容必读）
 │   └── exam-analysis.md ← 真题考频分析（选题/定级依据）
 └── scripts/
-    └── merge.js      ← 构建器（build / check / sync）
+    ├── merge.js      ← 构建器（build / check / sync）
+    └── build-graph.js ← 图谱构建器：章节卡片 → 节点/边，改章节后重跑同步图谱
 
 /workspace/index.html ← 站点根副本（由 sync 自动生成，禁止手改）
 ```

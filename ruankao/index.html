@@ -456,6 +456,7 @@ table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0d
     <button data-v="quiz">刷题实战</button>
     <button data-v="wrong">错题本<span class="nbadge" id="wrongBadge" data-wrong style="display:none">0</span></button>
     <button data-v="search">搜索</button>
+    <button type="button" data-graph>🧠 知识图谱</button>
   </nav>
   <div class="top-progress" id="topProgress"><b>0%</b>总进度</div>
 </header>
@@ -469,6 +470,7 @@ table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0d
     <button data-v="quiz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg>刷题实战</button>
     <button data-v="wrong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>错题本<span class="nbadge" data-wrong style="display:none">0</span></button>
     <button data-v="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>搜索</button>
+    <button type="button" data-graph><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="5" cy="17" r="2.2"/><circle cx="12" cy="5" r="2.4"/><circle cx="19" cy="17" r="2.2"/><path d="M6.5 15.3 10.8 7.3M13.2 7.3 17.5 15.3M7.4 17h9.2"/></svg>🧠 知识图谱</button>
   </nav>
 </aside>
 
@@ -3692,7 +3694,7 @@ const LETTERS=['A','B','C','D'];
 /* ================= 导航 ================= */
 function nav(v){
   if(v!=='learn'&&isFs()) exitFs(); // 离开章节学习页自动退出全屏
-  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+  document.querySelectorAll('.nav button[data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
   if(v==='dash')renderDash();
   if(v==='learn')renderLearn();
@@ -3701,7 +3703,14 @@ function nav(v){
   if(v==='search')renderSearch();
   window.scrollTo({top:0});
 }
-document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.v)));
+document.querySelectorAll('.nav button[data-v]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.v)));
+
+/* ================= 知识图谱入口（独立页面，路径随部署位置自适应） ================= */
+function graphPath(){
+  // 站点根副本（/index.html）与 ruankao/index.html 均可正确跳转，file:// 同样适用
+  return /\/ruankao\//.test(location.pathname) ? 'graph.html' : 'ruankao/graph.html';
+}
+document.querySelectorAll('[data-graph]').forEach(b=>b.addEventListener('click',()=>{ location.href=graphPath() }));
 
 /* ================= 全屏学习模式（章节学习页） ================= */
 const FS_ICON_IN='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>';
@@ -3809,6 +3818,7 @@ function renderDash(){
       <div class="cta-row">
         <button class="btn primary" onclick="goChapter(${last.id})">▸ 继续学习 · 第${last.id}章 ${last.title}</button>
         <button class="btn" onclick="nav('quiz')">⚔ 进入刷题实战</button>
+        <button class="btn" onclick="location.href=graphPath()">🧠 知识图谱 · 联想学习</button>
       </div>
     </div>
     ${ring(pct,'#8b5cf6')}
@@ -4177,6 +4187,11 @@ document.addEventListener('keydown',e=>{
 initDaily();
 updateBadge();
 renderDash();
+/* 深链：#c章号 或 #c章号-卡片下标（知识图谱面板"查看完整内容"直达具体知识点卡片） */
+(function(){
+  const m=location.hash.match(/^#c(\d+)(?:-(\d+))?$/);
+  if(m){ const ch=+m[1]; if(m[2]!=null) goChapterCard(ch,+m[2]); else goChapter(ch) }
+})();
 </script>
 </body>
 </html>
