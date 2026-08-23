@@ -1,0 +1,6612 @@
+{
+ "meta": {
+  "version": "1.0",
+  "source": "软考中项（系统集成项目管理工程师）第3版教程 · 以本站 data/ch01~ch18 章节数据为准",
+  "generated": "2026-08-22"
+ },
+ "nodes": [
+  {
+   "id": "sec-pm",
+   "name": "项目管理核心",
+   "level": 1,
+   "importance": 5,
+   "difficulty": 4,
+   "type": "section",
+   "url": "",
+   "desc": "第9–14章：案例主战场，两科通吃，最高优先级",
+   "tags": [
+    "项目管理核心"
+   ]
+  },
+  {
+   "id": "sec-it",
+   "name": "IT技术基础",
+   "level": 1,
+   "importance": 4,
+   "difficulty": 3,
+   "type": "section",
+   "url": "",
+   "desc": "第1–8章：基础知识科分值大户",
+   "tags": [
+    "IT技术基础"
+   ]
+  },
+  {
+   "id": "sec-aux",
+   "name": "辅助知识",
+   "level": 1,
+   "importance": 3,
+   "difficulty": 2,
+   "type": "section",
+   "url": "",
+   "desc": "第15–18章：考前突击，高性价比",
+   "tags": [
+    "辅助知识"
+   ]
+  },
+  {
+   "id": "ch1",
+   "name": "信息化发展",
+   "parent": "sec-it",
+   "level": 2,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "chapter",
+   "url": "index.html#c1",
+   "desc": "信息、信息化与数字经济概念群，选择题概念密集区",
+   "exam": "",
+   "tags": [
+    "第1章",
+    "低频"
+   ]
+  },
+  {
+   "id": "ch2",
+   "name": "信息技术发展",
+   "parent": "sec-it",
+   "level": 2,
+   "category": "it",
+   "importance": 4,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c2",
+   "desc": "网络协议、存储架构与新一代信息技术，选择题主力",
+   "exam": "",
+   "tags": [
+    "第2章",
+    "中频"
+   ]
+  },
+  {
+   "id": "ch3",
+   "name": "信息技术服务",
+   "parent": "sec-it",
+   "level": 2,
+   "category": "it",
+   "importance": 2,
+   "difficulty": 2,
+   "type": "chapter",
+   "url": "index.html#c3",
+   "desc": "IT服务定义、ITSS 体系与服务生命周期",
+   "exam": "",
+   "tags": [
+    "第3章",
+    "低频"
+   ]
+  },
+  {
+   "id": "ch4",
+   "name": "信息系统架构",
+   "parent": "sec-it",
+   "level": 2,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c4",
+   "desc": "集中/分布式、SOA 微服务与云原生等架构模式",
+   "exam": "",
+   "tags": [
+    "第4章",
+    "低频"
+   ]
+  },
+  {
+   "id": "ch5",
+   "name": "软件工程",
+   "parent": "sec-it",
+   "level": 2,
+   "category": "it",
+   "importance": 4,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c5",
+   "desc": "过程模型、需求工程与软件测试，软工主干",
+   "exam": "",
+   "tags": [
+    "第5章",
+    "中频"
+   ]
+  },
+  {
+   "id": "ch6",
+   "name": "数据工程",
+   "parent": "sec-it",
+   "level": 2,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c6",
+   "desc": "数据建模、三范式、数据仓库与数据治理",
+   "exam": "",
+   "tags": [
+    "第6章",
+    "低频"
+   ]
+  },
+  {
+   "id": "ch7",
+   "name": "软硬件系统集成",
+   "parent": "sec-it",
+   "level": 2,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "chapter",
+   "url": "index.html#c7",
+   "desc": "集成分类、中间件、综合布线与机房工程",
+   "exam": "",
+   "tags": [
+    "第7章",
+    "低频"
+   ]
+  },
+  {
+   "id": "ch8",
+   "name": "信息安全工程",
+   "parent": "sec-it",
+   "level": 2,
+   "category": "it",
+   "importance": 4,
+   "difficulty": 4,
+   "type": "chapter",
+   "url": "index.html#c8",
+   "desc": "加密体制、数字签名、PKI 与等保2.0",
+   "exam": "",
+   "tags": [
+    "第8章",
+    "中频"
+   ]
+  },
+  {
+   "id": "ch9",
+   "name": "项目管理概论",
+   "parent": "sec-pm",
+   "level": 2,
+   "category": "pm",
+   "importance": 4,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c9",
+   "desc": "项目/运营、生命周期、过程组与知识领域总纲",
+   "exam": "",
+   "tags": [
+    "第9章",
+    "中频"
+   ]
+  },
+  {
+   "id": "ch10",
+   "name": "启动过程组",
+   "parent": "sec-pm",
+   "level": 2,
+   "category": "pm",
+   "importance": 4,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c10",
+   "desc": "制定项目章程 + 识别干系人，启动两大过程",
+   "exam": "",
+   "tags": [
+    "第10章",
+    "中频"
+   ]
+  },
+  {
+   "id": "ch11",
+   "name": "规划过程组",
+   "parent": "sec-pm",
+   "level": 2,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "chapter",
+   "url": "index.html#c11",
+   "desc": "24个规划过程：范围/进度/成本/质量/风险/采购计划",
+   "exam": "案例+双科核心，各子计划输出必背",
+   "tags": [
+    "第11章",
+    "高频"
+   ]
+  },
+  {
+   "id": "ch12",
+   "name": "执行过程组",
+   "parent": "sec-pm",
+   "level": 2,
+   "category": "pm",
+   "importance": 4,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c12",
+   "desc": "10个执行过程：带团队、管质量、干采购",
+   "exam": "",
+   "tags": [
+    "第12章",
+    "中频"
+   ]
+  },
+  {
+   "id": "ch13",
+   "name": "监控过程组",
+   "parent": "sec-pm",
+   "level": 2,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "chapter",
+   "url": "index.html#c13",
+   "desc": "12个监控过程：整体变更、挣值计算与收尾前控制",
+   "exam": "挣值+变更 = 案例双王牌",
+   "tags": [
+    "第13章",
+    "高频"
+   ]
+  },
+  {
+   "id": "ch14",
+   "name": "收尾过程组",
+   "parent": "sec-pm",
+   "level": 2,
+   "category": "pm",
+   "importance": 4,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c14",
+   "desc": "验收、总结归档与两条收尾线",
+   "exam": "",
+   "tags": [
+    "第14章",
+    "中频"
+   ]
+  },
+  {
+   "id": "ch15",
+   "name": "组织保障",
+   "parent": "sec-aux",
+   "level": 2,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c15",
+   "desc": "组织结构、PMO、配置管理与变更的组织级保障",
+   "exam": "配置管理案例超高频",
+   "tags": [
+    "第15章",
+    "高频"
+   ]
+  },
+  {
+   "id": "ch16",
+   "name": "监理基础知识",
+   "parent": "sec-aux",
+   "level": 2,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "chapter",
+   "url": "index.html#c16",
+   "desc": "监理定位、三控两管一协调与三阶段工作",
+   "exam": "",
+   "tags": [
+    "第16章",
+    "低频"
+   ]
+  },
+  {
+   "id": "ch17",
+   "name": "法律法规和标准规范",
+   "parent": "sec-aux",
+   "level": 2,
+   "category": "aux",
+   "importance": 4,
+   "difficulty": 3,
+   "type": "chapter",
+   "url": "index.html#c17",
+   "desc": "招投标、政府采购、合同编与知识产权法规",
+   "exam": "",
+   "tags": [
+    "第17章",
+    "中频"
+   ]
+  },
+  {
+   "id": "ch18",
+   "name": "职业道德规范",
+   "parent": "sec-aux",
+   "level": 2,
+   "category": "aux",
+   "importance": 2,
+   "difficulty": 1,
+   "type": "chapter",
+   "url": "index.html#c18",
+   "desc": "职业道德基本规范与行为准则",
+   "exam": "",
+   "tags": [
+    "第18章",
+    "低频"
+   ]
+  },
+  {
+   "id": "ch1-0",
+   "name": "信息的定义",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-0",
+   "desc": "1948香农：信息是消除随机不定性的东西；信息是负熵。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-1",
+   "name": "信息的11个特征",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-1",
+   "desc": "客普无动相，依变传层系转——11个一个不能少。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-2",
+   "name": "信息的7个质量属性",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-2",
+   "desc": "精完可及经可安；金融重安全，经济重及时。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-3",
+   "name": "信息传输模型六要素",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-3",
+   "desc": "源宿道、编译噪；性能高低看编码。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-4",
+   "name": "系统的9个特性",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c1-4",
+   "desc": "目整层稳突，自相相环。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch1-5",
+   "name": "信息系统定义与三大特性",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-5",
+   "desc": "信息系统=管理模型+信息处理模型+系统实现条件。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-6",
+   "name": "信息系统生命周期",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-6",
+   "desc": "规分设施维五阶段；立项开发运维消亡四阶段。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-7",
+   "name": "信息化内涵四要素",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c1-7",
+   "desc": "网络体系、产业基础、运行环境、效用积累。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch1-8",
+   "name": "国家信息化体系六要素",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-8",
+   "desc": "资源核心、网络基础、应用龙头、产业物质、人才根本、法规保障。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-9",
+   "name": "新型基础设施建设",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-9",
+   "desc": "信息技新、融合用新、创新台新。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-10",
+   "name": "工业互联网四大层级",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-10",
+   "desc": "网络基础、平台中枢、数据要素、安全保障。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-11",
+   "name": "工业互联网六大应用模式",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-11",
+   "desc": "平智网个服数：设计、制造、协同、定制、延伸、管理。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-12",
+   "name": "城市物联网与八大应用",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c1-12",
+   "desc": "通信识别、智能化、互联性。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch1-13",
+   "name": "乡村振兴与数字乡村",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c1-13",
+   "desc": "2035基本实现，21世纪中叶全面建成。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch1-14",
+   "name": "两化融合",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-14",
+   "desc": "技术、产品、业务、产业衍生。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-15",
+   "name": "智能制造与能力成熟度",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-15",
+   "desc": "五自新生产；五级：规划、规范、集成、优化、引领。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-16",
+   "name": "服务现代化与消费互联网",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c1-16",
+   "desc": "结合、绑定、延伸三融合。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch1-17",
+   "name": "数字经济四大构成",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-17",
+   "desc": "数字产业化打基础，产业数字化是主体。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-18",
+   "name": "数据价值化\"三化\"框架",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-18",
+   "desc": "资源化用值，资产化换值（核心），资本化配置。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-19",
+   "name": "数字政府",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-19",
+   "desc": "共享、互通、便利；一网通办、跨省通办、一网统管。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-20",
+   "name": "数字社会与智慧城市五要素",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c1-20",
+   "desc": "数治孪生、边际融合态势；规划管协优引。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch1-21",
+   "name": "数字生态",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c1-21",
+   "desc": "数据要素：劳动工具+劳动对象双重属性。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch1-22",
+   "name": "数字化转型",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c1-22",
+   "desc": "四大驱动：生产力、生产要素、传播效率、智慧主体。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch1-23",
+   "name": "智慧转移与持续迭代",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c1-23",
+   "desc": "智慧—数据：结模过平；数据—智慧：数孪架计。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch1-24",
+   "name": "元宇宙",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c1-24",
+   "desc": "沉浸、身份、经济、治理。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch1-25",
+   "name": "速查·信息化发展",
+   "parent": "ch1",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "ref",
+   "url": "index.html#c1-25",
+   "desc": "配对口诀：网基平中、数要安保；二级：智造规范、城市管理。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch2-0",
+   "name": "计算机组成与操作系统基础",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c2-0",
+   "desc": "运控存入出，进存文设作。",
+   "exam": "常考考点",
+   "tags": [
+    "中频",
+    "计算题"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch2-1",
+   "name": "OSI七层模型",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c2-1",
+   "desc": "物数网传会表应，从下往上一层一层记。",
+   "exam": "七层功能与设备对号入座，选择高频",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch2-2",
+   "name": "TCP/IP与TCP/UDP",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c2-2",
+   "desc": "TCP握手三次可靠流，UDP无连接快不保。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch2-3",
+   "name": "网络设备与IPv6",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c2-3",
+   "desc": "中继集线物理层，网桥交换链路层，路由器在网络层。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch2-4",
+   "name": "RAID磁盘阵列",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c2-4",
+   "desc": "0条带1镜像，5校验6双保险，10先镜后条。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch2-5",
+   "name": "存储架构：DAS/NAS/SAN",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c2-5",
+   "desc": "DAS直连、NAS文件走以太、SAN块级走专网。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch2-6",
+   "name": "云计算：三种服务模式",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c2-6",
+   "desc": "IaaS租硬件、PaaS租平台、SaaS租软件。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "计算题",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch2-7",
+   "name": "大数据特征与关键技术",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c2-7",
+   "desc": "海量、多样、价低、速度快。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch2-8",
+   "name": "物联网三层架构",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c2-8",
+   "desc": "下感上用中间传：感知、网络、应用。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch2-9",
+   "name": "人工智能核心技术",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c2-9",
+   "desc": "机器学习是基础，深度学习是分支。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch2-10",
+   "name": "区块链特征与共识机制",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c2-10",
+   "desc": "去中心、难篡改、可追溯、够透明。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch2-11",
+   "name": "5G三大应用场景",
+   "parent": "ch2",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c2-11",
+   "desc": "增超海：eMBB、uRLLC、mMTC。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch3-0",
+   "name": "什么是IT服务",
+   "parent": "ch3",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c3-0",
+   "desc": "供方运用信息技术，交付成果满足需方。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch3-1",
+   "name": "服务的四大典型特征",
+   "parent": "ch3",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c3-1",
+   "desc": "无形、不可分离、可变、不可储存。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch3-2",
+   "name": "IT服务组成要素PPTR",
+   "parent": "ch3",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c3-2",
+   "desc": "人过技资：选人、做事、高效、保障。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch3-3",
+   "name": "ITSS体系框架",
+   "parent": "ch3",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c3-3",
+   "desc": "我国自主制定，质量成本效能风险四收益。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch3-4",
+   "name": "IT服务生命周期SDOR",
+   "parent": "ch3",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c3-4",
+   "desc": "战设运退：战略规划、设计实现、运营提升、退役终止。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch3-5",
+   "name": "服务质量五大特性",
+   "parent": "ch3",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c3-5",
+   "desc": "安可响有友，质量五特性。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch3-6",
+   "name": "服务集成四要素",
+   "parent": "ch3",
+   "level": 3,
+   "category": "it",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c3-6",
+   "desc": "需方、供方、环境、过程。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch3-7",
+   "name": "IT服务产业化三阶段",
+   "parent": "ch3",
+   "level": 3,
+   "category": "it",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c3-7",
+   "desc": "产品服务化、服务标准化、服务产品化。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch3-8",
+   "name": "速查·信息技术服务",
+   "parent": "ch3",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "ref",
+   "url": "index.html#c3-8",
+   "desc": "四要素、四阶段、五特性，三组数字要分清。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch4-0",
+   "name": "架构本质与总体参考框架",
+   "parent": "ch4",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c4-0",
+   "desc": "架构即决策；框架四层：战、业、用、信。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch4-1",
+   "name": "物理架构：集中式与分布式",
+   "parent": "ch4",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c4-1",
+   "desc": "集中好管理，分布易扩展。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch4-2",
+   "name": "C/S、B/S与MVC模式",
+   "parent": "ch4",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c4-2",
+   "desc": "C/S胖客户端，B/S零安装，MVC三分离。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch4-3",
+   "name": "SOA与微服务对比",
+   "parent": "ch4",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c4-3",
+   "desc": "SOA靠总线，微服务去中心。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch4-4",
+   "name": "企业架构与TOGAF ADM",
+   "parent": "ch4",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c4-4",
+   "desc": "业务、数据应用、技术，BCD顺序不乱。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch4-5",
+   "name": "网络架构：三层组网与SDN",
+   "parent": "ch4",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c4-5",
+   "desc": "核心快转发、汇聚做策略、接入连终端。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch4-6",
+   "name": "安全架构：WPDRRC模型",
+   "parent": "ch4",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c4-6",
+   "desc": "预保检应恢反六环节，人策技三要素。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch4-7",
+   "name": "云原生架构七原则",
+   "parent": "ch4",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c4-7",
+   "desc": "服弹观韧动，零信任，持续演进。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch4-8",
+   "name": "速查·信息系统架构",
+   "parent": "ch4",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "ref",
+   "url": "index.html#c4-8",
+   "desc": "四层、三层、六环节、七原则，数字排排站。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch5-0",
+   "name": "软件过程模型对比",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c5-0",
+   "desc": "瀑布直顺序、原型先出样、螺旋带风险、增量分批交。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch5-1",
+   "name": "需求工程五子过程",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c5-1",
+   "desc": "获分规确管；规格写SRS，确认成基线。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch5-2",
+   "name": "需求层次与SRS特性",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c5-2",
+   "desc": "业用系三层；SRS无二义。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch5-3",
+   "name": "结构化与面向对象",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c5-3",
+   "desc": "结构化面向过程DFD，面向对象封继多。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch5-4",
+   "name": "UML图分类速记",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c5-4",
+   "desc": "静类对包构部，行用顺状协活。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch5-5",
+   "name": "高内聚低耦合",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c5-5",
+   "desc": "内聚越高越好，耦合越低越好。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch5-6",
+   "name": "软件测试四级",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c5-6",
+   "desc": "单集系验四级；桩在下、驱在上。",
+   "exam": "测试四级顺序与执行者必考",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch5-7",
+   "name": "白盒与黑盒测试",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c5-7",
+   "desc": "覆盖类是白盒，划分边界是黑盒。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch5-8",
+   "name": "DevOps与净室工程",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c5-8",
+   "desc": "DevOps破壁快交付，净室预防零缺陷。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch5-9",
+   "name": "维护四类与软件质量",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c5-9",
+   "desc": "完善五成最大头，改适完预按因分。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch5-10",
+   "name": "速查·软件工程",
+   "parent": "ch5",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "ref",
+   "url": "index.html#c5-10",
+   "desc": "四级测试桩驱分，四类维护占比明。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch6-0",
+   "name": "数据建模四阶段",
+   "parent": "ch6",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c6-0",
+   "desc": "需概逻物四步走：E-R画圈、转表、落地。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch6-1",
+   "name": "三模型与数据预处理",
+   "parent": "ch6",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c6-1",
+   "desc": "概念面向用户、逻辑面向设计、物理面向机器。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch6-2",
+   "name": "关系数据库三范式",
+   "parent": "ch6",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c6-2",
+   "desc": "一原子、二消部分、三消传递。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch6-3",
+   "name": "NoSQL四大类型",
+   "parent": "ch6",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c6-3",
+   "desc": "键列文图四大家；CAP三选二。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch6-4",
+   "name": "数据仓库四大特征",
+   "parent": "ch6",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c6-4",
+   "desc": "主题集成、相对稳定、反映历史。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch6-5",
+   "name": "数据湖与数据仓库",
+   "parent": "ch6",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c6-5",
+   "desc": "仓库先定义后写入，湖先存后用再定义。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch6-6",
+   "name": "数据治理",
+   "parent": "ch6",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c6-6",
+   "desc": "标准元主安质命，治理六抓手。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch6-7",
+   "name": "DCMM成熟度模型",
+   "parent": "ch6",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c6-7",
+   "desc": "五级八域：初始受稳量优。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch6-8",
+   "name": "数据资产化三化",
+   "parent": "ch6",
+   "level": 3,
+   "category": "it",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c6-8",
+   "desc": "资源化提值、资产化换值、资本化配置。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch7-0",
+   "name": "系统集成的概念与分类",
+   "parent": "ch7",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c7-0",
+   "desc": "信息为目标、功能为结构、平台为基础、人员为保证。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch7-1",
+   "name": "系统集成项目六大特点",
+   "parent": "ch7",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c7-1",
+   "desc": "成果越友好，实施运维越复杂。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch7-2",
+   "name": "中间件分类",
+   "parent": "ch7",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c7-2",
+   "desc": "消息异步解耦，事务保ACID，数据访问屏蔽差异。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch7-3",
+   "name": "网络集成与设备选型",
+   "parent": "ch7",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c7-3",
+   "desc": "传输公路交换站，安全网管服务端。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch7-4",
+   "name": "综合布线六大子系统",
+   "parent": "ch7",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c7-4",
+   "desc": "工水干管设建：工作区、水平、干线、管理、设备间、建筑群。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch7-5",
+   "name": "机房工程",
+   "parent": "ch7",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c7-5",
+   "desc": "A容错B冗余C基本；气体灭火、联合接地。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch7-6",
+   "name": "数据中心集成与PUE",
+   "parent": "ch7",
+   "level": 3,
+   "category": "it",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c7-6",
+   "desc": "机柜服务器存储网络安全五集成；PUE越接近1越绿色。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch7-7",
+   "name": "应用集成与EAI",
+   "parent": "ch7",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c7-7",
+   "desc": "EAI三要求：互操作、可移植、透明。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch7-8",
+   "name": "信创与国产化适配",
+   "parent": "ch7",
+   "level": 3,
+   "category": "it",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c7-8",
+   "desc": "信创：自主可控为根基，成熟匹配按场景。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch8-0",
+   "name": "信息安全五属性",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c8-0",
+   "desc": "保完可，控抵赖；前三CIA是核心。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch8-1",
+   "name": "主动攻击与被动攻击",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c8-1",
+   "desc": "被动偷听不改数据，主动篡改假冒重放。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch8-2",
+   "name": "对称加密体制",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c8-2",
+   "desc": "一钥加密解密快，分发管理是难题。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch8-3",
+   "name": "非对称加密体制",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c8-3",
+   "desc": "公钥加密私钥解密保密；私钥签名公钥验证。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch8-4",
+   "name": "哈希算法与数字信封",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c8-4",
+   "desc": "定长单向抗碰撞；信封=对称加密数据+公钥加密密钥。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch8-5",
+   "name": "数字签名",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c8-5",
+   "desc": "发方私钥签，收方公钥验；保完保真保抵赖，不保保密。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch8-6",
+   "name": "数字证书与PKI",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "topic",
+   "url": "index.html#c8-6",
+   "desc": "证书绑身份与公钥；CA签发、RA受理、CRL吊销。",
+   "exam": "PKI 组成与证书内容，选择高频",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch8-7",
+   "name": "身份认证技术",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c8-7",
+   "desc": "所知所有所是；两类组合是双因素。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch8-8",
+   "name": "等保2.0分级与定级",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c8-8",
+   "desc": "公民一二、社会二三四、国家三四五。",
+   "exam": "五级分级与定级流程，选择高频",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch8-9",
+   "name": "等保2.0框架与流程",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c8-9",
+   "desc": "定备建测监五动作；一个中心三重防护。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch8-10",
+   "name": "防火墙与IDS、IPS",
+   "parent": "ch8",
+   "level": 3,
+   "category": "it",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c8-10",
+   "desc": "防火墙守边界；IDS旁路报警，IPS串联阻断。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch9-0",
+   "name": "项目是什么",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-0",
+   "desc": "临时 + 独特 = 项目；项目会散场，成果留得长。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-1",
+   "name": "项目的三大特性",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-1",
+   "desc": "一独渐：临时、独特、渐进明细。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-2",
+   "name": "项目 vs 运营",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-2",
+   "desc": "项目干一次，运营天天见。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-3",
+   "name": "什么是项目管理",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c9-3",
+   "desc": "范围、进度、成本三支柱，质量压舱心不慌。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch9-4",
+   "name": "PMBOK发展史",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-4",
+   "desc": "6版\"5+10+49\"，7版\"12原则+8绩效域\"。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-5",
+   "name": "项目成功的标准",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c9-5",
+   "desc": "铁三角只是及格线，干系人点头才算赢。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch9-6",
+   "name": "项目 / 项目集 / 项目组合",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-6",
+   "desc": "组合对战略，项目集求协同，项目干具体。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-7",
+   "name": "事业环境因素",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-7",
+   "desc": "控制不了的都是环境。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-8",
+   "name": "组织过程资产",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-8",
+   "desc": "家底能用又能改，用完记得还回去。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-9",
+   "name": "EEF vs OPA 一秒判别法",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-9",
+   "desc": "改不了的是环境，改得了的是家底。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-10",
+   "name": "组织结构与PM权力",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-10",
+   "desc": "权力看\"型\"号：职能最小，项目最大；矩阵居中分弱平强。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-11",
+   "name": "PMO 的三种类型",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c9-11",
+   "desc": "支持给服务，控制定规矩，指令直接管。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch9-12",
+   "name": "项目经理的角色与能力",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c9-12",
+   "desc": "项目经理是\"整合者\"和\"沟通者\"，不是\"超级员工\"。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch9-13",
+   "name": "项目生命周期与阶段关口",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-13",
+   "desc": "投入像山峰，风险先高后低，变更代价先低后高。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-14",
+   "name": "生命周期五种类型",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-14",
+   "desc": "明确用预测，多变用敏捷，部分明确用混合；迭代管打磨，增量管交付。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-15",
+   "name": "项目立项管理三部曲",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-15",
+   "desc": "先建议、再可研、后评估决策。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-16",
+   "name": "可行性研究的三个层次",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c9-16",
+   "desc": "由粗到细：机会 → 初步 → 详细。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch9-17",
+   "name": "五大过程组",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-17",
+   "desc": "启规执监收；规划最大、监控贯穿。",
+   "exam": "五大过程组是全部案例题的答题框架",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-18",
+   "name": "12项管理原则",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-18",
+   "desc": "4人 4法 4环境，管家打头阵。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-19",
+   "name": "8 大绩效域",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-19",
+   "desc": "干团方法规划，工作交付测量不确定。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-20",
+   "name": "十大知识领域",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c9-20",
+   "desc": "整范进成质，资沟风采干。",
+   "exam": "十大知识领域与过程对号入座，选择高频",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch9-21",
+   "name": "价值交付系统",
+   "parent": "ch9",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c9-21",
+   "desc": "项目是价值的搬运工，系统保证价值不断流。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch10-0",
+   "name": "启动过程组全貌",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-0",
+   "desc": "启动两件事：一立章程给授权，二找干系人摸底。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-1",
+   "name": "制定项目章程",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-1",
+   "desc": "章程三作用：连战略、正式立、表承诺。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-2",
+   "name": "谁编制、谁签发",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-2",
+   "desc": "编制可合作，签发在外面；章程管内部，合同管外部。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-3",
+   "name": "制定项目章程的主要输入",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-3",
+   "desc": "章程输入四件套：立项文件、协议、环境、家底。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-4",
+   "name": "项目章程12项内容",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-4",
+   "desc": "目的目标成果，进度财务风险，干系人审批退出要职权。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-5",
+   "name": "章程\"高层级\"判分",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-5",
+   "desc": "章程高层级，细节靠边站；带\"详细\"的都出局。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-6",
+   "name": "假设日志",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c10-6",
+   "desc": "章程带两娃：章程定调子，假设日志记前提。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch10-7",
+   "name": "章程的工具与技术",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c10-7",
+   "desc": "专数人会：专家、数据收集、人际技能、会议。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch10-8",
+   "name": "识别干系人",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-8",
+   "desc": "章程之前或同时找，阶段开始再扫一遍。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-9",
+   "name": "项目干系人六大类别",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c10-9",
+   "desc": "客户团队发起人，职能供应商其他。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch10-10",
+   "name": "识别干系人的输入",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c10-10",
+   "desc": "计划看沟通参与，文件盯变更问题需求。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch10-11",
+   "name": "干系人数据分析",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c10-11",
+   "desc": "收集靠问卷风暴，分析出清单，表现用方格。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch10-12",
+   "name": "权力利益方格",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-12",
+   "desc": "高权高利重点盯，高权低利哄开心；低权高利常通报，低权低利偶尔瞧。",
+   "exam": "四象限管理策略，选择+案例双考",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-13",
+   "name": "凸显模型",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-13",
+   "desc": "权法紧三高是关键；复杂群体用它分。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-14",
+   "name": "数据表现工具全家福",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c10-14",
+   "desc": "方格立方体，凸显影响方向，人多排优先。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch10-15",
+   "name": "干系人登记册",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-15",
+   "desc": "登记册三块：身份、评估、分类。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-16",
+   "name": "项目启动会议",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-16",
+   "desc": "启动会公布章程定责权，开工会计划批准再动员。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-17",
+   "name": "启动会议五步骤",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c10-17",
+   "desc": "目准参议记：目标→准备→参会→议题→记录。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch10-18",
+   "name": "关注价值和目标",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c10-18",
+   "desc": "价值看论证，成果看指标，约束看资源。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch10-19",
+   "name": "速查·启动过程组",
+   "parent": "ch10",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "ref",
+   "url": "index.html#c10-19",
+   "desc": "两过程一会议；章程方格凸显模型，拿下就是送分题。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-0",
+   "name": "规划过程组全貌",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-0",
+   "desc": "整1范4进5成3，质1资2沟1风5，采1干1，合计24。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-1",
+   "name": "制订项目管理计划",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-1",
+   "desc": "十个子计划，三大基准，外加变更配置生命周期。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-2",
+   "name": "规划范围管理",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c11-2",
+   "desc": "范围计划管范围，需求计划管需求，里面都没有范围本身。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch11-3",
+   "name": "收集需求",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-3",
+   "desc": "访谈焦点问卷标杆收需求，投票独裁多标准来决策。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-4",
+   "name": "定义范围",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-4",
+   "desc": "描述成果定边界，验收标准除外责。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-5",
+   "name": "创建WBS",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-5",
+   "desc": "识别→结构→细化→编码→核实。",
+   "exam": "分解5步骤与编制原则，案例+选择双考",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-6",
+   "name": "WBS编制原则",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-6",
+   "desc": "百分百、唯成果、唯一负责人；四到六层、八十小时。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-7",
+   "name": "范围基准与工作包",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-7",
+   "desc": "基准三件套：说明书+WBS+字典；账上包下是规划包。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-8",
+   "name": "规划进度管理与定义活动",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c11-8",
+   "desc": "工作包变活动，里程碑零工期。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch11-9",
+   "name": "排列活动顺序",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-9",
+   "desc": "FS最常用，SS看齐走，FF同收尾，SF最罕见。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-10",
+   "name": "估算方法四兄弟",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-10",
+   "desc": "类比粗、参数模、三点摇、自下而上最准最累。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "计算题",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-11",
+   "name": "三点估算与PERT公式",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "topic",
+   "url": "index.html#c11-11",
+   "desc": "贝塔除以六，三角除以三；标准差悲观减乐观再除六。",
+   "exam": "案例必考计算：TE=(O+4M+P)/6 与标准差",
+   "tags": [
+    "高频",
+    "计算题",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-12",
+   "name": "关键路径法CPM",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "topic",
+   "url": "index.html#c11-12",
+   "desc": "正向推最早，反向推最晚；总浮动LS减ES，自由浮动看紧后。",
+   "exam": "案例必考计算：总时差/自由时差、关键路径与工期",
+   "tags": [
+    "高频",
+    "计算题",
+    "核心考区",
+    "网络图",
+    "总时差"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-13",
+   "name": "资源平衡 vs 资源平滑",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-13",
+   "desc": "平衡动路径延工期，平滑蹭浮动不误期。",
+   "exam": "必考辨析：平衡改工期，平滑不改",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-14",
+   "name": "进度压缩",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-14",
+   "desc": "赶工加钱加人赶，快速跟进并行干；赶工涨成本，跟进易返工。",
+   "exam": "案例高频：赶工加成本、快速跟进加风险",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-15",
+   "name": "制订进度计划的4类工具与输出",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-15",
+   "desc": "CPM算工期，资源做优化，压缩赶工期，PERT算概率。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-16",
+   "name": "规划成本管理与估算成本",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c11-16",
+   "desc": "成本计划定规则，估算含应急储备。",
+   "exam": "常考考点",
+   "tags": [
+    "中频",
+    "计算题"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch11-17",
+   "name": "制定预算",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-17",
+   "desc": "应急管已知在基准内，管理管未知在基准外。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-18",
+   "name": "规划质量管理",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-18",
+   "desc": "计划定怎么管，指标定衡什么；预防评估是一致性，内外失败是非一致性。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-19",
+   "name": "规划资源管理与RACI矩阵",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-19",
+   "desc": "层级看高层，矩阵配工作，文本写细节；RACI只有一个A。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-20",
+   "name": "估算活动资源",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c11-20",
+   "desc": "需求、依据、RBS三输出。",
+   "exam": "了解即可",
+   "tags": [
+    "低频",
+    "计算题"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch11-21",
+   "name": "规划沟通管理",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-21",
+   "desc": "渠道n乘n减1除2；互动推拉三方法。",
+   "exam": "选择常考计算：渠道数 n(n-1)/2",
+   "tags": [
+    "高频",
+    "计算题",
+    "核心考区",
+    "渠道数"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-22",
+   "name": "规划风险管理",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c11-22",
+   "desc": "随机相对又可变；纯粹只损，投机兼得。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch11-23",
+   "name": "识别风险",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-23",
+   "desc": "头脑风暴核对单，SWOT找风险；登记册记单个，报告说整体。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-24",
+   "name": "定性风险分析",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-24",
+   "desc": "概率乘影响排优先；定性排座次，不定成败。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-25",
+   "name": "定量分析与EMV",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "topic",
+   "url": "index.html#c11-25",
+   "desc": "蒙特卡洛S曲线，敏感分析龙卷风，决策树上算EMV。",
+   "exam": "EMV=概率×影响，决策树选择题必考",
+   "tags": [
+    "高频",
+    "计算题",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-26",
+   "name": "规划风险应对",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-26",
+   "desc": "威胁：规上转减轻接受；机会：开分提接受。",
+   "exam": "威胁4策略+机会4策略，选择案例通吃",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-27",
+   "name": "规划采购管理",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c11-27",
+   "desc": "固定总价范围明，成本补偿风险买方担，工料合同居中间。",
+   "exam": "总价/成本补偿/工料三类适用场景必考",
+   "tags": [
+    "高频",
+    "核心考区",
+    "总价合同",
+    "成本补偿"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch11-28",
+   "name": "规划干系人参与",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c11-28",
+   "desc": "不知晓到领导五级跳；C是当前D是期望。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch11-29",
+   "name": "速查·规划过程组",
+   "parent": "ch11",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "ref",
+   "url": "index.html#c11-29",
+   "desc": "基准三件套、浮动两算法、储备内外分、风险策略辨。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch12-0",
+   "name": "执行过程组全貌",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c12-0",
+   "desc": "整2质1资3，沟1风1采1干1；执行花钱最多。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch12-1",
+   "name": "指导与管理项目工作",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c12-1",
+   "desc": "成果数据问题日志，变更请求四件套。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch12-2",
+   "name": "管理项目知识：显性与隐性",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c12-2",
+   "desc": "显性写得出来，隐性只可意会。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch12-3",
+   "name": "管理质量与质量审计",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c12-3",
+   "desc": "审计查过程，防患于未然。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch12-4",
+   "name": "获取资源：预分派与虚拟团队",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c12-4",
+   "desc": "预分派先定，虚拟团队靠沟通。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch12-5",
+   "name": "建设团队：塔克曼五阶段",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c12-5",
+   "desc": "形震规成散，震荡冲突多。",
+   "exam": "塔克曼五阶段顺序必背",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch12-6",
+   "name": "管理团队：冲突五法与激励",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c12-6",
+   "desc": "合作双赢是首选，强迫撤退慎用。",
+   "exam": "冲突五法与激励理论，选择高频",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch12-7",
+   "name": "管理沟通：模型与5C",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c12-7",
+   "desc": "编码解码防噪声，反馈确认保理解。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch12-8",
+   "name": "实施风险应对与干系人参与",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c12-8",
+   "desc": "风险应对看落实，干系人参与靠引导。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch12-9",
+   "name": "实施采购：招投标四环节",
+   "parent": "ch12",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c12-9",
+   "desc": "招标投标评授标，选商不看最低价。",
+   "exam": "招标→投标→评标→中标流程与时间数字高频",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-0",
+   "name": "监控过程组全貌",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c13-0",
+   "desc": "整2范2，进成质资沟风采购干各1，合计12。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-1",
+   "name": "监控项目工作：数据→信息→报告",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c13-1",
+   "desc": "执行产数据，控制加工成信息，汇总为报告。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-2",
+   "name": "整体变更控制：流程与CCB",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c13-2",
+   "desc": "申请评估审批实施，验证记录六步走。",
+   "exam": "案例必考：变更流程步骤与CCB裁决",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-3",
+   "name": "确认范围 vs 控制质量",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c13-3",
+   "desc": "QC先自查合格，客户再正式验收。",
+   "exam": "案例判断题高频：确认范围vs控制质量",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-4",
+   "name": "控制范围：蔓延与镀金",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c13-4",
+   "desc": "蔓延是客户偷偷加，镀金是团队自作多情。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-5",
+   "name": "控制进度：纠偏工具箱",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c13-5",
+   "desc": "先找关键路径，再赶工或跟进。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch13-6",
+   "name": "挣值指标：三值四指标",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "topic",
+   "url": "index.html#c13-6",
+   "desc": "偏差用减EV在前，指数用除EV在上。",
+   "exam": "案例必考：SV/CV/SPI/CPI 判进度与成本状态",
+   "tags": [
+    "高频",
+    "核心考区",
+    "EVM",
+    "PV/EV/AC"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-7",
+   "name": "完工估算EAC/ETC/TCPI",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 5,
+   "type": "topic",
+   "url": "index.html#c13-7",
+   "desc": "非典型补差，典型除率；TCPI剩余活除剩余钱。",
+   "exam": "案例必考：EAC/ETC/TCPI 公式与含义",
+   "tags": [
+    "高频",
+    "计算题",
+    "核心考区",
+    "EAC",
+    "ETC",
+    "TCPI"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-8",
+   "name": "控制质量：七种质量工具",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c13-8",
+   "desc": "鱼骨找因，帕累托排队，控制图看线，散点看相关。",
+   "exam": "老七种质量工具与场景配对，选择高频",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-9",
+   "name": "控制资源与监督沟通",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c13-9",
+   "desc": "资源管实物够不够，沟通管信息到没到。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch13-10",
+   "name": "监督风险",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c13-10",
+   "desc": "再评估、风险审计、储备分析，全程盯风险。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch13-11",
+   "name": "控制采购与监督干系人",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c13-11",
+   "desc": "合同绩效要盯紧，参与矩阵勤复评。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch13-12",
+   "name": "速查·监控过程组",
+   "parent": "ch13",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "ref",
+   "url": "index.html#c13-12",
+   "desc": "数据信息报告三层，QC确认先与后，典型非典型两条EAC。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch14-0",
+   "name": "结束项目或阶段",
+   "parent": "ch14",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c14-0",
+   "desc": "验收移交报经验，归档放人更新资产。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch14-1",
+   "name": "合同收尾 vs 行政收尾",
+   "parent": "ch14",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c14-1",
+   "desc": "合同逐个关，行政最后收。",
+   "exam": "案例判断题高频对比：先合同收尾后行政收尾",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch14-2",
+   "name": "可交付成果验收",
+   "parent": "ch14",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c14-2",
+   "desc": "对照验收标准，客户签字确认。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch14-3",
+   "name": "最终报告与经验教训",
+   "parent": "ch14",
+   "level": 3,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c14-3",
+   "desc": "报告说清目标达成，教训归档变资产。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch14-4",
+   "name": "项目后评价",
+   "parent": "ch14",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c14-4",
+   "desc": "目标过程效益持续，四维评价回头看。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch14-5",
+   "name": "成果移交与文档归档",
+   "parent": "ch14",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c14-5",
+   "desc": "移产品移文档，培训跟上；档案全移交，资源全释放。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch14-6",
+   "name": "速查·收尾过程组",
+   "parent": "ch14",
+   "level": 3,
+   "category": "pm",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "ref",
+   "url": "index.html#c14-6",
+   "desc": "一组一对比：合同关在前，行政收在后。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch15-0",
+   "name": "组织结构三类型总览",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c15-0",
+   "desc": "职能稳、项目专、矩阵两头沾。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch15-1",
+   "name": "矩阵三兄弟：弱/平衡/强",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c15-1",
+   "desc": "弱是联络员，平衡五五开，强里PM大。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch15-2",
+   "name": "PMO三类型：支持控制指令",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c15-2",
+   "desc": "支持当顾问，控制要合规，指令直接管。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch15-3",
+   "name": "组织文化的影响",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c15-3",
+   "desc": "文化是土壤，项目是庄稼。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch15-4",
+   "name": "配置管理与配置项",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c15-4",
+   "desc": "给成果上户口：状态草正修。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch15-5",
+   "name": "基线：正式变更的分界线",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c15-5",
+   "desc": "评审过了成基线，再改必走CCB。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch15-6",
+   "name": "配置库三类型",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c15-6",
+   "desc": "开发随手写，受控要审批，产品锁柜里。",
+   "exam": "案例超高频：开发库/受控库/产品库职责划分",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch15-7",
+   "name": "配置管理六活动",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c15-7",
+   "desc": "计标控、报审发——六步一个不能少。",
+   "exam": "案例默写题：配置管理六活动顺序",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch15-8",
+   "name": "配置审计与配置管理员",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c15-8",
+   "desc": "功能查达标，物理查齐套；CCB决策，CMO执行。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch15-9",
+   "name": "CCB与变更流程",
+   "parent": "ch15",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c15-9",
+   "desc": "申请-评估-审批-实施-验证-记录，CCB只批不做。",
+   "exam": "与整体变更控制联动出案例题",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch16-0",
+   "name": "监理是什么：独立第三方",
+   "parent": "ch16",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c16-0",
+   "desc": "甲方出钱，乙方干活，丙方监理。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch16-1",
+   "name": "三控两管一协调+安全",
+   "parent": "ch16",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c16-1",
+   "desc": "质进投三控，合与信两管，组织协调；安全别混进两管。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch16-2",
+   "name": "监理的四类依据",
+   "parent": "ch16",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c16-2",
+   "desc": "法规、标准、监理合同、承包合同。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch16-3",
+   "name": "监理三阶段的主要工作",
+   "parent": "ch16",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c16-3",
+   "desc": "准备审方案，实施三控忙，验收帮组档。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch16-4",
+   "name": "监理机构与人员职责",
+   "parent": "ch16",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c16-4",
+   "desc": "总监管全面，专业管一行，监理员跑现场。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch16-5",
+   "name": "监理规划与监理细则",
+   "parent": "ch16",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c16-5",
+   "desc": "规划总监编、单位技术负责人批；细则专业写、总监批。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch16-6",
+   "name": "监理工作程序与找错模板",
+   "parent": "ch16",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c16-6",
+   "desc": "签合同、派总监、编规划、干三控、助验收、交报告。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch17-0",
+   "name": "必须招标的情形与招标方式",
+   "parent": "ch17",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c17-0",
+   "desc": "公益、国资、外资三类必招；公开为主、邀请为例外。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch17-1",
+   "name": "招投标关键数字",
+   "parent": "ch17",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c17-1",
+   "desc": "等标二十、三家开标、五人单三二、通知三十签。",
+   "exam": "数字题：投标20日、评标7日内公示等时间节点",
+   "tags": [
+    "高频",
+    "核心考区",
+    "时间节点"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch17-2",
+   "name": "评标委员会与中标规则",
+   "parent": "ch17",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c17-2",
+   "desc": "标准招标文件定，最低报价未必赢。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch17-3",
+   "name": "政府采购法：五种方式",
+   "parent": "ch17",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c17-3",
+   "desc": "公开邀谈询单一；询价只管货。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch17-4",
+   "name": "民法典合同编：要约与承诺",
+   "parent": "ch17",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c17-4",
+   "desc": "招标邀请，投标要约，中标是承诺。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch17-5",
+   "name": "违约责任三种形式",
+   "parent": "ch17",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c17-5",
+   "desc": "继续履行、补救措施、赔偿损失；定金违约金二选一。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch17-6",
+   "name": "著作权：保护期与职务作品",
+   "parent": "ch17",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c17-6",
+   "desc": "人身权无限期，财产终身加五十，法人发表五十。",
+   "exam": "保护期50年与职务作品归属，选择高频",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch17-7",
+   "name": "专利与商标：期限与起算",
+   "parent": "ch17",
+   "level": 3,
+   "category": "aux",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "topic",
+   "url": "index.html#c17-7",
+   "desc": "发明二十实十外十五，专利申请日起；商标十年核准日起可续展。",
+   "exam": "真题高频考点",
+   "tags": [
+    "高频",
+    "核心考区"
+   ],
+   "freq": "high"
+  },
+  {
+   "id": "ch17-8",
+   "name": "标准化法与软件工程国标",
+   "parent": "ch17",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c17-8",
+   "desc": "国标分强制推荐，行标地标皆推荐；复审不超五年。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch18-0",
+   "name": "职业道德五项基本规范",
+   "parent": "ch18",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c18-0",
+   "desc": "爱诚办服奉，一个不能少。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch18-1",
+   "name": "职业行为准则四个面向",
+   "parent": "ch18",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "index.html#c18-1",
+   "desc": "对职业、对组织、对公众、对同行。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "ch18-2",
+   "name": "知识产权保护与保密义务",
+   "parent": "ch18",
+   "level": 3,
+   "category": "aux",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c18-2",
+   "desc": "职务成果归单位，商业秘密离岗不清零。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch18-3",
+   "name": "职业素养的构成",
+   "parent": "ch18",
+   "level": 3,
+   "category": "aux",
+   "importance": 1,
+   "difficulty": 1,
+   "type": "topic",
+   "url": "index.html#c18-3",
+   "desc": "德为魂、识为纲、才为器、学为本。",
+   "exam": "了解即可",
+   "tags": [
+    "低频"
+   ],
+   "freq": "low"
+  },
+  {
+   "id": "ch18-4",
+   "name": "速查·职业道德规范",
+   "parent": "ch18",
+   "level": 3,
+   "category": "aux",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "ref",
+   "url": "index.html#c18-4",
+   "desc": "道-规-行三层：道德为纲，准则为绳，素养为用。",
+   "exam": "常考考点",
+   "tags": [
+    "中频"
+   ],
+   "freq": "mid"
+  },
+  {
+   "id": "hub-calc",
+   "name": "计算题专题",
+   "level": 2,
+   "category": "topic",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "topic",
+   "url": "",
+   "desc": "五大计算考点一张网：挣值EVM / 关键路径CPM / 三点估算PERT / 决策树EMV / 沟通渠道数",
+   "exam": "基础+案例双科必考，合计约10~15分",
+   "tags": [
+    "计算题",
+    "案例重点",
+    "冲刺"
+   ]
+  },
+  {
+   "id": "hub-case",
+   "name": "案例题专题",
+   "level": 2,
+   "category": "topic",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "topic",
+   "url": "",
+   "desc": "案例答题素材库：变更控制 / 进度 / 质量 / 风险应对 / 团队冲突 / 招投标与配置管理",
+   "exam": "应用技术科目主干，下午案例必用",
+   "tags": [
+    "案例题",
+    "主观题",
+    "冲刺"
+   ]
+  },
+  {
+   "id": "hub-eng",
+   "name": "英语题·5分",
+   "level": 2,
+   "category": "topic",
+   "importance": 3,
+   "difficulty": 2,
+   "type": "topic",
+   "url": "",
+   "desc": "基础卷末 5 道英文题：背项目管理高频术语即可稳定拿分",
+   "tags": [
+    "英语题",
+    "送分题"
+   ]
+  },
+  {
+   "id": "evm-pv",
+   "name": "三值：PV/EV/AC",
+   "parent": "ch13-6",
+   "level": 4,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "point",
+   "url": "index.html#c13-6",
+   "desc": "PV 计划值(应完成多少) / EV 挣值(干了多少) / AC 实际成本(花了多少)",
+   "exam": "所有挣值计算的起点",
+   "tags": [
+    "EVM",
+    "公式"
+   ]
+  },
+  {
+   "id": "evm-sv",
+   "name": "偏差：SV与CV",
+   "parent": "ch13-6",
+   "level": 4,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "point",
+   "url": "index.html#c13-6",
+   "desc": "SV=EV-PV（进度偏差） CV=EV-AC（成本偏差），小于0即落后/超支",
+   "exam": "案例必考公式",
+   "tags": [
+    "EVM",
+    "公式"
+   ]
+  },
+  {
+   "id": "evm-spi",
+   "name": "指数：SPI与CPI",
+   "parent": "ch13-6",
+   "level": 4,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 3,
+   "type": "point",
+   "url": "index.html#c13-6",
+   "desc": "SPI=EV/PV CPI=EV/AC，小于1即落后/超支（相对数，可跨项目比较）",
+   "exam": "案例必考公式",
+   "tags": [
+    "EVM",
+    "公式"
+   ]
+  },
+  {
+   "id": "evm-eac",
+   "name": "预测：EAC与ETC",
+   "parent": "ch13-7",
+   "level": 4,
+   "category": "pm",
+   "importance": 5,
+   "difficulty": 4,
+   "type": "point",
+   "url": "index.html#c13-7",
+   "desc": "ETC=EAC-AC；典型偏差 EAC=AC+(BAC-EV)/CPI，非典型 EAC=AC+BAC-EV",
+   "exam": "案例必考公式，注意区分典型/非典型",
+   "tags": [
+    "EVM",
+    "公式",
+    "EAC"
+   ]
+  },
+  {
+   "id": "evm-tcpi",
+   "name": "TCPI完工绩效",
+   "parent": "ch13-7",
+   "level": 4,
+   "category": "pm",
+   "importance": 4,
+   "difficulty": 5,
+   "type": "point",
+   "url": "index.html#c13-7",
+   "desc": "TCPI=(BAC-EV)/(BAC-AC)：剩余工作所需成本绩效水平，>1 说明要更省着花",
+   "exam": "选择题偶考，理解含义即可",
+   "tags": [
+    "EVM",
+    "公式",
+    "TCPI"
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "source": "sec-it",
+   "target": "ch1",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-it",
+   "target": "ch2",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-it",
+   "target": "ch3",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-it",
+   "target": "ch4",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-it",
+   "target": "ch5",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-it",
+   "target": "ch6",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-it",
+   "target": "ch7",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-it",
+   "target": "ch8",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-pm",
+   "target": "ch9",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-pm",
+   "target": "ch10",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-pm",
+   "target": "ch11",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-pm",
+   "target": "ch12",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-pm",
+   "target": "ch13",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-pm",
+   "target": "ch14",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-aux",
+   "target": "ch15",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-aux",
+   "target": "ch16",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-aux",
+   "target": "ch17",
+   "relation": "contains"
+  },
+  {
+   "source": "sec-aux",
+   "target": "ch18",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-10",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-11",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-12",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-13",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-14",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-15",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-16",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-17",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-18",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-19",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-20",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-21",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-22",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-23",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-24",
+   "relation": "contains"
+  },
+  {
+   "source": "ch1",
+   "target": "ch1-25",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-10",
+   "relation": "contains"
+  },
+  {
+   "source": "ch2",
+   "target": "ch2-11",
+   "relation": "contains"
+  },
+  {
+   "source": "ch3",
+   "target": "ch3-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch3",
+   "target": "ch3-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch3",
+   "target": "ch3-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch3",
+   "target": "ch3-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch3",
+   "target": "ch3-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch3",
+   "target": "ch3-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch3",
+   "target": "ch3-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch3",
+   "target": "ch3-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch3",
+   "target": "ch3-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch4",
+   "target": "ch4-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch4",
+   "target": "ch4-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch4",
+   "target": "ch4-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch4",
+   "target": "ch4-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch4",
+   "target": "ch4-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch4",
+   "target": "ch4-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch4",
+   "target": "ch4-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch4",
+   "target": "ch4-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch4",
+   "target": "ch4-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch5",
+   "target": "ch5-10",
+   "relation": "contains"
+  },
+  {
+   "source": "ch6",
+   "target": "ch6-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch6",
+   "target": "ch6-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch6",
+   "target": "ch6-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch6",
+   "target": "ch6-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch6",
+   "target": "ch6-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch6",
+   "target": "ch6-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch6",
+   "target": "ch6-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch6",
+   "target": "ch6-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch6",
+   "target": "ch6-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch7",
+   "target": "ch7-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch7",
+   "target": "ch7-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch7",
+   "target": "ch7-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch7",
+   "target": "ch7-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch7",
+   "target": "ch7-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch7",
+   "target": "ch7-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch7",
+   "target": "ch7-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch7",
+   "target": "ch7-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch7",
+   "target": "ch7-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch8",
+   "target": "ch8-10",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-10",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-11",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-12",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-13",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-14",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-15",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-16",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-17",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-18",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-19",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-20",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9",
+   "target": "ch9-21",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-10",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-11",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-12",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-13",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-14",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-15",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-16",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-17",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-18",
+   "relation": "contains"
+  },
+  {
+   "source": "ch10",
+   "target": "ch10-19",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-10",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-11",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-12",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-13",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-14",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-15",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-16",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-17",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-18",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-19",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-20",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-21",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-22",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-23",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-24",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-25",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-26",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-27",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-28",
+   "relation": "contains"
+  },
+  {
+   "source": "ch11",
+   "target": "ch11-29",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch12",
+   "target": "ch12-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-10",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-11",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13",
+   "target": "ch13-12",
+   "relation": "contains"
+  },
+  {
+   "source": "ch14",
+   "target": "ch14-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch14",
+   "target": "ch14-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch14",
+   "target": "ch14-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch14",
+   "target": "ch14-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch14",
+   "target": "ch14-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch14",
+   "target": "ch14-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch14",
+   "target": "ch14-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch15",
+   "target": "ch15-9",
+   "relation": "contains"
+  },
+  {
+   "source": "ch16",
+   "target": "ch16-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch16",
+   "target": "ch16-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch16",
+   "target": "ch16-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch16",
+   "target": "ch16-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch16",
+   "target": "ch16-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch16",
+   "target": "ch16-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch16",
+   "target": "ch16-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch17",
+   "target": "ch17-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch17",
+   "target": "ch17-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch17",
+   "target": "ch17-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch17",
+   "target": "ch17-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch17",
+   "target": "ch17-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch17",
+   "target": "ch17-5",
+   "relation": "contains"
+  },
+  {
+   "source": "ch17",
+   "target": "ch17-6",
+   "relation": "contains"
+  },
+  {
+   "source": "ch17",
+   "target": "ch17-7",
+   "relation": "contains"
+  },
+  {
+   "source": "ch17",
+   "target": "ch17-8",
+   "relation": "contains"
+  },
+  {
+   "source": "ch18",
+   "target": "ch18-0",
+   "relation": "contains"
+  },
+  {
+   "source": "ch18",
+   "target": "ch18-1",
+   "relation": "contains"
+  },
+  {
+   "source": "ch18",
+   "target": "ch18-2",
+   "relation": "contains"
+  },
+  {
+   "source": "ch18",
+   "target": "ch18-3",
+   "relation": "contains"
+  },
+  {
+   "source": "ch18",
+   "target": "ch18-4",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13-6",
+   "target": "evm-pv",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13-6",
+   "target": "evm-sv",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13-6",
+   "target": "evm-spi",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13-7",
+   "target": "evm-eac",
+   "relation": "contains"
+  },
+  {
+   "source": "ch13-7",
+   "target": "evm-tcpi",
+   "relation": "contains"
+  },
+  {
+   "source": "ch9-0",
+   "target": "ch9-1",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch9-0",
+   "target": "ch9-2",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch9-13",
+   "target": "ch9-17",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch9-17",
+   "target": "ch10-0",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch9-17",
+   "target": "ch11-0",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch9-17",
+   "target": "ch12-0",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch9-17",
+   "target": "ch13-0",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch9-17",
+   "target": "ch14-0",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch9-15",
+   "target": "ch10-1",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch10-8",
+   "target": "ch10-12",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-2",
+   "target": "ch11-3",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-3",
+   "target": "ch11-4",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-4",
+   "target": "ch11-5",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-5",
+   "target": "ch11-7",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-5",
+   "target": "ch13-3",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-7",
+   "target": "ch13-3",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch13-3",
+   "target": "ch13-4",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch13-4",
+   "target": "ch13-2",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch13-2",
+   "target": "ch15-9",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-8",
+   "target": "ch11-9",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-9",
+   "target": "ch11-10",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-9",
+   "target": "ch11-11",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-10",
+   "target": "ch11-11",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-11",
+   "target": "ch11-12",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-12",
+   "target": "ch11-13",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-12",
+   "target": "ch11-14",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-12",
+   "target": "ch11-15",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-16",
+   "target": "ch11-17",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-17",
+   "target": "ch13-6",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch13-6",
+   "target": "ch13-7",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-18",
+   "target": "ch12-3",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch12-3",
+   "target": "ch13-8",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-19",
+   "target": "ch12-4",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch12-4",
+   "target": "ch12-5",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch12-5",
+   "target": "ch12-6",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-21",
+   "target": "ch12-7",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-22",
+   "target": "ch11-23",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-23",
+   "target": "ch11-24",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-24",
+   "target": "ch11-25",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-25",
+   "target": "ch11-26",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-26",
+   "target": "ch12-8",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch12-8",
+   "target": "ch13-10",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-27",
+   "target": "ch12-9",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch12-9",
+   "target": "ch13-11",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch13-11",
+   "target": "ch14-1",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch12-9",
+   "target": "ch17-1",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch17-0",
+   "target": "ch12-9",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-0",
+   "target": "ch11-1",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch11-1",
+   "target": "ch12-1",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch13-3",
+   "target": "ch14-2",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch14-0",
+   "target": "ch14-1",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch15-4",
+   "target": "ch15-5",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch15-4",
+   "target": "ch15-7",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch15-7",
+   "target": "ch15-8",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch8-2",
+   "target": "ch8-4",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch8-3",
+   "target": "ch8-4",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch8-3",
+   "target": "ch8-5",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch8-4",
+   "target": "ch8-5",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch8-5",
+   "target": "ch8-6",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch8-8",
+   "target": "ch8-9",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch2-1",
+   "target": "ch2-2",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch2-1",
+   "target": "ch2-3",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch4-1",
+   "target": "ch4-2",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch5-1",
+   "target": "ch5-2",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch5-3",
+   "target": "ch5-4",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch5-6",
+   "target": "ch5-7",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch6-0",
+   "target": "ch6-2",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch1-5",
+   "target": "ch1-6",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch16-0",
+   "target": "ch16-1",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch16-1",
+   "target": "ch16-3",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "evm-pv",
+   "target": "evm-sv",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "evm-pv",
+   "target": "evm-spi",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "evm-spi",
+   "target": "evm-eac",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "evm-eac",
+   "target": "evm-tcpi",
+   "relation": "prerequisite"
+  },
+  {
+   "source": "ch1-0",
+   "target": "ch1-1",
+   "relation": "related"
+  },
+  {
+   "source": "ch1-1",
+   "target": "ch1-2",
+   "relation": "related"
+  },
+  {
+   "source": "ch1-2",
+   "target": "ch8-0",
+   "relation": "related"
+  },
+  {
+   "source": "ch1-6",
+   "target": "ch9-13",
+   "relation": "related"
+  },
+  {
+   "source": "ch1-7",
+   "target": "ch1-8",
+   "relation": "related"
+  },
+  {
+   "source": "ch2-4",
+   "target": "ch2-5",
+   "relation": "related"
+  },
+  {
+   "source": "ch2-6",
+   "target": "ch4-7",
+   "relation": "related"
+  },
+  {
+   "source": "ch2-7",
+   "target": "ch6-4",
+   "relation": "related"
+  },
+  {
+   "source": "ch2-8",
+   "target": "ch1-12",
+   "relation": "related"
+  },
+  {
+   "source": "ch2-9",
+   "target": "ch1-15",
+   "relation": "related"
+  },
+  {
+   "source": "ch3-4",
+   "target": "ch9-13",
+   "relation": "related"
+  },
+  {
+   "source": "ch4-3",
+   "target": "ch4-7",
+   "relation": "related"
+  },
+  {
+   "source": "ch4-3",
+   "target": "ch7-7",
+   "relation": "related"
+  },
+  {
+   "source": "ch4-6",
+   "target": "ch8-0",
+   "relation": "related"
+  },
+  {
+   "source": "ch5-0",
+   "target": "ch9-14",
+   "relation": "related"
+  },
+  {
+   "source": "ch5-1",
+   "target": "ch11-3",
+   "relation": "related"
+  },
+  {
+   "source": "ch6-3",
+   "target": "ch6-2",
+   "relation": "related"
+  },
+  {
+   "source": "ch6-4",
+   "target": "ch6-5",
+   "relation": "related"
+  },
+  {
+   "source": "ch6-6",
+   "target": "ch6-7",
+   "relation": "related"
+  },
+  {
+   "source": "ch7-0",
+   "target": "ch7-1",
+   "relation": "related"
+  },
+  {
+   "source": "ch7-2",
+   "target": "ch7-7",
+   "relation": "related"
+  },
+  {
+   "source": "ch7-3",
+   "target": "ch2-3",
+   "relation": "related"
+  },
+  {
+   "source": "ch7-4",
+   "target": "ch7-5",
+   "relation": "related"
+  },
+  {
+   "source": "ch8-0",
+   "target": "ch8-1",
+   "relation": "related"
+  },
+  {
+   "source": "ch8-2",
+   "target": "ch8-3",
+   "relation": "related"
+  },
+  {
+   "source": "ch8-6",
+   "target": "ch8-7",
+   "relation": "related"
+  },
+  {
+   "source": "ch9-7",
+   "target": "ch9-8",
+   "relation": "related"
+  },
+  {
+   "source": "ch9-7",
+   "target": "ch9-9",
+   "relation": "related"
+  },
+  {
+   "source": "ch9-8",
+   "target": "ch9-9",
+   "relation": "related"
+  },
+  {
+   "source": "ch9-10",
+   "target": "ch15-0",
+   "relation": "related"
+  },
+  {
+   "source": "ch9-10",
+   "target": "ch15-1",
+   "relation": "related"
+  },
+  {
+   "source": "ch9-11",
+   "target": "ch15-2",
+   "relation": "related"
+  },
+  {
+   "source": "ch9-15",
+   "target": "ch9-16",
+   "relation": "related"
+  },
+  {
+   "source": "ch9-17",
+   "target": "ch9-20",
+   "relation": "related"
+  },
+  {
+   "source": "ch10-1",
+   "target": "ch10-4",
+   "relation": "related"
+  },
+  {
+   "source": "ch10-1",
+   "target": "ch10-16",
+   "relation": "related"
+  },
+  {
+   "source": "ch10-8",
+   "target": "ch10-15",
+   "relation": "related"
+  },
+  {
+   "source": "ch10-12",
+   "target": "ch10-13",
+   "relation": "related"
+  },
+  {
+   "source": "ch10-12",
+   "target": "ch11-28",
+   "relation": "related"
+  },
+  {
+   "source": "ch11-1",
+   "target": "ch11-7",
+   "relation": "related"
+  },
+  {
+   "source": "ch11-1",
+   "target": "ch11-15",
+   "relation": "related"
+  },
+  {
+   "source": "ch11-1",
+   "target": "ch11-17",
+   "relation": "related"
+  },
+  {
+   "source": "ch11-5",
+   "target": "ch11-6",
+   "relation": "related"
+  },
+  {
+   "source": "ch11-12",
+   "target": "ch13-5",
+   "relation": "related"
+  },
+  {
+   "source": "ch11-12",
+   "target": "ch13-6",
+   "relation": "related"
+  },
+  {
+   "source": "ch11-28",
+   "target": "ch12-8",
+   "relation": "related"
+  },
+  {
+   "source": "ch12-1",
+   "target": "ch13-1",
+   "relation": "related"
+  },
+  {
+   "source": "ch12-2",
+   "target": "ch14-3",
+   "relation": "related"
+  },
+  {
+   "source": "ch13-3",
+   "target": "ch13-8",
+   "relation": "related"
+  },
+  {
+   "source": "ch15-5",
+   "target": "ch15-6",
+   "relation": "related"
+  },
+  {
+   "source": "ch15-5",
+   "target": "ch15-9",
+   "relation": "related"
+  },
+  {
+   "source": "ch15-6",
+   "target": "ch13-2",
+   "relation": "related"
+  },
+  {
+   "source": "ch16-2",
+   "target": "ch17-0",
+   "relation": "related"
+  },
+  {
+   "source": "ch16-3",
+   "target": "ch16-5",
+   "relation": "related"
+  },
+  {
+   "source": "ch17-0",
+   "target": "ch17-1",
+   "relation": "related"
+  },
+  {
+   "source": "ch17-1",
+   "target": "ch17-2",
+   "relation": "related"
+  },
+  {
+   "source": "ch17-0",
+   "target": "ch17-3",
+   "relation": "related"
+  },
+  {
+   "source": "ch17-4",
+   "target": "ch11-27",
+   "relation": "related"
+  },
+  {
+   "source": "ch17-6",
+   "target": "ch17-7",
+   "relation": "related"
+  },
+  {
+   "source": "ch18-2",
+   "target": "ch17-6",
+   "relation": "related"
+  },
+  {
+   "source": "ch18-2",
+   "target": "ch17-7",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch11",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch13",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch11-10",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch11-11",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch11-12",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch11-14",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch11-21",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch11-25",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch13-6",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch13-7",
+   "relation": "related"
+  },
+  {
+   "source": "hub-calc",
+   "target": "ch14-4",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch13",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch14",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch15",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch11-5",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch12-5",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch12-6",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch12-9",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch13-2",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch13-3",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch14-1",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch15-6",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch15-9",
+   "relation": "related"
+  },
+  {
+   "source": "hub-case",
+   "target": "ch11-26",
+   "relation": "related"
+  },
+  {
+   "source": "hub-eng",
+   "target": "hub-case",
+   "relation": "related"
+  },
+  {
+   "source": "evm-sv",
+   "target": "evm-spi",
+   "relation": "related"
+  }
+ ]
+}
