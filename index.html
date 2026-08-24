@@ -440,6 +440,124 @@ table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0d
   table.kt th,table.kt td{padding:7px 9px}
   .kd-body,.qtext,.explain,.mnemo{overflow-wrap:break-word}
 }
+
+/* ================= 主题自定义（背景/字体颜色） ================= */
+:root{--ub-bg:#06080f;--ub-fg:#e8ecf8;--ub-muted:#8a92b0;--ub-panel:rgba(15,19,36,.88);
+  --ub-panel2:rgba(255,255,255,.035);--ub-line:rgba(139,122,255,.25);--ub-bar:rgba(6,8,15,.86);
+  --ub-hover:rgba(139,92,246,.14)}
+/* —— 背景 —— */
+body.ub-on{background:var(--ub-bg)!important;color:var(--ub-fg)!important}
+body.ub-on .bg-fx{background:var(--ub-bg)!important}
+body.ub-on .bg-fx::before{background-image:none}
+body.ub-on .orb{opacity:.06}
+body.ub-on .topbar{background:var(--ub-bar)!important;border-bottom-color:var(--ub-line)!important}
+body.ub-on .drawer{background:var(--ub-panel)!important;border-right-color:var(--ub-line)!important}
+body.ub-on .panel,body.ub-on .stat,body.ub-on .sec-card,body.ub-on .side-group,body.ub-on .kd-card,
+body.ub-on .mode-card,body.ub-on .qcard,body.ub-on .result-item,body.ub-on .ring-in,body.ub-on .kd-fig,
+body.ub-on .search-box input,body.ub-on .ch-select select{background:var(--ub-panel)!important;
+  border-color:var(--ub-line)!important}
+body.ub-on .route-step,body.ub-on .pick-item,body.ub-on .opt:not(.correct):not(.wrong),body.ub-on .explain,
+body.ub-on .review-item:not(.ok):not(.no),body.ub-on .chip:not(.done),body.ub-on .fchip:not(.on),
+body.ub-on .chnav button,body.ub-on .qbar .quit,body.ub-on .kd-acts button:not(.m-on):not(.f-on),
+body.ub-on .wrong-item .del,body.ub-on .qprog,body.ub-on .sec-bar,body.ub-on .dg-btrack,
+body.ub-on .side-item:not(.on){background:var(--ub-panel2)!important;border-color:var(--ub-line)!important}
+body.ub-on .side-item:hover,body.ub-on .opt:not(.correct):not(.wrong):hover,body.ub-on .pick-item:hover{
+  background:var(--ub-hover)!important}
+/* —— 文字（中性色 → 自定义字体色） —— */
+body.ub-on h1,body.ub-on h2,body.ub-on h3,body.ub-on h4,body.ub-on .kd-body,body.ub-on .kd-body b:not([style]),
+body.ub-on .kd-title,body.ub-on .qtext,body.ub-on .opt,body.ub-on .opt:not(.correct):not(.wrong) .ol,
+body.ub-on .quiz-pick h3,body.ub-on .review-item .rq,body.ub-on .wrong-item .wq,body.ub-on .result-item .rt,
+body.ub-on .search-box input,body.ub-on .ch-select select,body.ub-on .chnav button,body.ub-on .stat b,
+body.ub-on .ring-in b,body.ub-on .pick-item .pnm,body.ub-on .sec-head b,body.ub-on .dash-sec-title,
+body.ub-on .ch-head h2,body.ub-on .route-step,body.ub-on .route-step b,body.ub-on .mode-card h3,
+body.ub-on .dg-box b:not([style]),body.ub-on .dg-blab,body.ub-on .nav button,body.ub-on .side-item,
+body.ub-on .chip:not(.done),body.ub-on .fchip:not(.on),body.ub-on table.kt th,body.ub-on table.kt td{
+  color:var(--ub-fg)!important}
+body.ub-on .stat span,body.ub-on .sec-head span,body.ub-on .sec-desc,body.ub-on .route-step i,
+body.ub-on .side-item:not(.done) .cnt,body.ub-on .side-item .num,body.ub-on .side-group h4,body.ub-on .ch-meta,
+body.ub-on .ch-prog,body.ub-on .mode-card p,body.ub-on .pick-item .pct,body.ub-on .qbar .qi,body.ub-on .kb-hint,
+body.ub-on .wrong-item .wmeta,body.ub-on .result-item .rs,body.ub-on .result-item .rmeta,body.ub-on .kd-fig figcaption,
+body.ub-on .dg-box span,body.ub-on .dg-varrow,body.ub-on .dg-harrow,body.ub-on .dg-note,body.ub-on .dg-lv,
+body.ub-on .dg-bval,body.ub-on .logo span,body.ub-on .drawer-head span,body.ub-on .empty-ch,body.ub-on .blank,
+body.ub-on .hero-info p,body.ub-on .ring-in span,body.ub-on .top-progress,body.ub-on .explain p,
+body.ub-on .review-item .ra,body.ub-on .kd-acts button:not(.m-on):not(.f-on),body.ub-on .kd-card.mastered .kd-title,
+body.ub-on .search-box input::placeholder{color:var(--ub-muted)!important}
+/* —— 浅色背景下加深强调色，保证可读 —— */
+body.ub-on.ub-light .badge.high{color:#dc2626!important}
+body.ub-on.ub-light .badge.mid{color:#0e7490!important}
+body.ub-on.ub-light .badge.low{color:#5b5f73!important}
+body.ub-on.ub-light .stars{color:#b45309!important}
+body.ub-on.ub-light .chip.done{color:#047857!important}
+body.ub-on.ub-light .side-item.done .cnt{color:#047857!important}
+body.ub-on.ub-light .kd-acts button.m-on{color:#047857!important}
+body.ub-on.ub-light .kd-acts button.f-on{color:#b45309!important}
+body.ub-on.ub-light .explain .er.ok{color:#047857!important}
+body.ub-on.ub-light .explain .er.no{color:#dc2626!important}
+body.ub-on.ub-light .explain .kpoint{color:#0e7490!important}
+body.ub-on.ub-light .review-item .ra b.good{color:#047857!important}
+body.ub-on.ub-light .review-item .ra b.bad{color:#dc2626!important}
+body.ub-on.ub-light .qbar .qm{color:#6d28d9!important}
+body.ub-on.ub-light .qbar .qtimer{color:#0e7490!important}
+body.ub-on.ub-light .pick-item .pno{color:#6d28d9!important}
+body.ub-on.ub-light .mode-card .go{color:#6d28d9!important}
+body.ub-on.ub-light .ch-head h2 .chno{color:#6d28d9!important}
+body.ub-on.ub-light .exam-pill{color:#6d28d9!important}
+body.ub-on.ub-light .mnemo{color:#6d28d9!important}
+body.ub-on.ub-light .kd-body .pit{color:#9f1239!important}
+body.ub-on.ub-light .kd-body .tip{color:#0e7490!important}
+body.ub-on.ub-light .result-item mark{color:#92400e!important}
+body.ub-on.ub-light .dg-pill{color:#92400e!important}
+body.ub-on.ub-light .empty-ch b{color:#6d28d9!important}
+body.ub-on.ub-light .blank b{color:#6d28d9!important}
+body.ub-on.ub-light .top-progress b{color:#6d28d9!important}
+body.ub-on.ub-light .btn:not(.primary):not(.danger){color:#4c1d95!important}
+body.ub-on.ub-light table.kt th{color:#4c1d95!important}
+body.ub-on.ub-light .ub-reset{color:#dc2626!important}
+body.ub-on.ub-light [style*="#fda4af"]{color:#dc2626!important}
+body.ub-on.ub-light [style*="#a5e8f5"]{color:#0e7490!important}
+body.ub-on.ub-light [style*="#cfc8ff"]{color:#6d28d9!important}
+body.ub-on.ub-light [style*="#fde68a"]{color:#b45309!important}
+body.ub-on.ub-light [style*="#6ee7b7"]{color:#047857!important}
+/* —— 设置按钮与面板 —— */
+.ub-fab{position:fixed;right:20px;bottom:20px;z-index:200;width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;background:var(--ub-panel);backdrop-filter:blur(14px);
+  border:1px solid var(--ub-line);color:var(--ub-fg);box-shadow:0 6px 24px rgba(0,0,0,.28);transition:.2s}
+.ub-fab:hover{transform:translateY(-2px);border-color:rgba(139,122,255,.55)}
+.ub-fab svg{width:22px;height:22px}
+.ub-panel{position:fixed;right:20px;bottom:76px;z-index:201;width:min(292px,calc(100vw - 32px));
+  background:var(--ub-panel);backdrop-filter:blur(18px);border:1px solid var(--ub-line);border-radius:16px;
+  padding:16px 16px 14px;box-shadow:0 16px 50px rgba(0,0,0,.35);color:var(--ub-fg);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:.22s}
+.ub-panel.open{opacity:1;visibility:visible;transform:none}
+.ub-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.ub-head b{font-size:15px}
+.ub-head button{background:none;border:none;color:var(--ub-muted);font-size:15px;padding:2px 6px;border-radius:7px;transition:.15s}
+.ub-head button:hover{color:var(--ub-fg)}
+.ub-label{font-size:12px;color:var(--ub-muted);letter-spacing:1px;margin:12px 0 8px}
+.ub-presets{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ub-sw{border-radius:11px;border:2px solid transparent;cursor:pointer;overflow:hidden;padding:0;
+  background:transparent;transition:.18s;font-family:inherit}
+.ub-sw:hover{transform:translateY(-1px)}
+.ub-sw.on{border-color:rgba(139,92,246,.85);box-shadow:0 0 12px rgba(139,92,246,.35)}
+.ub-sw .swc{display:flex;align-items:center;justify-content:center;height:42px;font-size:15px;font-weight:600}
+.ub-sw .swn{display:block;font-size:11px;padding:4px 2px 3px;color:var(--ub-muted)}
+.ub-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.ub-row>span{font-size:13px;color:var(--ub-muted);flex:none;width:34px}
+.ub-row input[type=color]{width:38px;height:34px;padding:2px;border-radius:8px;border:1px solid var(--ub-line);
+  background:var(--ub-panel2);cursor:pointer;flex:none}
+.ub-row input[type=text]{flex:1;min-width:0;height:34px;padding:0 11px;border-radius:8px;font-size:13px;
+  font-family:ui-monospace,Consolas,monospace;color:var(--ub-fg);background:var(--ub-panel2);
+  border:1px solid var(--ub-line);outline:none;transition:.18s}
+.ub-row input[type=text]:focus{border-color:rgba(139,122,255,.6)}
+.ub-row input[type=text].bad{border-color:rgba(248,113,113,.65)}
+.ub-tip{font-size:11.5px;color:var(--ub-muted);margin:2px 0 10px;line-height:1.5}
+.ub-reset{width:100%;padding:9px;border-radius:10px;font-size:13px;background:rgba(248,113,113,.12);
+  border:1px solid rgba(248,113,113,.4);color:#fca5a5;transition:.18s}
+.ub-reset:hover{background:rgba(248,113,113,.22)}
+@media(max-width:520px){
+  .ub-fab{right:14px;bottom:14px;width:42px;height:42px}
+  .ub-panel{right:14px;bottom:66px}
+}
 </style>
 </head>
 <body>
@@ -481,6 +599,21 @@ table.kt td{padding:8px 12px;border:1px solid rgba(139,122,255,.14);color:#b8c0d
   <section class="view" id="v-wrong"></section>
   <section class="view" id="v-search"></section>
 </main>
+
+<!-- ================= 主题自定义 ================= -->
+<button class="ub-fab" id="ubFab" type="button" title="主题自定义" aria-label="打开主题自定义面板">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0 0 20c1.2 0 2-.9 2-2v-.5c0-.8.7-1.5 1.5-1.5h.9c2 0 3.6-1.6 3.6-3.6C20 7.9 16.4 2 12 2z"/><circle cx="7.5" cy="11.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="10.2" cy="7.3" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="7" r="1.2" fill="currentColor" stroke="none"/><circle cx="17.4" cy="10.6" r="1.2" fill="currentColor" stroke="none"/></svg>
+</button>
+<div class="ub-panel" id="ubPanel" role="dialog" aria-label="主题自定义">
+  <div class="ub-head"><b>🎨 主题自定义</b><button type="button" id="ubClose" aria-label="关闭">✕</button></div>
+  <div class="ub-label">预设主题 · 点击切换</div>
+  <div class="ub-presets" id="ubPresets"></div>
+  <div class="ub-label">自定义颜色 · 输入颜色代码</div>
+  <div class="ub-row"><span>背景</span><input type="color" id="ubBgPick" value="#06080f"><input type="text" id="ubBgText" placeholder="#06080f" maxlength="7" spellcheck="false" autocomplete="off"></div>
+  <div class="ub-row"><span>字体</span><input type="color" id="ubFgPick" value="#e8ecf8"><input type="text" id="ubFgText" placeholder="#e8ecf8" maxlength="7" spellcheck="false" autocomplete="off"></div>
+  <div class="ub-tip">支持 #RGB / #RRGGBB 格式（如 #000、#1a2b3c），输入有效代码后即时生效，设置自动保存。</div>
+  <button class="ub-reset" id="ubReset" type="button">恢复默认主题</button>
+</div>
 
 <script>
 /* ======================================================
@@ -4191,6 +4324,109 @@ renderDash();
 (function(){
   const m=location.hash.match(/^#c(\d+)(?:-(\d+))?$/);
   if(m){ const ch=+m[1]; if(m[2]!=null) goChapterCard(ch,+m[2]); else goChapter(ch) }
+})();
+
+/* ================= 主题自定义（背景/字体颜色） ================= */
+(function(){
+  const TKEY='zx_theme_v1';
+  const PRESETS=[
+    {name:'深空蓝·默认',bg:'#06080f',fg:'#e8ecf8'},
+    {name:'纯黑',bg:'#000000',fg:'#e8ecf8'},
+    {name:'纯白',bg:'#ffffff',fg:'#1f2437'},
+    {name:'米黄·护眼',bg:'#f5efdc',fg:'#43392b'},
+    {name:'墨绿·护眼',bg:'#10231a',fg:'#d3e6da'},
+    {name:'藏蓝',bg:'#0d1b3e',fg:'#d7e0f7'}
+  ];
+  const body=document.body;
+  const VARS=['--ub-bg','--ub-fg','--ub-muted','--ub-panel','--ub-panel2','--ub-line','--ub-bar'];
+  let cur={bg:PRESETS[0].bg,fg:PRESETS[0].fg};
+
+  function normHex(s){
+    s=(s||'').trim().toLowerCase();
+    if(/^#[0-9a-f]{3}$/.test(s)) return '#'+s.slice(1).split('').map(c=>c+c).join('');
+    return /^#[0-9a-f]{6}$/.test(s)?s:null;
+  }
+  function rgb(h){return[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)]}
+  function toHex(r,g,b){return'#'+[r,g,b].map(x=>Math.round(Math.min(255,Math.max(0,x))).toString(16).padStart(2,'0')).join('')}
+  function mix(a,b,t){const A=rgb(a),B=rgb(b);return toHex(A[0]+(B[0]-A[0])*t,A[1]+(B[1]-A[1])*t,A[2]+(B[2]-A[2])*t)}
+  function lum(h){const[r,g,b]=rgb(h);return(.2126*r+.7152*g+.0722*b)/255}
+
+  /* 根据背景/字体色推导面板、边框、弱化文字等派生色，保证整体协调 */
+  function applyTheme(bg,fg,save){
+    cur={bg:bg,fg:fg};
+    const dark=lum(bg)<.5;
+    const[r,g,b]=rgb(bg);
+    const st=body.style;
+    st.setProperty('--ub-bg',bg);
+    st.setProperty('--ub-fg',fg);
+    st.setProperty('--ub-muted',mix(fg,bg,.45));
+    st.setProperty('--ub-panel',dark?mix(bg,'#ffffff',.08):mix(bg,'#000000',.05));
+    st.setProperty('--ub-panel2',dark?mix(bg,'#ffffff',.13):mix(bg,'#000000',.02));
+    st.setProperty('--ub-line',dark?mix(bg,'#ffffff',.22):mix(bg,'#000000',.16));
+    st.setProperty('--ub-bar','rgba('+r+','+g+','+b+',.88)');
+    body.classList.add('ub-on');
+    body.classList.toggle('ub-light',!dark);
+    if(save!==false){ try{localStorage.setItem(TKEY,JSON.stringify(cur))}catch(e){} }
+    syncUI();
+  }
+
+  function resetTheme(){
+    body.classList.remove('ub-on','ub-light');
+    VARS.forEach(v=>body.style.removeProperty(v));
+    try{localStorage.removeItem(TKEY)}catch(e){}
+    cur={bg:PRESETS[0].bg,fg:PRESETS[0].fg};
+    syncUI();
+  }
+
+  function syncUI(){
+    document.querySelectorAll('#ubPresets .ub-sw').forEach(btn=>{
+      const p=PRESETS[+btn.dataset.i];
+      btn.classList.toggle('on',p.bg===cur.bg&&p.fg===cur.fg);
+    });
+    const bt=document.getElementById('ubBgText'),ft=document.getElementById('ubFgText');
+    if(document.activeElement!==bt){ bt.value=cur.bg; bt.classList.remove('bad'); }
+    if(document.activeElement!==ft){ ft.value=cur.fg; ft.classList.remove('bad'); }
+    document.getElementById('ubBgPick').value=cur.bg;
+    document.getElementById('ubFgPick').value=cur.fg;
+  }
+
+  /* 渲染预设色块 */
+  const box=document.getElementById('ubPresets');
+  PRESETS.forEach((p,i)=>{
+    const btn=document.createElement('button');
+    btn.className='ub-sw';btn.type='button';btn.dataset.i=i;btn.title=p.name;
+    btn.innerHTML='<span class="swc" style="background:'+p.bg+';color:'+p.fg+'">Aa</span><span class="swn">'+p.name+'</span>';
+    btn.addEventListener('click',()=>applyTheme(p.bg,p.fg));
+    box.appendChild(btn);
+  });
+
+  /* 自定义颜色：代码输入 + 取色器，均即时生效 */
+  function bindPair(txt,pick,key){
+    txt.addEventListener('input',()=>{
+      const v=normHex(txt.value);
+      txt.classList.toggle('bad',txt.value.trim()!==''&&!v);
+      if(v) applyTheme(key==='bg'?v:cur.bg,key==='fg'?v:cur.fg);
+    });
+    pick.addEventListener('input',()=>applyTheme(key==='bg'?pick.value:cur.bg,key==='fg'?pick.value:cur.fg));
+  }
+  bindPair(document.getElementById('ubBgText'),document.getElementById('ubBgPick'),'bg');
+  bindPair(document.getElementById('ubFgText'),document.getElementById('ubFgPick'),'fg');
+
+  document.getElementById('ubReset').addEventListener('click',resetTheme);
+  const panel=document.getElementById('ubPanel');
+  const fab=document.getElementById('ubFab');
+  fab.addEventListener('click',()=>panel.classList.toggle('open'));
+  document.getElementById('ubClose').addEventListener('click',()=>panel.classList.remove('open'));
+  document.addEventListener('click',e=>{
+    if(panel.classList.contains('open')&&!panel.contains(e.target)&&!fab.contains(e.target))
+      panel.classList.remove('open');
+  });
+
+  /* 启动时恢复已保存的主题 */
+  try{
+    const t=JSON.parse(localStorage.getItem(TKEY));
+    if(t&&normHex(t.bg)&&normHex(t.fg)) applyTheme(normHex(t.bg),normHex(t.fg),false);
+  }catch(e){}
 })();
 </script>
 </body>
